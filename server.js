@@ -5,8 +5,8 @@
  */
 
 var http = require('http');
-// var apiai = require("../module/apiai");
-var apiai = require("apiai")
+var apiai = require("./module/apiai");
+//var apiai = require("apiai")
 
 var app = apiai("c743619629b2490fab9751dac552094a");
 
