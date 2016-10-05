@@ -11,27 +11,28 @@ var apiai = require("apiai")
 var app = apiai("c743619629b2490fab9751dac552094a");
 
 var server = http.createServer(function(request, response) {
-    if (request.method = 'POST' && request.url == '/upload') {
+    if (request.result.action== 'sendOTP') {
         // var outStream = fs.createWriteStream('qwe.wav');
-        var voiceRequest = app.voiceRequest();
+        var textRequest = app.textRequest();
 
-        voiceRequest.on('response', function(_response) {
+        textRequest.on('response', function(_response) {
+            _response ='I did it';
             response.end(JSON.stringify(_response));
             // var json = JSON.stringify({'resolvedQuery': _response['result']['resolvedQuery']})
             // response.end(json);
         });
 
-        voiceRequest.on('error', function(error) {
+        textRequest.on('error', function(error) {
             console.log(error);
             response.end();
         });
 
-        request.on('data', function(chunk) {
-            voiceRequest.write(chunk);
+        textRequest.on('data', function(chunk) {
+            textRequest.write(chunk);
         });
 
         request.on('end', function() {
-            voiceRequest.end();
+            textRequest.end();
         });
     } else {
         response.writeHead(code, {});
