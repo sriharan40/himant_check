@@ -1,4 +1,28 @@
 {
-"twilio" : "1.5.0",
-"oauth" : "0.9.11"
+  "name": "apiai",
+  "version": "2.0.7",
+  "description": "Node.js SDK for api.ai",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "files": [
+    "server.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sriharan40/himant_check.git"
+  },
+  "keywords": [
+    "apiai"
+  ],
+  "author": "Dmitriy Kuragin",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/api-ai/api-ai-node-js/issues"
+  },
+  "homepage": "https://github.com/api-ai/api-ai-node-js#readme"
 }
