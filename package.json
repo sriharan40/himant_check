@@ -3,6 +3,9 @@
 "oauth" : "0.9.11",
 "name" : "apiai",
 "main" : "index.js",
+"scripts": {
+    "start": "node index.js"
+},    
 "dependencies": {
     "apiai": "^2.0.7"
   } 
