@@ -41,11 +41,6 @@ var server = http.createServer(function(request, response) {
     console.log(request.headers);
 });
 
-
-app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
-
-//server.listen(8000);
+server.listen(process.env.PORT || 3000);
 
 // cat ann_smith.wav | curl -v -X POST --data-binary @- -H "Transfer-Encoding: chunked" -H "Content-Type: audio/wav" http://localhost:8000/upload
