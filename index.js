@@ -14,7 +14,7 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
-var request = app.textRequest('Himant 9178294450', options);
+var request = app.textRequest();
 
 request.on('response', function(response) {
     console.log(response);
