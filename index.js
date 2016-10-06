@@ -9,6 +9,8 @@ var apiai = require("apiai");
 
 var app = apiai("c743619629b2490fab9751dac552094a");
 
+var server = http.createServer(function(request, response) {
+    
 var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
@@ -24,3 +26,7 @@ request.on('error', function(error) {
 });
 
 request.end();
+    
+)};
+                               
+server.listen(process.env.PORT || 3000);
