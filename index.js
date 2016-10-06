@@ -24,3 +24,8 @@ request.on('error', function(error) {
 });
 
 request.end();
+
+const server = http.createServer((request, response) => response.end());
+
+//Lets start our server
+server.listen((process.env.PORT), () => console.log("Server listening"));
