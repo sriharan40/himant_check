@@ -33,13 +33,9 @@ var body = [];
 
 request.on('error', function(err) {
 console.error(err);
-});
-
-request.on('data', function(chunk) {
+}).on('data', function(chunk) {
 body.push(chunk);
-});
-
-request.on('end', function() {
+}).on('end', function() {
 body = Buffer.concat(body).toString();
 
 //var name = request.param('customerName');
