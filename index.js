@@ -35,15 +35,15 @@ var mobile = request.param('phone-number');
  * Parses the text as JSON and exposes the resulting object on req.body.
  */
 
-router.use(bodyParser.json());
+//router.use(bodyParser.json());
 
-router.use(bodyParser.urlencoded({
-    extended: true
-}));
+//router.use(bodyParser.urlencoded({
+//    extended: true
+//}));
 
-router.post("/", function (req, res) {
-    console.log(req.result.parameters.phone-number)
-});
+//router.post("/", function (req, res) {
+//    console.log(req.result.parameters.phone-number)
+//});
 
 //var name = "Sriharan";
 
