@@ -5,6 +5,7 @@
  */
 
 //var apiai = require("../module/apiai");
+require("express");
 var apiai = require("apiai");
 const http = require('http');
 
