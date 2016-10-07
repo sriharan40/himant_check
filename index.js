@@ -137,4 +137,6 @@ response.write(JSON.stringify(response));
 
 response.end();
 
+});
+  
 }).listen((process.env.PORT), () => console.log("Server listening"));
