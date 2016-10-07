@@ -5,7 +5,7 @@ var util = require("util");
 var apiai = require("apiai");
 
 var app = apiai("c743619629b2490fab9751dac552094a");
-var speech = 'check speech';
+var speech = 'We will send you an OTP now. Please check your mobile';
 
 var options = {
     sessionId: '<UNIQE SESSION ID>'
@@ -20,6 +20,8 @@ http.createServer(function(request, response) {
    request.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
+	   var textReq = app.textRequest();
+	   console.log (textReq);
     body.push(chunk);
   }).on('end', function() {
     body = Buffer.concat(body).toString();
@@ -28,16 +30,17 @@ http.createServer(function(request, response) {
     response.on('error', function(err) {
       console.error(err);
     });
-
+    
     response.statusCode = 200;
     response.setHeader('Content-Type', 'application/json');
+	   
     // Note: the 2 lines above could be replaced with this next one:
     // response.writeHead(200, {'Content-Type': 'application/json'})
 
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-        "source": "apiai-weather-webhook-sample"
+        "source": "apiai-Himant-OTP sample"
     };
 	  
     response.write(JSON.stringify(responseBody));
