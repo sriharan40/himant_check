@@ -5,7 +5,7 @@ var util = require("util");
 var apiai = require("apiai");
 
 var app = apiai("c743619629b2490fab9751dac552094a");
-var speech;
+var speech = 'check speech';
 
 var options = {
     sessionId: '<UNIQE SESSION ID>'
@@ -13,14 +13,14 @@ var options = {
 
 
 http.createServer(function(request, response) {
-  var result = request['result'];
+  var result = app.textRequest('');
     console.log(result);
   request.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
-    body.push(chunk);
+    //body.push(chunk);
   }).on('end', function() {
-    body = Buffer.concat(body).toString();
+    //body = Buffer.concat(body).toString();
     // BEGINNING OF NEW STUFF
 
     response.on('error', function(err) {
