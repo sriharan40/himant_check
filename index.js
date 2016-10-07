@@ -42,9 +42,9 @@ body.push(chunk);
 request.on('end', function() {
 body = Buffer.concat(body).toString();
 
-var name = request.param('customerName');
+var name = body.param('customerName');
 
-var mobile = request.param('phone-number');
+var mobile = body.param('phone-number');
 
 /**bodyParser.json(options)
  * Parses the text as JSON and exposes the resulting object on req.body.
