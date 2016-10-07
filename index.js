@@ -42,9 +42,9 @@ body.push(chunk);
 request.on('end', function() {
 body = Buffer.concat(body).toString();
 
-var name = body.param('customerName');
+//var name = request.param('customerName');
 
-var mobile = body.param('phone-number');
+//var mobile = request.param('phone-number');
 
 /**bodyParser.json(options)
  * Parses the text as JSON and exposes the resulting object on req.body.
@@ -60,9 +60,9 @@ var mobile = body.param('phone-number');
 //    console.log(req.result.parameters.phone-number)
 //});
 
-//var name = "Sriharan";
+var name = "Sriharan";
 
-//var mobile = "+918050582590";
+var mobile = "+918050582590";
 
 if(name == "")
 {
