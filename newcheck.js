@@ -11,38 +11,42 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
-var request = app.textRequest();
+http.createServer(function(request, response) {
+  var headers = request.headers;
+  var method = request.method;
+  var url = request.url;
+  var body = [];
+	
+   request.on('error', function(err) {
+    console.error(err);
+  }).on('data', function(chunk) {
+    body.push(chunk);
+  }).on('end', function() {
+    body = Buffer.concat(body).toString();
+    // BEGINNING OF NEW STUFF
 
-request.on('response', function(response) {
+    response.on('error', function(err) {
+      console.error(err);
+    });
+
     response.statusCode = 200;
     response.setHeader('Content-Type', 'application/json');
     // Note: the 2 lines above could be replaced with this next one:
     // response.writeHead(200, {'Content-Type': 'application/json'})
 
-    var responseBody = {
+     var responseBody = {
         "speech": speech,
         "displayText": speech,
         "source": "apiai-weather-webhook-sample"
     };
-
+	  
     response.write(JSON.stringify(responseBody));
     response.end();
-	console.log(response);
-});
-	
-request.on('error', function(error) {
-    console.log(error);
-});
+    // Note: the 2 lines above could be replaced with this next one:
+    // response.end(JSON.stringify(responseBody))
 
-request.end();
+    // END OF NEW STUFF
+  });
+}).listen((process.env.PORT), () => console.log("Server listening")); 
 
-//}).listen((process.env.PORT), () => console.log("Server listening"));
-
-//}).listen(process.env.PORT);
-
-var server = http.createServer((request, response) => response.send(response));
-
-//Lets start our server
-server.listen((process.env.PORT), () => console.log("Server listening")); 
-var server = http.createServer((request, response) => response.send(response));
 
