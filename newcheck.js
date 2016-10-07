@@ -14,10 +14,7 @@ var options = {
 
 http.createServer(function(request, response) {
   var result = request['result'];
-  var actn = result.action;
-    if ( actn == 'setOTP')
-        speech = 'Hey, i did it';
-  console.log(action);
+    console.log(result);
   request.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
