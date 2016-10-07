@@ -5,17 +5,18 @@ var util = require("util");
 var apiai = require("apiai");
 
 var app = apiai("c743619629b2490fab9751dac552094a");
-    
+var speech;
+
 var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
 
 http.createServer(function(request, response) {
-  var headers = request.headers;
-  var method = request.method;
-  var url = request.url;
-  var body = [];
+  var action = request.result.action;
+    if ( action == 'setOTP')
+        speech = 'Hey, i did it'';
+  console.log(action);
   request.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
@@ -34,10 +35,9 @@ http.createServer(function(request, response) {
     // response.writeHead(200, {'Content-Type': 'application/json'})
 
     var responseBody = {
-      headers: headers,
-      method: method,
-      url: url,
-      body: body
+        "speech": speech,
+        "displayText": speech,
+        "source": "apiai-weather-webhook-sample"
     };
 
     response.write(JSON.stringify(responseBody));
