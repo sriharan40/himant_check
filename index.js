@@ -22,15 +22,17 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
+var name,mobile;
+
 //http.createServer(function(request, response){
 	
 //var name = request.param('customerName');
 
 //var mobile = request.param('phone-number');
 
-var name = "Sriharan";
+name = "Sriharan";
 
-var mobile = "+918050582590";
+mobile = "+918050582590";
 
 if(name == "")
 {
@@ -87,11 +89,7 @@ client.sms.messages.create({
 });
 
 request.on('response', function(response) {
-    
 	console.log(response);
-	
-	response.send(response);
-	
 });
 	
 request.on('error', function(error) {
@@ -104,7 +102,7 @@ request.end();
 
 //}).listen(process.env.PORT);
 
-var server = http.createServer((request, response) => response.end());
+var server = http.createServer((request, response) => response.setHeader('Content-Type', 'application/json')response.send(response)response.end());
 
 //Lets start our server
 server.listen((process.env.PORT), () => console.log("Server listening"));
