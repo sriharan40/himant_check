@@ -13,7 +13,7 @@ var options = {
 
 
 http.createServer(function(request, response) {
-  var resultp = response.result.action;
+  var resultp = response[result];
     console.log('resp is' + resultp);
   request.on('error', function(err) {
     console.error(err);
