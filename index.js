@@ -21,9 +21,9 @@ var request = app.textRequest('Sriharan 8050582590',options);
 // Twilio Credentials 
 var accountSid = 'ACe0b6cfbf60f11584099ee062db873252'; 
 
-var authToken = '7468f40b17004327190847d04b4222ba'; 
+var authToken = '7468f40b17004327190847d04b4222'; 
 
-//var client = require('twilio')(accountSid, authToken);
+var client = require('twilio')(accountSid, authToken);
 
 // Create a new REST API client to make authenticated requests against the
 // twilio back end
