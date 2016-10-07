@@ -56,6 +56,7 @@ client.sms.messages.create({
 
 request.on('response', function(response) {
     console.log(response);
+    return response;
 });
 
 request.on('error', function(error) {
