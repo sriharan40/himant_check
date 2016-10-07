@@ -22,15 +22,19 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
-const server = http.createServer(function(request, response){
+//http.createServer(function(request, response){
+	
+//var name = request.param('customerName');
 
-var name = request.param('customerName');
+//var mobile = request.param('phone-number');
 
-var mobile = request.param('phone-number');
+var name = "Sriharan";
+
+var mobile = "+918050582590";
 
 if(name == "")
 {
-	name = "Sriharan";
+	name = "Sriharan ";
 }
 
 if(mobile == "")
@@ -38,12 +42,16 @@ if(mobile == "")
 	mobile = "+918050582590";
 }
 
-var request = app.textRequest(name + mobile, options);
+var value = name + mobile;
+
+console.log(value);
+
+var request = app.textRequest(value, options);
 
 // Load the twilio module
 
 // Twilio Credentials 
-var accountSid = 'ACe0b6cfbf60f11584099ee062db873252'; 
+	var accountSid = 'ACe0b6cfbf60f11584099ee062db873252'; 
 
 var authToken = '7468f40b17004327190847d04b4222ba'; 
 
@@ -79,7 +87,11 @@ client.sms.messages.create({
 });
 
 request.on('response', function(response) {
-    console.log(response);
+    
+	console.log(response);
+	
+	response.send(response);
+	
 });
 	
 request.on('error', function(error) {
@@ -88,11 +100,11 @@ request.on('error', function(error) {
 
 request.end();
 
-response.setHeader('Content-Type', 'application/json');
-response.send(response);
+//}).listen((process.env.PORT), () => console.log("Server listening"));
 
-});
+//}).listen(process.env.PORT);
 
+var server = http.createServer((request, response) => response.end());
 
 //Lets start our server
 server.listen((process.env.PORT), () => console.log("Server listening"));
