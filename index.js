@@ -25,11 +25,21 @@ var options = {
 }
 
 http.createServer(function(request, response){
-	
+
+var headers = request.headers;
+var method = request.method;
+var url = request.url;
+var body = [];
+
+request.on('error', function(err) {
+console.error(err);
+}).on('data', function(chunk) {
+
+var textReq = app.textRequest();
+
 var name = request.param('customerName');
 
 var mobile = request.param('phone-number');
-
 
 /**bodyParser.json(options)
  * Parses the text as JSON and exposes the resulting object on req.body.
@@ -100,16 +110,16 @@ client.sms.messages.create({
         console.log('Oops! There was an error.');
     }
 });
+  
+console.log (textReq['ClientRequest']);
+body.push(chunk);
+}).on('end', function() {
+body = Buffer.concat(body).toString();
+// BEGINNING OF NEW STUFF
 
-request.on('response', function(response) {
-	console.log(response);
+response.on('error', function(err) {
+  console.error(err);
 });
-	
-request.on('error', function(error) {
-    console.log(error);
-});
-
-request.end();
 
 response.statusCode = 200;
 
@@ -128,10 +138,3 @@ response.write(JSON.stringify(response));
 response.end();
 
 }).listen((process.env.PORT), () => console.log("Server listening"));
-
-//}).listen(process.env.PORT);
-
-//var server = http.createServer((request, response) => response.send(response));
-
-//Lets start our server
-//server.listen((process.env.PORT), () => console.log("Server listening"));
