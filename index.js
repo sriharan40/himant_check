@@ -63,6 +63,16 @@ request.on('error', function(error) {
     console.log(error);
 });
 
+var speech = "Welcome Sriharan! We will validate your number 8050582590";
+ 
+return {
+        "speech": speech,
+        "displayText": speech,
+        #"data": {},
+        # "contextOut": [],
+        "source": "apiai-bot-chats"
+    }
+ 
 request.end();
 
 const server = http.createServer((request, response) => response.end());
