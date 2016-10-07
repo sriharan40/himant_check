@@ -10,6 +10,8 @@ var express = require('express');
 
 var router = express.Router();
 
+var bodyParser  = require('body-parser');
+
 var util = require("util");
 
 var apiai = require("apiai");
@@ -22,15 +24,30 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
-//http.createServer(function(request, response){
+http.createServer(function(request, response){
 	
-//var name = request.param('customerName');
+var name = request.param('customerName');
 
-//var mobile = request.param('phone-number');
+var mobile = request.param('phone-number');
 
-var name = "Sriharan";
 
-var mobile = "+918050582590";
+/**bodyParser.json(options)
+ * Parses the text as JSON and exposes the resulting object on req.body.
+ */
+
+router.use(bodyParser.json());
+
+router.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+router.post("/", function (req, res) {
+    console.log(req.result.parameters.phone-number)
+});
+
+//var name = "Sriharan";
+
+//var mobile = "+918050582590";
 
 if(name == "")
 {
@@ -49,7 +66,7 @@ var request = app.textRequest(value, options);
 // Load the twilio module
 
 // Twilio Credentials 
-	var accountSid = 'ACe0b6cfbf60f11584099ee062db873252'; 
+var accountSid = 'ACe0b6cfbf60f11584099ee062db873252'; 
 
 var authToken = '7468f40b17004327190847d04b4222ba'; 
 
@@ -94,11 +111,27 @@ request.on('error', function(error) {
 
 request.end();
 
-//}).listen((process.env.PORT), () => console.log("Server listening"));
+response.statusCode = 200;
+
+response.setHeader('Content-Type', 'application/json');
+
+var speech = 'We will send you an OTP now. Please check your mobile';
+
+     var responseBody = {
+        "speech": speech,
+        "displayText": speech,
+        "source": "apiai-Himant-OTP sample"
+    };
+
+response.write(JSON.stringify(response));
+
+response.end();
+
+}).listen((process.env.PORT), () => console.log("Server listening"));
 
 //}).listen(process.env.PORT);
 
-var server = http.createServer((request, response) => response.send(response));
+//var server = http.createServer((request, response) => response.send(response));
 
 //Lets start our server
-server.listen((process.env.PORT), () => console.log("Server listening"));
+//server.listen((process.env.PORT), () => console.log("Server listening"));
