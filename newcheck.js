@@ -13,8 +13,8 @@ var options = {
 
 
 http.createServer(function(request, response) {
-  var result = request.headers;
-    console.log('header is' + result);
+  var resultp = response.result.action;
+    console.log('resp is' + resultp);
   request.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
