@@ -132,7 +132,7 @@ var speech = 'We will send you an OTP now. Please check your mobile';
         "source": "apiai-Himant-OTP sample"
     };
 
-response.write(JSON.stringify(response));
+response.write(JSON.stringify(responseBody));
 
 response.end();
 
