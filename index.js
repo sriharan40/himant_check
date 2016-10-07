@@ -33,13 +33,18 @@ var body = [];
 
 request.on('error', function(err) {
 console.error(err);
-}).on('data', function(chunk) {
+});
 
-var textReq = app.textRequest();
+request.on('data', function(chunk) {
+body.push(chunk);
+});
 
-//var name = request.param('customerName');
+request.on('end', function() {
+body = Buffer.concat(body).toString();
 
-//var mobile = request.param('phone-number');
+var name = request.param('customerName');
+
+var mobile = request.param('phone-number');
 
 /**bodyParser.json(options)
  * Parses the text as JSON and exposes the resulting object on req.body.
@@ -55,9 +60,9 @@ var textReq = app.textRequest();
 //    console.log(req.result.parameters.phone-number)
 //});
 
-var name = "Sriharan";
+//var name = "Sriharan";
 
-var mobile = "+918050582590";
+//var mobile = "+918050582590";
 
 if(name == "")
 {
@@ -110,12 +115,6 @@ client.sms.messages.create({
         console.log('Oops! There was an error.');
     }
 });
-  
-console.log (textReq['ClientRequest']);
-body.push(chunk);
-}).on('end', function() {
-body = Buffer.concat(body).toString();
-// BEGINNING OF NEW STUFF
 
 response.on('error', function(err) {
   console.error(err);
