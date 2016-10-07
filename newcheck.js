@@ -14,7 +14,7 @@ var options = {
 
 http.createServer(function(request, response) {
   var resultp = app.textRequest();
-    console.log('resp is' + resultp);
+    console.log('resp is' + resultp.result.action);
   request.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
