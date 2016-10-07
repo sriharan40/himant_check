@@ -5,8 +5,16 @@
  */
 
 //var apiai = require("../module/apiai");
-require("express");
+var express = require('express');
+
+var router = express.Router();
+
+var util = require("util");
+
+var request = require("request");
+
 var apiai = require("apiai");
+
 const http = require('http');
 
 var app = apiai("c743619629b2490fab9751dac552094a");
