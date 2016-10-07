@@ -5,17 +5,16 @@
  */
 
 //var apiai = require("../module/apiai");
+
 var express = require('express');
 
 var router = express.Router();
 
 var util = require("util");
 
-var request = require("request");
-
 var apiai = require("apiai");
 
-const http = require('http');
+var http = require('http');
 
 var app = apiai("c743619629b2490fab9751dac552094a");
     
@@ -23,7 +22,23 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
-var request = app.textRequest('Sriharan 8050582590',options);
+const server = http.createServer(function(request, response){
+
+var name = request.param('customerName');
+
+var mobile = request.param('phone-number');
+
+if(name == "")
+{
+	name = "Sriharan";
+}
+
+if(mobile == "")
+{
+	mobile = "+918050582590";
+}
+
+var request = app.textRequest(name + mobile, options);
 
 // Load the twilio module
 
@@ -41,9 +56,9 @@ var client = require('twilio')(accountSid, authToken);
 // Pass in parameters to the REST API using an object literal notation. The
 // REST client will handle authentication and response serialzation for you.
 client.sms.messages.create({
-    to:'+918050582590',
-    from:'+18312165009',
-    body:'Testing Twilio with api ai'
+    to: mobile,
+    from: '+18312165009',
+    body: 'Testing Twilio with api ai'
 }, function(error, message) {
     // The HTTP request to Twilio will run asynchronously. This callback
     // function will be called when a response is received from Twilio
@@ -65,21 +80,19 @@ client.sms.messages.create({
 
 request.on('response', function(response) {
     console.log(response);
-    return response;
 });
-
+	
 request.on('error', function(error) {
     console.log(error);
 });
 
 request.end();
 
-const server = http.createServer(function(request, response){
 response.setHeader('Content-Type', 'application/json');
 response.send(response);
+
 });
 
-//const server = http.createServer((request, response) => response.end());
 
 //Lets start our server
 server.listen((process.env.PORT), () => console.log("Server listening"));
