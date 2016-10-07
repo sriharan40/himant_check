@@ -20,8 +20,8 @@ http.createServer(function(request, response) {
    request.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
-	   var textReq = app.textRequest();
-	   console.log (textReq['ClientRequest']);
+	   var textReq = app.get('/');
+	   console.log (textReq);
     body.push(chunk);
   }).on('end', function() {
     body = Buffer.concat(body).toString();
