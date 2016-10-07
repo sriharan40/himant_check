@@ -102,7 +102,7 @@ request.end();
 
 //}).listen(process.env.PORT);
 
-var server = http.createServer((request, response) => response.setHeader('Content-Type', 'application/json')response.send(response)response.end());
+var server = http.createServer((request, response) => response.send(response));
 
 //Lets start our server
 server.listen((process.env.PORT), () => console.log("Server listening"));
