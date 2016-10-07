@@ -21,7 +21,7 @@ http.createServer(function(request, response) {
     console.error(err);
   }).on('data', function(chunk) {
 	   var textReq = app.textRequest();
-	   console.log (textReq);
+	   console.log (textReq.ClientRequest);
     body.push(chunk);
   }).on('end', function() {
     body = Buffer.concat(body).toString();
