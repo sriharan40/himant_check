@@ -22,17 +22,15 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
-var name,mobile;
-
 //http.createServer(function(request, response){
 	
 //var name = request.param('customerName');
 
 //var mobile = request.param('phone-number');
 
-name = "Sriharan";
+var name = "Sriharan";
 
-mobile = "+918050582590";
+var mobile = "+918050582590";
 
 if(name == "")
 {
@@ -45,8 +43,6 @@ if(mobile == "")
 }
 
 var value = name + mobile;
-
-console.log(value);
 
 var request = app.textRequest(value, options);
 
