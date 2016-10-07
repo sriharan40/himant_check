@@ -13,7 +13,7 @@ var options = {
 
 
 http.createServer(function(request, response) {
-  var action = request.result.action;
+  var action = request.['result']['action'];
     if ( action == 'setOTP')
         speech = 'Hey, i did it';
   console.log(action);
