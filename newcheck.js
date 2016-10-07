@@ -11,6 +11,7 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
+var request = app.textRequest();
 
 request.on('response', function(response) {
     response.statusCode = 200;
