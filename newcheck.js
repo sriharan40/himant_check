@@ -30,7 +30,10 @@ http.createServer(function(request, response) {
     response.on('error', function(err) {
       console.error(err);
     });
-    
+    response.on('data', function(chunk) {
+	    console.log (request.params);
+      body.push(chunk);
+    });
     response.statusCode = 200;
     response.setHeader('Content-Type', 'application/json');
 	   
