@@ -17,6 +17,8 @@ http.createServer(function(request, response) {
   var url = request.url;
   var body = [];
 	
+  var req = request.getJSON(silent=True, force=True);
+	
    request.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
@@ -58,9 +60,13 @@ var otp = Math.floor(1000 + Math.random() * 9000);
 
 //var mobile = "+918050582590";
 
-var name = body.customerName;
+var name = req.get("result").get("parameters").get("customerName");
 
-var mobile = body.phone;
+var mobile = req.get("result").get("parameters").get("phone");
+
+//var name = body.customerName;
+
+//var mobile = body.phone;
 
 var speech = name + ', We will send you an OTP now. Please check your mobile';
 
