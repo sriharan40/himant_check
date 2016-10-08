@@ -20,10 +20,10 @@ http.createServer(function(request, response) {
   request.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
-	   var textReq = app.textRequest();
-	   console.log (textReq['ClientRequest']);
+	 //  var textReq = app.textRequest();
+	//   console.log (textReq['ClientRequest']);
 	   body += chunk;	  
-       body.push(chunk);
+      // body.push(chunk);
 	   
 	   //console.log(body.customerName);
   }).on('end', function() {
@@ -34,7 +34,7 @@ try {
         var data = JSON.parse(body);
     } catch(e) {
         console.log('malformed request', body);
-        return res.status(400).send('malformed request: ' + body);
+        return response.status(400).send('malformed request: ' + body);
     }
 	  
     response.on('error', function(err) {
@@ -70,13 +70,13 @@ var otp = Math.floor(1000 + Math.random() * 9000);
 
 //var mobile = "+918050582590";
 
-var name = req.get("result").get("parameters").get("customerName");
+//var name = req.get("result").get("parameters").get("customerName");
 
-var mobile = req.get("result").get("parameters").get("phone");
+//var mobile = req.get("result").get("parameters").get("phone");
 
-//var name = body.customerName;
+var name = body.customerName;
 
-//var mobile = body.phone;
+var mobile = body.phone;
 
 var speech = name + ', We will send you an OTP now. Please check your mobile';
 
