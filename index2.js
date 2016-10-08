@@ -6,6 +6,7 @@ var util = require("util");
 var apiai = require("apiai");
 
 var app = apiai("c743619629b2490fab9751dac552094a");
+var appexp = express();
 
 var options = {
     sessionId: '<UNIQE SESSION ID>'
@@ -13,18 +14,16 @@ var options = {
 
 //const port = 3000
 
-const requestHandler = (request, response) => {  
-  //var req = JSON.parse(request);	
-  console.log(app.textRequest().request);
-  response.end('Hello Node.js Server!');
-}
+appexp.get('/api/:customerName', (request, response) => {  
+    console.log ('Customer name is:' + request.params.customerName);
+  response.send('Hello from Express!')
+})
 
-const server = http.createServer(requestHandler)
-
-server.listen(process.env.PORT, (err) => {  
+appexp.listen(process.env.PORT, (err) => {  
   if (err) {
     return console.log('something bad happened', err)
   }
 
   console.log(`server is listening on ${process.env.PORT}`)
 })
+
