@@ -17,7 +17,7 @@ http.createServer(function(request, response) {
   var url = request.url;
   var body = [];
 	
-  var req = request.getJSON();
+  var req = JSON.parse(request);
 	
    request.on('error', function(err) {
     console.error(err);
