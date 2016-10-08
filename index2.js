@@ -14,12 +14,12 @@ var options = {
 
 //const port = 3000
 
-app.get('/:customerName', (request, response) => {  
+appexp.get('/:customerName', (request, response) => {  
     console.log ('Customer name is:' + request.params.customerName);
   response.send('Hello from Express!')
 })
 
-app.listen(process.env.PORT, (err) => {  
+appexp.listen(process.env.PORT, (err) => {  
   if (err) {
     return console.log('something bad happened', err)
   }
