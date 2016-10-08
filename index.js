@@ -6,7 +6,6 @@ var util = require("util");
 var apiai = require("apiai");
 
 var app = apiai("c743619629b2490fab9751dac552094a");
-var speech = 'We will send you an OTP now. Please check your mobile';
 
 var options = {
     sessionId: '<UNIQE SESSION ID>'
@@ -60,7 +59,7 @@ var mobile = "+918050582590";
 
 var name = body.customerName;
 
-var mobile = body.phone-number;
+//var mobile = body.phone-number;
 
 if(name == "")
 {
@@ -71,6 +70,8 @@ if(mobile == "")
 {
 	mobile = "+918050582590";
 }
+
+var speech = name + ', We will send you an OTP now. Please check your mobile';
 
 var value = name + mobile;
 
