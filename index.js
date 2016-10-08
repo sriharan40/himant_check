@@ -68,7 +68,7 @@ if(action == "sendOTP")
 {
 var otp = Math.floor(1000 + Math.random() * 9000);
 var name = data.result.parameters.customerName;
-var mobile = +63 + data.result.parameters.phone;
+var mobile = data.result.parameters.phone;
 	  
 var speech = name + ', We will send you an OTP now. Please check your mobile';
 
@@ -92,7 +92,7 @@ var client = require('twilio')(accountSid, authToken);
 // Pass in parameters to the REST API using an object literal notation. The
 // REST client will handle authentication and response serialzation for you.
 client.sms.messages.create({
-    to: mobile,
+    to: '+63'mobile,
     from: '+18312165009',
     body: 'One time password for verification is' + otp
 }, function(error, message) {
