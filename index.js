@@ -31,9 +31,6 @@ http.createServer(function(request, response) {
 
 try {
       var data = JSON.parse(body);
-      var name = data.result.parameters.customerName;
-      var mobile = data.result.parameters.phone;
-console.log(mobile);
 //	console.log(data);	
     } catch(e) {
         console.log('malformed request', body);
@@ -68,15 +65,9 @@ console.log(mobile);
 //var req = JSON.parse(body);
 
 var otp = Math.floor(1000 + Math.random() * 9000);
-
-//var name = "Sriharan";
-
-//var mobile = "+918050582590";
-
-//var name = data.get("result").get("parameters").get("customerName");
-
-//var mobile = data.get("result").get("parameters").get("phone");
-
+var name = data.result.parameters.customerName;
+var mobile = data.result.parameters.phone;
+	  
 var speech = name + ', We will send you an OTP now. Please check your mobile';
 
 var value = name + mobile;
