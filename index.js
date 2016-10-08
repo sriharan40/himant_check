@@ -56,9 +56,9 @@ var name = "Sriharan";
 
 var mobile = "+918050582590";
 
-name = body.result.parameters.customerName;
+//name = body.result.parameters.customerName;
 
-mobile = body.result.parameters.phone-number;
+//mobile = body.result.parameters.phone-number;
 
 if(name == "")
 {
