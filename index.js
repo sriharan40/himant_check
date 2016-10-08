@@ -62,8 +62,7 @@ try {
 
 //console.log(body);
 
-//var req = JSON.parse(body);
-
+var data = JSON.parse(body);
 var otp = Math.floor(1000 + Math.random() * 9000);
 var name = data.result.parameters.customerName;
 var mobile = data.result.parameters.phone;
