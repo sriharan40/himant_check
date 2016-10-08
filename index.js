@@ -31,10 +31,10 @@ http.createServer(function(request, response) {
       console.log(body);
 
 try {
-        var data = JSON.parse(body);
+      var data = JSON.parse(body);
     } catch(e) {
         console.log('malformed request', body);
-        return response.status(400).send('malformed request: ' + body);
+        //  return response.status(400).send('malformed request: ' + body);
     }
 	  
     response.on('error', function(err) {
@@ -70,9 +70,9 @@ var otp = Math.floor(1000 + Math.random() * 9000);
 
 //var mobile = "+918050582590";
 
-//var name = req.get("result").get("parameters").get("customerName");
+//var name = data.get("result").get("parameters").get("customerName");
 
-//var mobile = req.get("result").get("parameters").get("phone");
+//var mobile = data.get("result").get("parameters").get("phone");
 
 var name = body.customerName;
 
