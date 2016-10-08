@@ -48,9 +48,15 @@ http.createServer(function(request, response) {
 //    console.log(req.result.parameters.phone-number)
 //});
 
+var otp = Math.floor(1000 + Math.random() * 9000);
+
 var name = "Sriharan";
 
 var mobile = "+918050582590";
+
+name = body.result.parameters.customerName;
+
+mobile = body.result.parameters.phone-number;
 
 if(name == "")
 {
@@ -84,7 +90,7 @@ var client = require('twilio')(accountSid, authToken);
 client.sms.messages.create({
     to: mobile,
     from: '+18312165009',
-    body: 'Testing Twilio with api ai'
+    body: 'One time password for verification is' + otp
 }, function(error, message) {
     // The HTTP request to Twilio will run asynchronously. This callback
     // function will be called when a response is received from Twilio
