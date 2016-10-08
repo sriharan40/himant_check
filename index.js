@@ -23,6 +23,7 @@ http.createServer(function(request, response) {
 	   var textReq = app.textRequest();
 	   console.log (textReq['ClientRequest']);
        body.push(chunk);
+	   console.log(body.customerName);
   }).on('end', function() {
     body = Buffer.concat(body).toString();
 
