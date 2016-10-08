@@ -31,8 +31,8 @@ http.createServer(function(request, response) {
 
 try {
       var data = JSON.parse(body);
-      var name = data.get("result").get("parameters").get("customerName");
-      var mobile = data.get("result").get("parameters").get("phone");
+      var name = data.result.parameters.customerName;
+      var mobile = data.result.parameters.phone;
 console.log(mobile);
 //	console.log(data);	
     } catch(e) {
