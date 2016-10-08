@@ -31,9 +31,10 @@ http.createServer(function(request, response) {
 
 try {
       var data = JSON.parse(body);
-      var name = data.customerName
-      var mobile = data.phone;
-	console.log(data);	
+      var name = data.get("result").get("parameters").get("customerName");
+      var mobile = data.get("result").get("parameters").get("phone");
+console.log(mobile);
+//	console.log(data);	
     } catch(e) {
         console.log('malformed request', body);
         //  return response.status(400).send('malformed request: ' + body);
