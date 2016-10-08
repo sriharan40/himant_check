@@ -14,8 +14,8 @@ var options = {
 //const port = 3000
 
 const requestHandler = (request, response) => {  
-  var req = JSON.parse(request);	
-  console.log(req);
+  //var req = JSON.parse(request);	
+  console.log(request);
   response.end('Hello Node.js Server!');
 }
 
