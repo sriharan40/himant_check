@@ -1,6 +1,7 @@
 var http = require('http');
 var express = require('express');
-var router = express.Router();
+//var router = express.Router();
+var router = express();
 var util = require("util");
 var apiai = require("apiai");
 
@@ -11,7 +12,7 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
-app.use(express.json());
+router.use(express.json());
 
 http.createServer(function(request, response) {
   var headers = request.headers;
