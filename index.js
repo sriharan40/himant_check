@@ -28,8 +28,15 @@ http.createServer(function(request, response) {
 	   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();
-      console.log (body);
-  
+      console.log(body);
+
+try {
+        var data = JSON.parse(body);
+    } catch(e) {
+        console.log('malformed request', body);
+        return res.status(400).send('malformed request: ' + body);
+    }
+	  
     response.on('error', function(err) {
       console.error(err);
     });
@@ -53,7 +60,7 @@ http.createServer(function(request, response) {
 //    console.log(req.result.parameters.phone-number)
 //});
 
-console.log (body);
+console.log(body);
 
 //var req = JSON.parse(body);
 
