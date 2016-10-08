@@ -11,6 +11,8 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
+app.use(express.json());
+
 http.createServer(function(request, response) {
   var headers = request.headers;
   var method = request.method;
@@ -38,6 +40,7 @@ http.createServer(function(request, response) {
  * Parses the text as JSON and exposes the resulting object on req.body.
  */
 
+ 
 //router.use(bodyParser.json());
 
 //router.use(bodyParser.urlencoded({
@@ -56,9 +59,9 @@ var name = "Sriharan";
 
 var mobile = "+918050582590";
 
-var name = body.result.parameters.customerName;
+var name = request.body.result.parameters.customerName;
 
-var mobile = body.result.parameters.phone-number;
+var mobile = request.body.result.parameters.phone-number;
 
 if(name == "")
 {
