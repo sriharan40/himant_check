@@ -1,6 +1,5 @@
 var http = require('http');
 var express = require('express');
-//var router = express.Router();
 var router = express();
 var util = require("util");
 var apiai = require("apiai");
@@ -63,9 +62,13 @@ try {
 //console.log(body);
 
 var data = JSON.parse(body);
+
+var action = data.result.action;
+if(action == "sendOTP")
+{
 var otp = Math.floor(1000 + Math.random() * 9000);
 var name = data.result.parameters.customerName;
-var mobile = data.result.parameters.phone;
+var mobile = +63 + data.result.parameters.phone;
 	  
 var speech = name + ', We will send you an OTP now. Please check your mobile';
 
@@ -114,9 +117,8 @@ client.sms.messages.create({
     response.statusCode = 200;
     response.setHeader('Content-Type', 'application/json');
 	   
-    // Note: the 2 lines above could be replaced with this next one:
-    // response.writeHead(200, {'Content-Type': 'application/json'})
-
+}
+	  
      var responseBody = {
         "speech": speech,
         "displayText": speech,
@@ -125,9 +127,5 @@ client.sms.messages.create({
 	  
     response.write(JSON.stringify(responseBody));
     response.end();
-    // Note: the 2 lines above could be replaced with this next one:
-    // response.end(JSON.stringify(responseBody))
-
-    // END OF NEW STUFF
   });
 }).listen((process.env.PORT), () => console.log("Server listening"));
