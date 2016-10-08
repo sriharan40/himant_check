@@ -92,7 +92,7 @@ var client = require('twilio')(accountSid, authToken);
 // Pass in parameters to the REST API using an object literal notation. The
 // REST client will handle authentication and response serialzation for you.
 client.sms.messages.create({
-    to: '+63'mobile,
+    to: '+63'+mobile,
     from: '+18312165009',
     body: 'One time password for verification is' + otp
 }, function(error, message) {
