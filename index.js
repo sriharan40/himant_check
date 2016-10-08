@@ -70,13 +70,13 @@ var otp = Math.floor(1000 + Math.random() * 9000);
 
 //var mobile = "+918050582590";
 
-//var name = data.get("result").get("parameters").get("customerName");
+var name = data.get("result").get("parameters").get("customerName");
 
-//var mobile = data.get("result").get("parameters").get("phone");
+var mobile = data.get("result").get("parameters").get("phone");
 
-var name = body.customerName;
+//var name = body.customerName;
 
-var mobile = body.phone;
+//var mobile = body.phone;
 
 var speech = name + ', We will send you an OTP now. Please check your mobile';
 
