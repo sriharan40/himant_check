@@ -49,27 +49,17 @@ http.createServer(function(request, response) {
 //    console.log(req.result.parameters.phone-number)
 //});
 
-console.log (body);
+//console.log (body);
 
 var otp = Math.floor(1000 + Math.random() * 9000);
 
-var name = "Sriharan";
+//var name = "Sriharan";
 
-var mobile = "+918050582590";
+//var mobile = "+918050582590";
 
-var name = body.customerName;
+var name = chunk.customerName;
 
-//var mobile = body.phone-number;
-
-if(name == "")
-{
-	name = "Sriharan ";
-}
-
-if(mobile == "")
-{
-	mobile = "+918050582590";
-}
+var mobile = chunk.phone;
 
 var speech = name + ', We will send you an OTP now. Please check your mobile';
 
@@ -82,7 +72,7 @@ var request = app.textRequest(value, options);
 // Twilio Credentials 
 var accountSid = 'ACe0b6cfbf60f11584099ee062db873252'; 
 
-var authToken = '7468f40b17004327190847d04b4222'; 
+var authToken = '7468f40b17004327190847d04b4222ba'; 
 
 var client = require('twilio')(accountSid, authToken);
 
