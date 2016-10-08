@@ -12,7 +12,7 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
-router.use(express.json());
+router.use(express.bodyParser());
 
 http.createServer(function(request, response) {
   var headers = request.headers;
