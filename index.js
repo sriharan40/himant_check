@@ -28,6 +28,7 @@ http.createServer(function(request, response) {
 	   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();
+      console.log (body);
   
     response.on('error', function(err) {
       console.error(err);
@@ -52,9 +53,9 @@ http.createServer(function(request, response) {
 //    console.log(req.result.parameters.phone-number)
 //});
 
-//console.log (body);
+console.log (body);
 
-var req = JSON.parse(body);
+//var req = JSON.parse(body);
 
 var otp = Math.floor(1000 + Math.random() * 9000);
 
