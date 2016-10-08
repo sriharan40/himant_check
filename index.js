@@ -23,6 +23,7 @@ http.createServer(function(request, response) {
 	   var textReq = app.textRequest();
 	   console.log (textReq['ClientRequest']);
        console.log(body.push(chunk));
+	   console.log(chunk);
   }).on('end', function() {
     body = Buffer.concat(body).toString();
 
@@ -57,9 +58,9 @@ var otp = Math.floor(1000 + Math.random() * 9000);
 
 //var mobile = "+918050582590";
 
-var name = chunk.customerName;
+var name = body.customerName;
 
-var mobile = chunk.phone;
+var mobile = body.phone;
 
 var speech = name + ', We will send you an OTP now. Please check your mobile';
 
