@@ -15,7 +15,7 @@ var options = {
 
 const requestHandler = (request, response) => {  
   //var req = JSON.parse(request);	
-  console.log(app.textRequest());
+  console.log(app.textRequest().request);
   response.end('Hello Node.js Server!');
 }
 
