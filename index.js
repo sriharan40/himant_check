@@ -16,20 +16,19 @@ http.createServer(function(request, response) {
   var method = request.method;
   var url = request.url;
   var body = [];
-	
-  var req = JSON.parse(request);
-	
-   request.on('error', function(err) {
+		
+  request.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
 	   var textReq = app.textRequest();
 	   console.log (textReq['ClientRequest']);
        body.push(chunk);
+	   
 	   console.log(body.customerName);
   }).on('end', function() {
-    body = Buffer.concat(body).toString();
-
-   response.on('error', function(err) {
+    //body = Buffer.concat(body).toString();
+  
+    response.on('error', function(err) {
       console.error(err);
     });
 
@@ -53,6 +52,8 @@ http.createServer(function(request, response) {
 //});
 
 //console.log (body);
+
+var req = JSON.parse(body);
 
 var otp = Math.floor(1000 + Math.random() * 9000);
 
