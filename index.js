@@ -31,7 +31,9 @@ http.createServer(function(request, response) {
 
 try {
       var data = JSON.parse(body);
-      console.log(data);	
+      var name = data.customerName
+      var mobile = data.phone;
+	console.log(data);	
     } catch(e) {
         console.log('malformed request', body);
         //  return response.status(400).send('malformed request: ' + body);
@@ -73,10 +75,6 @@ var otp = Math.floor(1000 + Math.random() * 9000);
 //var name = data.get("result").get("parameters").get("customerName");
 
 //var mobile = data.get("result").get("parameters").get("phone");
-
-var name = data.customerName;
-
-var mobile = data.phone;
 
 var speech = name + ', We will send you an OTP now. Please check your mobile';
 
