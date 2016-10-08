@@ -12,8 +12,6 @@ var options = {
     sessionId: '<UNIQE SESSION ID>'
 }
 
-router.use(express.bodyParser());
-
 http.createServer(function(request, response) {
   var headers = request.headers;
   var method = request.method;
@@ -60,9 +58,9 @@ var name = "Sriharan";
 
 var mobile = "+918050582590";
 
-var name = request.body.result.parameters.customerName;
+var name = request.body.customerName;
 
-var mobile = request.body.result.parameters.phone-number;
+var mobile = request.body.phone-number;
 
 if(name == "")
 {
