@@ -22,9 +22,10 @@ http.createServer(function(request, response) {
   }).on('data', function(chunk) {
 	   var textReq = app.textRequest();
 	   console.log (textReq['ClientRequest']);
+	   body += chunk;	  
        body.push(chunk);
 	   
-	   console.log(body.customerName);
+	   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();
   
