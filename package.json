@@ -2,9 +2,9 @@
 "twilio" : "1.5.0",
 "oauth" : "0.9.11",
 "name" : "apiai",
-"main" : "index.js",
+"main" : "index2.js",
 "scripts": {
-    "start": "node index.js"
+    "start": "node index2.js"
 },    
 "dependencies": {
     "apiai": "^2.0.7",
