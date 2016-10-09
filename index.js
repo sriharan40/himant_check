@@ -7,7 +7,7 @@ var apiai = require("apiai");
 var app = apiai("c743619629b2490fab9751dac552094a");
 
 var options = {
-    sessionId: Math.floor(100000 + Math.random() * 900000)
+    sessionId: '<UNIQE SESSION ID>'
 }
 
 http.createServer(function(request, response) {
@@ -50,7 +50,7 @@ if(action == "sendOTP")
 	var name = data.result.parameters.customerName;
 	var mobile = data.result.parameters.phone;
 
-	var speech = name + ', We will send you an OTP on your number' + mobile +'. Please reply back here with that OTP.';
+	var speech = name + ', We will send you an OTP on your number ' + mobile +'. Please reply back here with that OTP.';
 
 	var value = name + mobile;
 
