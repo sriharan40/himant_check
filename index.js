@@ -111,7 +111,7 @@ if(action == "validateOTP")
 {
 	var otp = data.result.parameters.inputOTP;
 
-	var otp_check = data.metadata.outputContexts;	
+	var otp_check = data.contexts[1].parameters.number;	
 
 	if(otp == otp_check)
 	{
@@ -134,11 +134,7 @@ if(action == "validateOTP")
         "source": "apiai-Himant-OTP sample"
     };
 
-	var contextBody = {
-		 "outputContexts": otp
-	}	
     response.write(JSON.stringify(responseBody));
-    response.write(JSON.stringify(contextBody));
     response.end();
   });
 }).listen((process.env.PORT), () => console.log("Server listening"));
