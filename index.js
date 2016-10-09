@@ -49,7 +49,6 @@ if(action == "sendOTP")
 	var otp = Math.floor(1000 + Math.random() * 9000);
 	var name = data.result.parameters.customerName;
 	var mobile = data.result.parameters.phone;
-	var fulfillmentData = 
 	var speech = name + ', We will send you an OTP on your number ' + mobile +'. Please reply back here with that OTP.';
 
 	var value = name + mobile;
