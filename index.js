@@ -65,8 +65,8 @@ if(action == "sendOTP")
 	var client = require('twilio')(accountSid, authToken);
 
 	// SET THE OTP in RESPONSE FULFILMENT - Himant
-	data.result.contexts.parameters.number = otp;
-	console.log ('OTP to send to response is :' + data.result.contexts.parameters.number);
+	data.result.contexts[1].parameters.number = otp;
+	console.log ('OTP to send to response is :' + data.result.contexts[1].parameters.number);
 	// SET oF OTP in response Himant - ends
 	// Create a new REST API client to make authenticated requests against the
 	// twilio back end
