@@ -106,7 +106,9 @@ if(action == "validateOTP")
 	var otp = data.result.parameters.inputOTP;
 	//var name = data.contexts.parameters.customerName;
 	var speech = data.result.fulfillment.speech + '.You entered :' + otp + '';
-	data.result.parameters.number = otp;
+	//var datJson = data;
+	data.result.fulfillment.data.result.parameters.number = otp;
+	console.log ('OTP to send to response is :' + data.result.parameters.number;
     response.statusCode = 200;
 	
     response.setHeader('Content-Type', 'application/json');	
