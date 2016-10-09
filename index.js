@@ -93,16 +93,25 @@ if(action == "sendOTP")
 		console.log('Oops! There was an error.');
 	    }
 	});
-    	   
+
+    response.statusCode = 200;
+	
+    response.setHeader('Content-Type', 'application/json');	
+
 }
+
 if(action == "validateOTP")
 {
 	var otp = data.result.parameters.inputOTP;
 
 	var speech = 'OTP entered is ' + otp + '';
-}
+
     response.statusCode = 200;
-    response.setHeader('Content-Type', 'application/json');
+	
+    response.setHeader('Content-Type', 'application/json');	
+	
+}
+
   
      var responseBody = {
         "speech": speech,
