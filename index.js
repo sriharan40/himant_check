@@ -47,9 +47,11 @@ var action = data.result.action;
 if(action == "sendOTP")
 {
 	var otp = Math.floor(1000 + Math.random() * 9000);
+	data.result.fulfillment.data.result.parameters.number = otp;
+	console.log ('OTP to send to response is :' + data.result.fulfillment.data.result.parameters.number);
 	var name = data.result.parameters.customerName;
 	var mobile = data.result.parameters.phone;
-
+	var fulfillmentData = 
 	var speech = name + ', We will send you an OTP on your number ' + mobile +'. Please reply back here with that OTP.';
 
 	var value = name + mobile;
@@ -107,8 +109,7 @@ if(action == "validateOTP")
 	//var name = data.contexts.parameters.customerName;
 	var speech = data.result.fulfillment.speech + '.You entered :' + otp + '';
 	//var datJson = data;
-	data.result.fulfillment.data.result.parameters.number = otp;
-	console.log ('OTP to send to response is :' + data.result.fulfillment.data.result.parameters.number);
+	
     response.statusCode = 200;
 	
     response.setHeader('Content-Type', 'application/json');	
