@@ -65,12 +65,10 @@ if(action == "sendOTP")
 	var client = require('twilio')(accountSid, authToken);
 
 	// SET THE OTP in RESPONSE FULFILMENT - Himant
-	var contextOut = '"contextOut":[{"name": "validateotp","lifespan": 5;, "parameters": {"number": "1234"
-					,"phone": "9178294450","phone.original": "9178294450","customerName.original": "himant"
-					,"number.original": "","inputOTP.original": "",
-					"customerName": "himant","inputOTP": ""}}]';
-       
-	//console.log ('OTP to send to response is :' + data.result.contexts[1].parameters.number);
+
+	//1. set in context out in response object  for context validateOTP the parameter "number" = otp
+	//2. in validateOTP in next call, you will get the number and the input OTP. Compare both and return success or failure.
+	
 	// SET oF OTP in response Himant - ends
 	
 	// Create a new REST API client to make authenticated requests against the
