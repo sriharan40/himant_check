@@ -105,7 +105,7 @@ if(action == "validateOTP")
 {
 	var otp = data.result.parameters.inputOTP;
 	//var name = data.contexts.parameters.customerName;
-	var speech = data.fulfillment.speech + '.You entered :' + otp + '';
+	var speech = data.result.fulfillment.speech + '.You entered :' + otp + '';
 
     response.statusCode = 200;
 	
