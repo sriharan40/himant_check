@@ -74,7 +74,7 @@ if(action == "sendOTP")
 	client.sms.messages.create({
 	    to: '+63'+mobile,
 	    from: '+18312165009',
-	    body: 'One time password for verification is' + otp
+	    body: 'Your one time password for verficiation is :' + otp
 	}, function(error, message) {
 	    // The HTTP request to Twilio will run asynchronously. This callback
 	    // function will be called when a response is received from Twilio
@@ -94,6 +94,7 @@ if(action == "sendOTP")
 	    }
 	});
 
+    
     response.statusCode = 200;
 	
     response.setHeader('Content-Type', 'application/json');	
@@ -104,7 +105,7 @@ if(action == "validateOTP")
 {
 	var otp = data.result.parameters.inputOTP;
 
-	var speech = 'OTP entered is ' + otp + '';
+	var speech = 'Thanks' + name +  '.You entered :' + otp + '';
 
     response.statusCode = 200;
 	
@@ -112,7 +113,7 @@ if(action == "validateOTP")
 	
 }
 
-  
+  // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
         "speech": speech,
         "displayText": speech,
