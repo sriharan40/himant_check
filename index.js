@@ -110,9 +110,16 @@ if(action == "sendOTP")
 if(action == "validateOTP")
 {
 	var otp = data.result.parameters.inputOTP;
-	//var name = data.contexts.parameters.customerName;
-	var speech = data.result.fulfillment.speech + '.You entered :' + otp + '';
-	//var datJson = data;
+
+	var otp_check = data.metadata.outputContexts;	
+
+	if(otp == otp_check)
+	{
+	var speech = 'OTP entered is correct';
+	}
+	else{
+	var speech = 'OTP entered is wrong';	
+	}
 	
     response.statusCode = 200;
 	
@@ -124,7 +131,7 @@ if(action == "validateOTP")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-	"contextOut": contextOut,
+		"outputContexts": otp,
         "source": "apiai-Himant-OTP sample"
     };
 	  
