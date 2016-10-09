@@ -47,8 +47,6 @@ var action = data.result.action;
 if(action == "sendOTP")
 {
 	var otp = Math.floor(1000 + Math.random() * 9000);
-	data.result.fulfillment.data.result.parameters.number = otp;
-	console.log ('OTP to send to response is :' + data.result.fulfillment.data.result.parameters.number);
 	var name = data.result.parameters.customerName;
 	var mobile = data.result.parameters.phone;
 	var fulfillmentData = 
@@ -57,7 +55,7 @@ if(action == "sendOTP")
 	var value = name + mobile;
 
 	var request = app.textRequest(value, options);
-
+	
 	// Load the twilio module
 
 	// Twilio Credentials 
@@ -67,6 +65,10 @@ if(action == "sendOTP")
 
 	var client = require('twilio')(accountSid, authToken);
 
+	// SET THE OTP in RESPONSE FULFILMENT - Himant
+	data.result.fulfillment.data.result.parameters.number = otp;
+	console.log ('OTP to send to response is :' + data.result.fulfillment.data.result.parameters.number);
+	// SET oF OTP in response Himant - ends
 	// Create a new REST API client to make authenticated requests against the
 	// twilio back end
 	//var client = new twilio.RestClient('ACe0b6cfbf60f11584099ee062db873252', '7468f40b17004327190847d04b4222ba');
