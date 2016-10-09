@@ -131,11 +131,14 @@ if(action == "validateOTP")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-		"outputContexts": otp,
         "source": "apiai-Himant-OTP sample"
     };
-	  
+
+	var contextBody = {
+		 "outputContexts": otp
+	}	
     response.write(JSON.stringify(responseBody));
+    response.write(JSON.stringify(contextBody));
     response.end();
   });
 }).listen((process.env.PORT), () => console.log("Server listening"));
