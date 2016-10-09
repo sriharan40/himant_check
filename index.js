@@ -7,7 +7,7 @@ var apiai = require("apiai");
 var app = apiai("c743619629b2490fab9751dac552094a");
 
 var options = {
-    sessionId: '<UNIQE SESSION ID>'
+    sessionId: Math.floor(100000 + Math.random() * 900000)
 }
 
 http.createServer(function(request, response) {
@@ -61,7 +61,7 @@ if(action == "sendOTP")
 	// Twilio Credentials 
 	var accountSid = 'ACe0b6cfbf60f11584099ee062db873252'; 
 
-	var authToken = '7468f40b17004327190847d04b4222ba'; 
+	var authToken = '7468f40b17004327190847d04b4222'; 
 
 	var client = require('twilio')(accountSid, authToken);
 
@@ -93,12 +93,17 @@ if(action == "sendOTP")
 		console.log('Oops! There was an error.');
 	    }
 	});
-    
+    	   
+}
+if(action == "validateOTP")
+{
+	var otp = data.result.parameters.inputOTP;
+
+	var speech = 'OTP entered is ' + otp + '';
+}
     response.statusCode = 200;
     response.setHeader('Content-Type', 'application/json');
-	   
-}
-	  
+  
      var responseBody = {
         "speech": speech,
         "displayText": speech,
