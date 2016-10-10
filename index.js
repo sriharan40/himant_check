@@ -25,8 +25,21 @@ http.createServer(function(request, response) {
   }).on('end', function() {
     //body = Buffer.concat(body).toString();
 
-	// PARSE THE BODY DATA AND THEN TAKE ACTIONS.
+// PARSE THE BODY DATA AND THEN TAKE ACTIONS.
 
+var speech = 'Welcome to the Bot Chat';	
+
+response.statusCode = 200;
+	
+response.setHeader('Content-Type', 'application/json');	
+
+// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+     var responseBody = {
+        "speech": speech,
+        "displayText": speech,	     
+        "source": "apiai-Himant-OTP sample"
+    };
+	
 try {
       var data = JSON.parse(body);	
 	  var action = data.result.action;
