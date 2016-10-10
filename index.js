@@ -133,10 +133,9 @@ if(action == "validateOTP")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-	"contextOut": [{"name":"otp_check", "lifespan":10, "parameters":{"number":otp}}],	     
+	"contextOut": [{"name":"otp_check", "lifespan":10, "parameters":{"number":otp_check1}}],	     
         "source": "apiai-Himant-OTP sample"
     };
-	
 	
 }
     response.write(JSON.stringify(responseBody));
