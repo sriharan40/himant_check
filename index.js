@@ -46,7 +46,6 @@ var action = data.result.action;
 // TWILIO SMS
 if(action == "sendOTP")
 {
-	//var otp = data.result.contexts[1].parameters.number;	
 	var otp = Math.floor(1000 + Math.random() * 9000);
 	var name = data.result.parameters.customerName;
 	var mobile = '+91'+data.result.parameters.phone;
@@ -110,11 +109,11 @@ if(action == "sendOTP")
 
 if(action == "validateOTP")
 {
-	var otp = data.result.parameters.inputOTP;
+	var otp1 = data.result.parameters.inputOTP;
 
-	var otp_check = data.result.contexts[0].parameters.number;	
+	var otp_check = data.result.contexts[1].parameters.number;	
 
-	if(otp == otp_check)
+	if(otp1 == otp_check)
 	{
 	var speech = 'OTP entered is correct';
 	}
@@ -132,7 +131,7 @@ if(action == "validateOTP")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-		"contextOut": otp,
+		"contextOut": [{"name":"validateOTP", "lifespan":10, "parameters":{"number":otp}}],
         "source": "apiai-Himant-OTP sample",
     };
 
