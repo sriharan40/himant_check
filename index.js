@@ -46,9 +46,10 @@ var action = data.result.action;
 // TWILIO SMS
 if(action == "sendOTP")
 {
-	var otp = Math.floor(1000 + Math.random() * 9000);
+	var otp = data.result.contexts[1].parameters.number;	
+	//var otp = Math.floor(1000 + Math.random() * 9000);
 	var name = data.result.parameters.customerName;
-	var mobile = data.result.parameters.phone;
+	var mobile = '+91'+data.result.parameters.phone;
 	var speech = name + ', We will send you an OTP on your number ' + mobile +'. Please reply back here with that OTP.';
 
 	var value = name + mobile;
@@ -78,7 +79,7 @@ if(action == "sendOTP")
 	// Pass in parameters to the REST API using an object literal notation. The
 	// REST client will handle authentication and response serialzation for you.
 	client.sms.messages.create({
-	    to: '+63'+mobile,
+	    to: mobile,
 	    from: '+18312165009',
 	    body: 'Your one time password for verficiation is :' + otp
 	}, function(error, message) {
