@@ -48,7 +48,6 @@ if(action == "sendOTP")
 {
 	//var otp = data.result.contexts[1].parameters.number;	
 	var otp = Math.floor(1000 + Math.random() * 9000);
-	data.result.contexts[1].parameters.number = otp;
 	var name = data.result.parameters.customerName;
 	var mobile = '+91'+data.result.parameters.phone;
 	var speech = name + ', We will send you an OTP on your number ' + mobile +'. Please reply back here with that OTP.';
@@ -133,7 +132,8 @@ if(action == "validateOTP")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-        "source": "apiai-Himant-OTP sample"
+        "source": "apiai-Himant-OTP sample",
+		"number": otp
     };
 
     response.write(JSON.stringify(responseBody));
