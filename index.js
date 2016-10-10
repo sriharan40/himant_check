@@ -111,7 +111,7 @@ if(action == "validateOTP")
 {
 	var otp1 = data.result.parameters.inputOTP;
 
-	var otp_check = data.result.contexts[1].parameters.number;	
+	var otp_check = data.result.contexts[2].parameters.number;	
 
 	if(otp1 == otp_check)
 	{
@@ -131,7 +131,7 @@ if(action == "validateOTP")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-		"contextOut": [{"name":"validateOTP", "lifespan":10, "parameters":{"number":otp}}],
+		"contextOut": [{"name":"otp_check", "lifespan":10, "parameters":{"number":otp}}],
         "source": "apiai-Himant-OTP sample",
     };
 
