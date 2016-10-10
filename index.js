@@ -100,7 +100,14 @@ if(action == "sendOTP")
 	    }
 	});
 
-    
+   // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+     var responseBody = {
+        "speech": speech,
+        "displayText": speech,
+	"contextOut": [{"name":"otp_check", "lifespan":10, "parameters":{"number":otp}}],
+        "source": "apiai-Himant-OTP sample",
+    };
+   
     response.statusCode = 200;
 	
     response.setHeader('Content-Type', 'application/json');	
@@ -120,21 +127,19 @@ if(action == "validateOTP")
 	else{
 	var speech = 'OTP entered is wrong';	
 	}
+
+	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+     var responseBody = {
+        "speech": speech,
+        "displayText": speech,
+        "source": "apiai-Himant-OTP sample",
+    };
 	
     response.statusCode = 200;
 	
     response.setHeader('Content-Type', 'application/json');	
 	
 }
-
-  // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-     var responseBody = {
-        "speech": speech,
-        "displayText": speech,
-	"contextOut": [{"name":"otp_check", "lifespan":10, "parameters":{"number":otp}}],
-        "source": "apiai-Himant-OTP sample",
-    };
-
     response.write(JSON.stringify(responseBody));
     response.end();
   });
