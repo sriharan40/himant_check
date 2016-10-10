@@ -25,9 +25,11 @@ http.createServer(function(request, response) {
   }).on('end', function() {
     //body = Buffer.concat(body).toString();
 
+	// PARSE THE BODY DATA AND THEN TAKE ACTIONS.
+
 try {
-      var data = JSON.parse(body);
-	
+      var data = JSON.parse(body);	
+	  var action = data.result.action;
     } catch(e) {
         console.log('malformed request', body);
         //  return response.status(400).send('malformed request: ' + body);
@@ -37,11 +39,6 @@ try {
       console.error(err);
     });
 
-// PARSE THE BODY DATA AND THEN TAKE ACTIONS.
-
-var data = JSON.parse(body);
-
-var action = data.result.action;
 	  
 // TWILIO SMS
 if(action == "sendOTP")
