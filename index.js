@@ -129,7 +129,7 @@ if(action == "validateOTP")
 {
 	var otp1 = data.result.parameters.inputOTP;
 
-	var otp_check1 = data.result.contexts[2].parameters.number;	
+	var otp_check1 = data.result.contexts[1].parameters.number;	
 
 	if(otp1 == otp_check1)
 	{
