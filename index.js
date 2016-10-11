@@ -134,10 +134,10 @@ if(action == "validateOTP")
 
 	if(otp1 == otp_check1)
 	{
-	var speech = 'OTP entered is correct';
+	var speech = 'Thanks for confirmation.Let us proceed with our chats now? Yes? No? :)';
 	}
 	else{
-	var speech = 'OTP entered is wrong';	
+	var speech = 'Oops. I am sorry, the OTP is wrong.';	
 	}
 
     response.statusCode = 200;
