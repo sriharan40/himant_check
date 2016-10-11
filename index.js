@@ -7,7 +7,7 @@ var apiai = require("apiai");
 var app = apiai("c743619629b2490fab9751dac552094a");
 
 var options = {
-    sessionId: Math.floor(1000 + Math.random() * 9000)
+    sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
 
 http.createServer(function(request, response) {
@@ -119,7 +119,7 @@ if(action == "sendOTP")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-	"contextOut": [{"name":"otp_check", "lifespan":10, "parameters":{"number":otp}}],
+	"contextOut": [{"name":"otp_check", "lifespan":1, "parameters":{"number":otp}}],
         "source": "apiai-Himant-OTP sample"
 	};
 
@@ -147,7 +147,7 @@ if(action == "validateOTP")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-	"contextOut": [{"name":"otp_check", "lifespan":10, "parameters":{"number":otp_check1}}],	     
+	"contextOut": [{"name":"otp_check", "lifespan":1, "parameters":{"number":otp_check1}}],	     
         "source": "apiai-Himant-OTP sample"
     };
 	
