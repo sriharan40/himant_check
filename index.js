@@ -134,7 +134,7 @@ if(action == "validateOTP")
 
 	if(otp1 == otp_check1)
 	{
-	var speech = 'Thanks for confirmation.Let us proceed with our chats now? Yes? No? :)';
+	var speech = 'Thanks for confirmation.May I know your concerns now? Let us resolve one by one.)';
 	}
 	else{
 	var speech = 'Oops. I am sorry, the OTP is wrong.';	
