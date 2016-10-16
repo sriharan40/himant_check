@@ -162,11 +162,10 @@ if(action == "getOutstandingBalance")
 
 	var speech = 'Your due amount to be paid is 1000 Php.';	
 
-var facebook_message = [
-    {
+var facebook_message = {
         "text": "Here's the picture of item "
     }
-]  
+
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
         "speech": speech,
