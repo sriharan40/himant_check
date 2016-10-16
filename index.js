@@ -168,7 +168,7 @@ if(action == "getOutstandingBalance")
 
 	var text = "<a href='https://paypal.com'>Pay with PayPal</a>";
 
-facebook_message = {
+var facebook_message = {
 
 //sendTextMessage(sender, text, response);
 
