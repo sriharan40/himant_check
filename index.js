@@ -166,7 +166,7 @@ if(action == "getOutstandingBalance")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-	"data": {"facebook": {"<a href='paypal.com'>Pay with PayPal</a>"}},
+	"data": {"facebook": "<a href='paypal.com'>Pay with PayPal</a>"},
         "source": "apiai-Himant-OTP sample"
     };
 }
