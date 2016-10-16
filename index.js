@@ -162,33 +162,21 @@ if(action == "getOutstandingBalance")
 
 	var speech = 'Your due amount to be paid is 1000 Php.';	
 
-	var facebook_message = {
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"button",
-        "text":"What do you want to do next?",
-        "buttons":[
-          {
-            "type":"web_url",
-            "url":"https://petersapparel.parseapp.com",
-            "title":"Show Website"
-          },
-          {
-            "type":"postback",
-            "title":"Start Chatting",
-            "payload":"USER_DEFINED_PAYLOAD"
-          }
-        ]
-      }
+var kik_message = [
+    {
+        "type": "text",
+        "body": "Here's the picture of item " + item
+    },
+    {
+        "type": "picture",
+        "picUrl": "https://raw.githubusercontent.com/svet4/apiai-kik-images/master/pictures/item" + item +".png"
     }
-  }
-  
+]  
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-		"data": {"facebook": {facebook_message}},
+		"data": {"kik": {kik_message}},
         "source": "apiai-Himant-OTP sample"
     };
 }
