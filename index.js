@@ -11,13 +11,13 @@ var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
 
-http.createServer(function(request, response) {
-  var headers = request.headers;
-  var method = request.method;
-  var url = request.url;
+http.createServer(function(req, response) {
+  var headers = req.headers;
+  var method = req.method;
+  var url = req.url;
   var body = [];
 		
-  request.on('error', function(err) {
+  req.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
 	body += chunk;	  
@@ -65,7 +65,7 @@ if(action == "sendOTP")
 
 	var value = name + mobile;
 
-	var request = app.textRequest(value, options);
+	var req = app.textRequest(value, options);
 	
 	// Load the twilio module
 
