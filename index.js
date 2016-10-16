@@ -160,7 +160,7 @@ if(action == "getOutstandingBalance")
 	
     response.setHeader('Content-Type', 'application/json');	
 
-	var speech = 'Your due amount to be paid is 1000 Php.';	
+	var speech = 'Your due amount to be paid is 1000 Php. <a href="https://paypal.com">Pay with PayPal</a>';	
 
 var facebook_message = {
         quick_replies: [{
@@ -181,7 +181,7 @@ var facebook_message = {
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-		"data": {"facebook": facebook_message},
+		//"data": {"facebook": facebook_message},
         "source": "apiai-Himant-OTP sample"
     };
 }
