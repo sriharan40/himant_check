@@ -168,7 +168,7 @@ if(action == "getOutstandingBalance")
 
 	var text = "<a href='https://paypal.com'>Pay with PayPal</a>";
 
-var facebook_message = {
+var facebook_message = 
 
 //sendTextMessage(sender, text, response);
 
@@ -207,13 +207,11 @@ var facebook_message = {
 	  
 	  //}
 
-    }
-
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-		"data": {"facebook": facebook_message},
+		"data": {"facebook": {facebook_message}},
         "source": "apiai-Himant-OTP sample"
     };
 }
