@@ -164,8 +164,7 @@ if(action == "getOutstandingBalance")
 
 var facebook_message = [
     {
-        "type": "text",
-        "body": "Here's the picture of item "
+        "text": "Here's the picture of item "
     }
 ]  
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
