@@ -165,7 +165,7 @@ if(action == "getOutstandingBalance")
 var kik_message = [
     {
         "type": "text",
-        "body": "Here's the picture of item " + item
+        "body": "Here's the picture of item "
     },
     {
         "type": "picture",
