@@ -162,17 +162,17 @@ if(action == "getOutstandingBalance")
 
 	var speech = 'Your due amount to be paid is 1000 Php.';	
 
-var kik_message = [
+var facebook_message = [
     {
         "type": "text",
-        "body": "Here's the picture of item"
+        "body": "Here's the picture of item "
     }
 ]  
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-		"data": {"kik": {kik_message}},
+		"data": {"facebook": {facebook_message}},
         "source": "apiai-Himant-OTP sample"
     };
 }
