@@ -166,19 +166,7 @@ if(action == "getOutstandingBalance")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-	"data": {"facebook": {"message":{
-	 "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"button",
-        "text":"What do you want to do next?",
-        "buttons":[
-          {
-            "type":"web_url",
-            "url":"https://paypal.com",
-            "title":"Pay With Paypal"
-	  }]}
-		}}}},
+		"data": {"facebook": {"<a href='paypal.com'>Pay with PayPal</a>"}},
         "source": "apiai-Himant-OTP sample"
     };
 }
