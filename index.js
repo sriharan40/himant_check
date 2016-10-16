@@ -170,13 +170,15 @@ var token = "EAAEcEkKVmnIBAChlOhWc1tHveQIHOuutAOQQGAQqL7QbwPXBO5zC0pOG39JmHsOl81
 
 var sender = "+918050582590";
 
-var text = '<a href="https://paypal.com">Pay with PayPal</a>';
+var text = "Pick a color:";
 
-function sendTextMessage(sender, text, res) {
+sendTextMessage(sender, text, response);
+
+function sendTextMessage(sender, text, response) {
 
   messageData = {
-    text:text,
-    quick_replies: [{
+    "text": text,
+    "quick_replies": [{
                 content_type:"text",
                 title:"Red",
                 payload:"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
