@@ -166,7 +166,21 @@ if(action == "getOutstandingBalance")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-	"data": {"facebook": "<a href='paypal.com'>Pay with PayPal</a>"},
+	"data": {"facebook": "message":{
+    "text":"Pick a color:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Red",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+      },
+      {
+        "content_type":"text",
+        "title":"Green",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+      }
+    ]
+  }},
         "source": "apiai-Himant-OTP sample"
     };
 }
