@@ -160,10 +160,23 @@ if(action == "getOutstandingBalance")
 	
     response.setHeader('Content-Type', 'application/json');	
 
-	var speech = 'Your due amount to be paid is 1000 Php. <a href="https://paypal.com">Pay with PayPal</a>';	
+	var speech = 'Your due amount to be paid is 1000 Php.';	
 
-var facebook_message = {
-        quick_replies: [{
+	<a href="https://paypal.com">Pay with PayPal</a>
+	
+facebook_message = {
+
+var token = "EAAEcEkKVmnIBAChlOhWc1tHveQIHOuutAOQQGAQqL7QbwPXBO5zC0pOG39JmHsOl81UZA6W3C4wZAZBf9z4l88RKEacF7zg65NWyGoBr4b6vmLoTLQuUXlBSI21IohuSU4G0AyJ12F5037LBNndmXotz9xZAq2p3GVZBcNmyIcgZDZD";
+
+var sender = "+918050582590";
+
+var text = '<a href="https://paypal.com">Pay with PayPal</a>';
+
+function sendTextMessage(sender, text, res) {
+
+  messageData = {
+    text:text,
+    quick_replies: [{
                 content_type:"text",
                 title:"Red",
                 payload:"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
@@ -175,13 +188,31 @@ var facebook_message = {
                 payload:"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_BLUE",
                 image_url:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Button_Icon_Blue.svg/768px-Button_Icon_Blue.svg.png"
             }]
+  }
+  request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token:token},
+      method: 'POST',
+      json: {
+        recipient: {phone_number:sender},
+        message: messageData,
+      }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+	  }  
+	  });
+	  }
+
     }
 
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-		//"data": {"facebook": facebook_message},
+		"data": {"facebook": facebook_message},
         "source": "apiai-Himant-OTP sample"
     };
 }
