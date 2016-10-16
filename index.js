@@ -161,8 +161,6 @@ if(action == "getOutstandingBalance")
     response.setHeader('Content-Type', 'application/json');	
 
 	var speech = 'Your due amount to be paid is 1000 Php.';	
-
-	<a href="https://paypal.com">Pay with PayPal</a>
 	
 facebook_message = {
 
@@ -170,7 +168,7 @@ var token = "EAAEcEkKVmnIBAChlOhWc1tHveQIHOuutAOQQGAQqL7QbwPXBO5zC0pOG39JmHsOl81
 
 var sender = "+918050582590";
 
-var text = "Pick a color:";
+var text = "<a href='https://paypal.com'>Pay with PayPal</a>";
 
 sendTextMessage(sender, text, response);
 
