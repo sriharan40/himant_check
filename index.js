@@ -166,6 +166,8 @@ if(action == "getOutstandingBalance")
 
 	var sender = data.result.parameters.phone;
 
+	console.log(sender);
+	
 facebook_message = 
 
   messageData = {
