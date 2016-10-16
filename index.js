@@ -175,8 +175,8 @@ if(action == "getOutstandingBalance")
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://petersapparel.parseapp.com",
-            "title":"Show Website"
+            "url":"https://paypal.com",
+            "title":"Pay With Paypal"
 	  }]}
 		}}}},
         "source": "apiai-Himant-OTP sample"
