@@ -166,8 +166,7 @@ if(action == "getOutstandingBalance")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-		"contextOut": [{"name":"otp_check", "lifespan":1, "parameters":{"number":otp_check1}}],	 
-		"data": {"facebook": {"message":{
+	"data": {"facebook": {"message":{
 	 "attachment":{
       "type":"template",
       "payload":{
