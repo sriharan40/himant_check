@@ -165,11 +165,7 @@ if(action == "getOutstandingBalance")
 var kik_message = [
     {
         "type": "text",
-        "body": "Here's the picture of item "
-    },
-    {
-        "type": "picture",
-        "picUrl": "https://raw.githubusercontent.com/svet4/apiai-kik-images/master/pictures/item" + item +".png"
+        "body": "Here's the picture of item"
     }
 ]  
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
