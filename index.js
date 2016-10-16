@@ -164,9 +164,7 @@ if(action == "getOutstandingBalance")
 
 	var token = "EAAEcEkKVmnIBAChlOhWc1tHveQIHOuutAOQQGAQqL7QbwPXBO5zC0pOG39JmHsOl81UZA6W3C4wZAZBf9z4l88RKEacF7zg65NWyGoBr4b6vmLoTLQuUXlBSI21IohuSU4G0AyJ12F5037LBNndmXotz9xZAq2p3GVZBcNmyIcgZDZD";
 
-	var sender = '+91'+data.result.contexts[0].parameters.phone;
-
-	console.log(sender);
+	var sender = '+63'+data.result.contexts[0].parameters.phone;
 	
 facebook_message = 
 
