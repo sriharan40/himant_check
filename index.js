@@ -3,6 +3,7 @@ var router = express();
 var http = require('http');
 var util = require("util");
 var apiai = require("apiai");
+const uuid = require('node-uuid');
 var request = require("request");
 
 var app = apiai("c743619629b2490fab9751dac552094a");
