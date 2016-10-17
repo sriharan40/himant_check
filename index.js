@@ -6,7 +6,6 @@ var apiai = require("apiai");
 const uuid = require('node-uuid');
 var request = require("request");
 
-//var app = apiai("c743619629b2490fab9751dac552094a");
 var app = apiai(process.env.APIAI_ACCESS_TOKEN);
 
 var options = {
@@ -75,10 +74,6 @@ if(action == "sendOTP")
 	// Twilio Credentials 
 	var accountSid = process.env.accountSid;
 	var authToken = process.env.authToken;
-
-	//var accountSid = 'ACe0b6cfbf60f11584099ee062db873252'; 
-
-	//var authToken = '7468f40b17004327190847d04b4222ba'; 
 
 	var client = require('twilio')(accountSid, authToken);
 
@@ -168,7 +163,9 @@ if(action == "getOutstandingBalance")
 
 	var speech = 'Your due amount to be paid is 1000 Php.';	
 
-	var token = "EAAEcEkKVmnIBAChlOhWc1tHveQIHOuutAOQQGAQqL7QbwPXBO5zC0pOG39JmHsOl81UZA6W3C4wZAZBf9z4l88RKEacF7zg65NWyGoBr4b6vmLoTLQuUXlBSI21IohuSU4G0AyJ12F5037LBNndmXotz9xZAq2p3GVZBcNmyIcgZDZD";
+	var token = process.env.FB_PAGE_TOKEN;
+
+	//var token = "EAAEcEkKVmnIBAChlOhWc1tHveQIHOuutAOQQGAQqL7QbwPXBO5zC0pOG39JmHsOl81UZA6W3C4wZAZBf9z4l88RKEacF7zg65NWyGoBr4b6vmLoTLQuUXlBSI21IohuSU4G0AyJ12F5037LBNndmXotz9xZAq2p3GVZBcNmyIcgZDZD";
 
 	var sender = data.result.contexts[0].parameters.user_id;
 	//var checkSenderID = uuid.v1();
