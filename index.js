@@ -169,6 +169,9 @@ if(action == "getOutstandingBalance")
 	var checkSenderID = uuid.v1();
 	console.log('Sender ID check' + checkSenderID);
 	console.log(checkSenderID);
+	//
+	sender =checkSenderID;
+	//
 	if(sender == undefined || sender == "")
 	{
 	var sender = '+63'+data.result.contexts[0].parameters.phone;
@@ -198,8 +201,8 @@ facebook_message =
       qs: {access_token:token},
       method: 'POST',
       json: {
-        recipient: {phone_number:sender},
-        //recipient: {id:sender},
+        //recipient: {phone_number:sender},
+        recipient: {id:sender},
         message: messageData,
       }
   }, function(error, response, body) {
