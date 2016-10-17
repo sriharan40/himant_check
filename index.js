@@ -175,7 +175,7 @@ if(action == "getOutstandingBalance")
 	//
 	if(sender == undefined || sender == "")
 	{
-	var sender = '+63'+data.result.contexts[0].parameters.phone;
+	//var sender = '+63'+data.result.contexts[0].parameters.phone;
 	}
 	
 facebook_message = 
@@ -204,7 +204,7 @@ facebook_message =
       json: {
         //recipient: {phone_number:sender},
         
-	      recipient: {id:'1375676392473291'},
+	      recipient: {id:sender},
         message: messageData,
       }
   }, function(error, response, body) {
