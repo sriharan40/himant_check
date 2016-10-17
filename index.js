@@ -6,7 +6,8 @@ var apiai = require("apiai");
 const uuid = require('node-uuid');
 var request = require("request");
 
-var app = apiai("c743619629b2490fab9751dac552094a");
+//var app = apiai("c743619629b2490fab9751dac552094a");
+var app = apiai(process.env.APIAI_ACCESS_TOKEN);
 
 var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
