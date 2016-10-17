@@ -168,7 +168,7 @@ if(action == "getOutstandingBalance")
 	console.log(sender);
 	if(sender == undefined || sender == "")
 	{
-	var sender = data.result.contexts[0].parameters.phone;
+	var sender = '+63'+data.result.contexts[0].parameters.phone;
 	}
 	
 facebook_message = 
