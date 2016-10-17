@@ -12,6 +12,10 @@ var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
 
+function processEvent(event) {
+    var sender = event.sender.id.toString();
+    console.log ('Second check:' + sender);
+}
 http.createServer(function(req, response) {
   var headers = req.headers;
   var method = req.method;
@@ -166,11 +170,11 @@ if(action == "getOutstandingBalance")
 	var token = "EAAEcEkKVmnIBAChlOhWc1tHveQIHOuutAOQQGAQqL7QbwPXBO5zC0pOG39JmHsOl81UZA6W3C4wZAZBf9z4l88RKEacF7zg65NWyGoBr4b6vmLoTLQuUXlBSI21IohuSU4G0AyJ12F5037LBNndmXotz9xZAq2p3GVZBcNmyIcgZDZD";
 
 	var sender = data.result.contexts[0].parameters.user_id;
-	var checkSenderID = uuid.v1();
-	console.log('Sender ID check' + checkSenderID);
-	console.log(checkSenderID);
+	//var checkSenderID = uuid.v1();
+	//console.log('Sender ID check' + checkSenderID);
+	//console.log(checkSenderID);
 	//
-	sender =checkSenderID;
+	//sender =checkSenderID;
 	//
 	if(sender == undefined || sender == "")
 	{
@@ -201,8 +205,8 @@ facebook_message =
       qs: {access_token:token},
       method: 'POST',
       json: {
-        //recipient: {phone_number:sender},
-        recipient: {id:sender},
+        recipient: {phone_number:sender},
+        //recipient: {id:sender},
         message: messageData,
       }
   }, function(error, response, body) {
