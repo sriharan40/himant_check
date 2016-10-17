@@ -168,7 +168,7 @@ if(action == "getOutstandingBalance")
 	var sender = data.result.contexts[0].parameters.user_id;
 	var checkSenderID = uuid.v1();
 	console.log('Sender ID check' + checkSenderID);
-	console.log(sender);
+	console.log(checkSenderID);
 	if(sender == undefined || sender == "")
 	{
 	var sender = '+63'+data.result.contexts[0].parameters.phone;
