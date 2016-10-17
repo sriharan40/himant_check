@@ -73,9 +73,12 @@ if(action == "sendOTP")
 	// Load the twilio module
 
 	// Twilio Credentials 
-	var accountSid = 'ACe0b6cfbf60f11584099ee062db873252'; 
+	var accountSid = process.env.accountSid;
+	var authToken = process.env.authToken;
 
-	var authToken = '7468f40b17004327190847d04b4222ba'; 
+	//var accountSid = 'ACe0b6cfbf60f11584099ee062db873252'; 
+
+	//var authToken = '7468f40b17004327190847d04b4222ba'; 
 
 	var client = require('twilio')(accountSid, authToken);
 
