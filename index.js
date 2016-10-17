@@ -202,8 +202,9 @@ facebook_message =
       qs: {access_token:token},
       method: 'POST',
       json: {
-        recipient: {phone_number:sender},
-        //recipient: {id:sender},
+        //recipient: {phone_number:sender},
+        
+	      recipient: {id:'1375676392473291'},
         message: messageData,
       }
   }, function(error, response, body) {
