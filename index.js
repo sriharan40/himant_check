@@ -165,19 +165,12 @@ if(action == "getOutstandingBalance")
 
 	var token = process.env.FB_PAGE_TOKEN;
 
-	//var token = "EAAEcEkKVmnIBAChlOhWc1tHveQIHOuutAOQQGAQqL7QbwPXBO5zC0pOG39JmHsOl81UZA6W3C4wZAZBf9z4l88RKEacF7zg65NWyGoBr4b6vmLoTLQuUXlBSI21IohuSU4G0AyJ12F5037LBNndmXotz9xZAq2p3GVZBcNmyIcgZDZD";
-
 	var sender = data.result.contexts[0].parameters.user_id;
 	//var checkSenderID = uuid.v1();
 	//console.log('Sender ID check' + checkSenderID);
 	//console.log(checkSenderID);
 	//
 	//sender =checkSenderID;
-	//
-	if(sender == undefined || sender == "")
-	{
-	//var sender = '+63'+data.result.contexts[0].parameters.phone;
-	}
 	
 facebook_message = 
 
@@ -204,8 +197,7 @@ facebook_message =
       method: 'POST',
       json: {
         //recipient: {phone_number:sender},
-        
-	      recipient: {id:sender},
+	recipient: {id:sender},
         message: messageData,
       }
   }, function(error, response, body) {
