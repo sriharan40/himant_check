@@ -12,10 +12,7 @@ var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
 
-function processEvent(event) {
-    var sender = event.sender.id.toString();
-    console.log ('Second check:' + sender);
-}
+
 http.createServer(function(req, response) {
   var headers = req.headers;
   var method = req.method;
