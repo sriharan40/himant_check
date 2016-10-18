@@ -183,7 +183,7 @@ facebook_message =
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=https://www.facebook.com?notify_url=https://bot-chats.herokuapp.com/?payment=success&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=1&currency_code=USD",
+            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=https://www.facebook.com&notify_url=https://bot-chats.herokuapp.com/?payment=success&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=1&currency_code=USD",
             "title":"Pay with PayPal"
           }
 	  ]
