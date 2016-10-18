@@ -242,9 +242,13 @@ var params=function(req){
   return result;
 }
 
+var value = params(req);
+if(value != "")
+{
 req.params=params(req);
 
 console.log(req.params);
+}
 
 var token = process.env.FB_PAGE_TOKEN;
 
