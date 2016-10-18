@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express();
-var http = require('http');
+var request = require("request");
 var util = require("util");
+var http = require('http');
 var apiai = require("apiai");
 const uuid = require('node-uuid');
-var request = require("request");
 
 var app = apiai(process.env.APIAI_ACCESS_TOKEN);
 
@@ -223,6 +223,7 @@ facebook_message =
     response.end();
 	
 var params=function(req){
+  try{
   var q=req.url.split('?'),result={};
   if(q.length>=2){
       q[1].split('&').forEach((item)=>{
@@ -232,6 +233,7 @@ var params=function(req){
              result[item.split('=')[0]]='';
            }
       })
+  }
   }
   return result;
 }
