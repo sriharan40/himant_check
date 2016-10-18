@@ -63,10 +63,10 @@ var text = "Congratulations your payment done successfully.";
 
 if(sender && text)
 {	
-sendTextMessage(sender, text, res);
+sendTextMessage(sender, text, response);
 }
 
-function sendTextMessage(sender, text, res) {
+function sendTextMessage(sender, text, response) {
 
   messageData = {
     text:text
