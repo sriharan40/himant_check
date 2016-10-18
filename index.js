@@ -235,7 +235,7 @@ var params=function(req){
   }
   }
   catch(e) {
-             result[0]='';
+             result='';
 		 // console.log('malformed request', body);
         //  return response.status(400).send('malformed request: ' + body);
     }
