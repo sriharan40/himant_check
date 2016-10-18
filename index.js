@@ -41,11 +41,11 @@ var params=function(req){
 
 console.log(req);
 
-var value = params(req);
+var value = params(req).payment;
 
 console.log('Value: '+value);
 
-if(value != "" && value != undefined && value != "{}" && value != {})
+if(value != "" && value != undefined)
 {
 req.params=params(req);
 
