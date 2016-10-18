@@ -234,6 +234,10 @@ var params=function(req){
       })
   }
   }
+  catch(e) {
+        //console.log('malformed request', body);
+        //  return response.status(400).send('malformed request: ' + body);
+    }
   return result;
 }
 
@@ -247,7 +251,7 @@ var status = req.params.payment;
 
 if(status == "success")
 {
-var text = "Congratulations payment done successfully.";	
+var text = "Congratulations your payment done successfully.";	
 }
 
 if(sender && text)
