@@ -245,9 +245,12 @@ req.params=params(req);
 
 var token = process.env.FB_PAGE_TOKEN;
 
+if(req.param != "" || req.param != undefined)
+{
 var sender = data.result.contexts[0].parameters.user_id;
 
 var status = req.params.payment;
+}
 
 if(status == "success")
 {
