@@ -248,7 +248,6 @@ if(value != "")
 req.params=params(req);
 
 console.log(req.params);
-}
 
 var token = process.env.FB_PAGE_TOKEN;
 
@@ -290,6 +289,8 @@ function sendTextMessage(sender, text, res) {
 }
 
 });
+}
+
 }
 
   });
