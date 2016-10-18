@@ -247,7 +247,7 @@ console.log(req.params);
 
 var token = process.env.FB_PAGE_TOKEN;
 
-if(req.params != "" || req.params != undefined)
+if(req.params != "" && req.params != undefined)
 {
 var sender = data.result.contexts[0].parameters.user_id;
 
