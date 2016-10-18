@@ -43,9 +43,9 @@ console.log(req);
 
 var value = params(req);
 
-console.log(value);
+console.log('Value: '+value);
 
-if(value != "" && value != undefined && value != "{}")
+if(value != "" && value != undefined && value != "{}" && value != {})
 {
 req.params=params(req);
 
@@ -57,7 +57,7 @@ var sender = req.params.sender;
 
 var status = req.params.payment;
 
-console.log(status);
+console.log('Payment: '+status);
 }
 
 if(status == "success")
