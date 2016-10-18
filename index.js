@@ -45,7 +45,7 @@ var value = params(req);
 
 console.log(value);
 
-if(value != "" && value != undefined)
+if(value != "" && value != undefined && value != "{}")
 {
 req.params=params(req);
 
