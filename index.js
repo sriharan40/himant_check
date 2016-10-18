@@ -4,7 +4,6 @@ var request = require("request");
 var util = require("util");
 var http = require('http');
 var apiai = require("apiai");
-const uuid = require('node-uuid');
 
 var app = apiai(process.env.APIAI_ACCESS_TOKEN);
 
