@@ -39,8 +39,13 @@ var params=function(req){
   return result;
 }
 
+console.log(req);
+
 var value = params(req);
-if(value != "")
+
+console.log(value);
+
+if(value != "" && value != undefined)
 {
 req.params=params(req);
 
@@ -53,7 +58,6 @@ var sender = req.params.sender;
 var status = req.params.payment;
 
 console.log(status);
-
 }
 
 if(status == "success")
