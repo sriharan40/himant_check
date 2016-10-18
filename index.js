@@ -17,43 +17,6 @@ http.createServer(function(req, response) {
   var url = req.url;
   var body = [];
 
-  req.on('error', function(err) {
-    console.error(err);
-  }).on('data', function(chunk) {
-	body += chunk;	  
-        
-	   //console.log(body.customerName);
-  }).on('end', function() {
-    //body = Buffer.concat(body).toString();
-
-// PARSE THE BODY DATA AND THEN TAKE ACTIONS.
-
-var speech = 'Welcome to the Bot Chat';	
-
-response.statusCode = 200;
-	
-response.setHeader('Content-Type', 'application/json');	
-
-// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-     var responseBody = {
-        "speech": speech,
-        "displayText": speech,	     
-        "source": "apiai-Himant-OTP sample"
-    };
-	
-try {
-      var data = JSON.parse(body);	
-	  var action = data.result.action;
-    } catch(e) {
-        console.log('malformed request', body);
-        //  return response.status(400).send('malformed request: ' + body);
-    }
-	  
-    response.on('error', function(err) {
-      console.error(err);
-    });
-
-
 var params=function(req){
   try{
   var q=req.url.split('?'),result={};
@@ -89,15 +52,15 @@ var token = process.env.FB_PAGE_TOKEN;
 
 if(req.params != "" && req.params != undefined)
 {
-//var sender = req.params.sender;
-var sender = data.result.contexts[0].parameters.user_id;
+var sender = req.params.payment;
+//var sender = data.result.contexts[0].parameters.user_id;
 
 var status = req.params.payment;
 
 console.log('Payment: '+status);
 }
 
-if(status == "success")
+if(status)
 {
 var text = "Congratulations your payment done successfully.";	
 }
@@ -131,6 +94,42 @@ function sendTextMessage(sender, text, response) {
 }
 
 }
+  
+  req.on('error', function(err) {
+    console.error(err);
+  }).on('data', function(chunk) {
+	body += chunk;	  
+        
+	   //console.log(body.customerName);
+  }).on('end', function() {
+    //body = Buffer.concat(body).toString();
+
+// PARSE THE BODY DATA AND THEN TAKE ACTIONS.
+
+var speech = 'Welcome to the Bot Chat';	
+
+response.statusCode = 200;
+	
+response.setHeader('Content-Type', 'application/json');	
+
+// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+     var responseBody = {
+        "speech": speech,
+        "displayText": speech,	     
+        "source": "apiai-Himant-OTP sample"
+    };
+	
+try {
+      var data = JSON.parse(body);	
+	  var action = data.result.action;
+    } catch(e) {
+        console.log('malformed request', body);
+        //  return response.status(400).send('malformed request: ' + body);
+    }
+	  
+    response.on('error', function(err) {
+      console.error(err);
+    });
   	
 // TWILIO SMS
 if(action == "sendOTP")
@@ -259,7 +258,7 @@ facebook_message =
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=https://www.facebook.com&notify_url=https://bot-chats.herokuapp.com/?payment=success&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=1&currency_code=USD",
+            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=https://www.facebook.com&notify_url=https://bot-chats.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=1&currency_code=USD",
             "title":"Pay with PayPal"
           }
 	  ]
