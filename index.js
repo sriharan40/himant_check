@@ -17,7 +17,80 @@ http.createServer(function(req, response) {
   var method = req.method;
   var url = req.url;
   var body = [];
-		
+
+var params=function(req){
+  try{
+  var q=req.url.split('?'),result={};
+  if(q.length>=2){
+      q[1].split('&').forEach((item)=>{
+           try {
+             result[item.split('=')[0]]=item.split('=')[1];
+           } catch (e) {
+             result[item.split('=')[0]]='';
+           }
+      })
+  }
+  }
+  catch(e) {
+             result='';
+		 // console.log('malformed request', body);
+        //  return response.status(400).send('malformed request: ' + body);
+    }
+  return result;
+}
+
+var value = params(req);
+if(value != "")
+{
+req.params=params(req);
+
+var token = process.env.FB_PAGE_TOKEN;
+
+if(req.params != "" && req.params != undefined)
+{
+//var sender = data.result.contexts[0].parameters.user_id;
+
+var status = req.params.payment;
+
+console.log(status);
+
+}
+
+if(status == "success")
+{
+var text = "Congratulations your payment done successfully.";	
+}
+
+if(sender && text)
+{	
+sendTextMessage(sender, text, res);
+}
+
+function sendTextMessage(sender, text, res) {
+
+  messageData = {
+    text:text
+  }
+  request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token:token},
+      method: 'POST',
+      json: {
+        recipient: {id:sender},
+        message: messageData,
+      }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+} else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+}
+
+});
+}
+
+}
+  
   req.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
@@ -221,78 +294,5 @@ facebook_message =
     response.write(JSON.stringify(responseBody));
     response.end();
 	
-var params=function(req){
-  try{
-  var q=req.url.split('?'),result={};
-  if(q.length>=2){
-      q[1].split('&').forEach((item)=>{
-           try {
-             result[item.split('=')[0]]=item.split('=')[1];
-           } catch (e) {
-             result[item.split('=')[0]]='';
-           }
-      })
-  }
-  }
-  catch(e) {
-             result='';
-		 // console.log('malformed request', body);
-        //  return response.status(400).send('malformed request: ' + body);
-    }
-  return result;
-}
-
-var value = params(req);
-if(value != "")
-{
-req.params=params(req);
-
-var token = process.env.FB_PAGE_TOKEN;
-
-if(req.params != "" && req.params != undefined)
-{
-var sender = data.result.contexts[0].parameters.user_id;
-
-var status = req.params.payment;
-
-console.log(status);
-
-}
-
-if(status == "success")
-{
-var text = "Congratulations your payment done successfully.";	
-}
-
-if(sender && text)
-{	
-sendTextMessage(sender, text, res);
-}
-
-function sendTextMessage(sender, text, res) {
-
-  messageData = {
-    text:text
-  }
-  request({
-      url: 'https://graph.facebook.com/v2.6/me/messages',
-      qs: {access_token:token},
-      method: 'POST',
-      json: {
-        recipient: {id:sender},
-        message: messageData,
-      }
-  }, function(error, response, body) {
-    if (error) {
-      console.log('Error sending message: ', error);
-} else if (response.body.error) {
-      console.log('Error: ', response.body.error);
-}
-
-});
-}
-
-}
-
   });
 }).listen((process.env.PORT || 5000), () => console.log("Server listening"));
