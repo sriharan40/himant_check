@@ -73,24 +73,61 @@ sendTextMessage(sender, text, response);
 function sendTextMessage(sender, text, response) {
 
   messageData = {
-    text:text
-  }
+"attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"receipt",
+        "recipient_name":"Sriharan",
+        "order_number":"12345678902",
+        "currency":"USD",
+        "payment_method":"PayPal",        
+        "order_url":"http://petersapparel.parseapp.com/order?order_id=123456",
+        "timestamp":"1428444852", 
+        "elements":[
+          {
+            "title":"Bot Chats",
+            "subtitle":"Bot Chat PayPal API",
+            "quantity":1,
+            "price":1,
+            "currency":"USD",
+            "image_url":"http://petersapparel.parseapp.com/img/whiteshirt.png"
+          }
+		 ],
+        "address":{
+          "street_1":"1 Hacker Way",
+          "street_2":"",
+          "city":"Menlo Park",
+          "postal_code":"94025",
+          "state":"CA",
+          "country":"US"
+        },
+        "summary":{
+          "subtotal":75.00,
+          "shipping_cost":4.95,
+          "total_tax":6.19,
+          "total_cost":56.14
+        }
+      }
+    }
+  }	  
+
   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
       method: 'POST',
       json: {
-        recipient: {id:sender},
+        //recipient: {phone_number:sender},
+	recipient: {id:sender},
         message: messageData,
       }
   }, function(error, response, body) {
     if (error) {
       console.log('Error sending message: ', error);
-} else if (response.body.error) {
+    } else if (response.body.error) {
       console.log('Error: ', response.body.error);
-}
+	  }  
+	  });
 
-});
 }
 
 }
