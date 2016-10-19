@@ -77,16 +77,14 @@ function sendTextMessage(sender, text, response) {
       "type":"template",
       "payload":{
         "template_type":"receipt",
-        "recipient_name":"Sriharan",
         "order_number":"12345678902",
         "currency":"USD",
         "payment_method":"PayPal",        
-        "order_url":"http://petersapparel.parseapp.com/order?order_id=123456",
         "timestamp":"1428444852", 
         "elements":[
           {
-            "title":"Bot Chats",
-            "subtitle":"Bot Chat PayPal API",
+            "title":"Congratulations for the Payment",
+            "subtitle":"Payment Success",
             "quantity":1,
             "price":1,
             "currency":"USD",
@@ -94,7 +92,7 @@ function sendTextMessage(sender, text, response) {
 		 ],
         "summary":{
           "subtotal":1.00,
-          "shipping_cost":1.00,
+          "shipping_cost":0.00,
           "total_tax":0.00,
           "total_cost":1.00
         }
