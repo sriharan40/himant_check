@@ -131,7 +131,7 @@ function sendTextMessage(sender, text, response) {
 
 // PARSE THE BODY DATA AND THEN TAKE ACTIONS.
 
-var speech = 'Welcome to the ePayment System';	
+var speech = 'Welcome to the Bot Chat';	
 
 response.statusCode = 200;
 	
@@ -313,7 +313,7 @@ if(action == "validateOTP")
 
 	var token = process.env.FB_PAGE_TOKEN;
 
-	var sender = data.result.contexts[1].parameters.user_id;
+	var sender = data.result.contexts[0].parameters.user_id;
 	//var checkSenderID = uuid.v1();
 	//console.log('Sender ID check' + checkSenderID);
 	//console.log(checkSenderID);
@@ -345,7 +345,7 @@ facebook_message =
       method: 'POST',
       json: {
         //recipient: {phone_number:sender},
-	recipient: {id:sender},
+        recipient: {id:sender},
         message: messageData,
       }
   }, function(error, response, body) {
