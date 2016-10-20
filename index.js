@@ -131,7 +131,7 @@ function sendTextMessage(sender, text, response) {
 
 // PARSE THE BODY DATA AND THEN TAKE ACTIONS.
 
-var speech = 'Welcome to the Bot Chat';	
+var speech = 'Welcome to the ePayment System';	
 
 response.statusCode = 200;
 	
