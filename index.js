@@ -161,7 +161,7 @@ if(action == "showOptionsToUser")
 {
 	var token = process.env.FB_PAGE_TOKEN;
 
-	var sender = data.result.contexts[0].parameters.user_id;
+	var sender = data.result.contexts[1].parameters.user_id;
 	
   messageData = {
     "text":"Select an option:",
@@ -190,9 +190,9 @@ if(action == "showOptionsToUser")
     if (error) {
       console.log('Error sending message: ', error);
 
-	  res.statusCode = 200;
+	  response.statusCode = 200;
 			
-      res.setHeader('Content-Type', 'application/json');	
+      response.setHeader('Content-Type', 'application/json');	
 
 // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
@@ -201,15 +201,15 @@ if(action == "showOptionsToUser")
         "source": "apiai-Himant-message sample"
     };
 
-    res.write(JSON.stringify(responseBody));
-    res.end();
+    response.write(JSON.stringify(responseBody));
+    response.end();
 
     } else if (response.body.error) {
       console.log('Error: ', response.body.error);
 
-	  res.statusCode = 200;
+	  response.statusCode = 200;
 			
-      res.setHeader('Content-Type', 'application/json');	
+      response.setHeader('Content-Type', 'application/json');	
 
 // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
@@ -218,8 +218,8 @@ if(action == "showOptionsToUser")
         "source": "apiai-Himant-message sample"
     };
 
-    res.write(JSON.stringify(responseBody));
-    res.end();
+    response.write(JSON.stringify(responseBody));
+    response.end();
 	  }
   
 	  });	
