@@ -128,21 +128,6 @@ function sendTextMessage(sender, text, response) {
 	   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();
-
-// PARSE THE BODY DATA AND THEN TAKE ACTIONS.
-
-var speech = 'Welcome to the ePayment System.';	
-
-response.statusCode = 200;
-	
-response.setHeader('Content-Type', 'application/json');	
-
-// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-     var responseBody = {
-        "speech": speech,
-        "displayText": speech,	     
-        "source": "apiai-Himant-OTP sample"
-    };
 	
 try {
       var data = JSON.parse(body);	
@@ -162,6 +147,8 @@ if(action == "showOptionsToUser")
 	var token = process.env.FB_PAGE_TOKEN;
 
 	var sender = data.result.contexts[0].parameters.user_id;
+
+facebook_message = 
 	
   messageData = {
     "text":"Select an option:",
@@ -221,8 +208,25 @@ if(action == "showOptionsToUser")
     response.write(JSON.stringify(responseBody));
     response.end();
 	  }
-  
-	  });	
+    
+	  });
+
+// PARSE THE BODY DATA AND THEN TAKE ACTIONS.
+
+var speech = 'Welcome to the ePayment System.';	
+
+response.statusCode = 200;
+	
+response.setHeader('Content-Type', 'application/json');	
+
+// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+     var responseBody = {
+        "speech": speech,
+        "displayText": speech,	 
+		"data": {"facebook": {facebook_message}},		
+        "source": "apiai-Himant-OTP sample"
+    };
+	  
 }
  
 // TWILIO SMS
