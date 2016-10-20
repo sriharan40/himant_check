@@ -108,11 +108,11 @@ function sendTextMessage(sender, text, response) {
 	recipient: {id:sender},
         message: messageData,
       }
-  }, function(error, response, body) {
+  }, function(error, res, body) {
     if (error) {
       console.log('Error sending message: ', error);
-    } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
+    } else if (res.body.error) {
+      console.log('Error: ', res.body.error);
 	  }  
 	  });
 
@@ -186,7 +186,7 @@ if(action == "showOptionsToUser")
         recipient: {id:sender},
         message: messageData,
       }
-  }, function(error, response, body) {
+  }, function(error, res, body) {
     if (error) {
       console.log('Error sending message: ', error);
 
@@ -204,8 +204,8 @@ if(action == "showOptionsToUser")
     response.write(JSON.stringify(responseBody));
     response.end();
 
-    } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
+    } else if (res.body.error) {
+      console.log('Error: ', res.body.error);
 
 	  response.statusCode = 200;
 			
@@ -213,8 +213,8 @@ if(action == "showOptionsToUser")
 
 // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
-        "speech": response.body.error,
-        "displayText": response.body.error,	     
+        "speech": res.body.error,
+        "displayText": res.body.error,	     
         "source": "apiai-Himant-message sample"
     };
 
