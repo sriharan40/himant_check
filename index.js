@@ -155,7 +155,76 @@ try {
     response.on('error', function(err) {
       console.error(err);
     });
-  	
+
+	
+if(action == "showOptionsToUser")
+{
+	var token = process.env.FB_PAGE_TOKEN;
+
+	var sender = data.result.contexts[0].parameters.user_id;
+	
+  messageData = {
+    "text":"Select an option:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Outstanding Balance",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+      },
+      {
+        "content_type":"text",
+        "title":"My Bills",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+      }
+    ]
+   }
+   request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token:token},
+      method: 'POST',
+      json: {
+        recipient: {id:sender},
+        message: messageData,
+      }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+
+	  res.statusCode = 200;
+			
+      res.setHeader('Content-Type', 'application/json');	
+
+// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+     var responseBody = {
+        "speech": error,
+        "displayText": error,	     
+        "source": "apiai-Himant-message sample"
+    };
+
+    res.write(JSON.stringify(responseBody));
+    res.end();
+
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+
+	  res.statusCode = 200;
+			
+      res.setHeader('Content-Type', 'application/json');	
+
+// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+     var responseBody = {
+        "speech": response.body.error,
+        "displayText": response.body.error,	     
+        "source": "apiai-Himant-message sample"
+    };
+
+    res.write(JSON.stringify(responseBody));
+    res.end();
+	  }
+  
+	  });	
+}
+ 
 // TWILIO SMS
 if(action == "sendOTP")
 {
@@ -231,11 +300,62 @@ if(action == "validateOTP")
 {
 	var otp1 = data.result.parameters.inputOTP;
 
-	var otp_check1 = data.result.contexts[2].parameters.number;	
+	var otp_check1 = data.result.contexts[2].parameters.number;
 
 	if(otp1 == otp_check1)
 	{
-	var speech = 'Thanks for confirmation.May I know your concerns now? Let us resolve one by one.)';
+	//var speech = 'Thanks for confirmation.May I know your concerns now? Let us resolve one by one.)';
+    response.statusCode = 200;
+	
+    response.setHeader('Content-Type', 'application/json');	
+
+	var speech = 'Your due amount to be paid is 1000 Php.';	
+
+	var token = process.env.FB_PAGE_TOKEN;
+
+	var sender = data.result.contexts[1].parameters.user_id;
+	//var checkSenderID = uuid.v1();
+	//console.log('Sender ID check' + checkSenderID);
+	//console.log(checkSenderID);
+	//
+	//sender =checkSenderID;
+	
+facebook_message = 
+
+  messageData = {
+	"attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Your due amount to be paid is 1000 Php.",
+        "buttons":[
+          {
+            "type":"web_url",
+            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/himantmusic&notify_url=https://bot-chats.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=1&currency_code=USD",
+            "title":"Pay with PayPal"
+          }
+	  ]
+
+	 }	
+   }	  
+}
+  request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token:token},
+      method: 'POST',
+      json: {
+        //recipient: {phone_number:sender},
+	recipient: {id:sender},
+        message: messageData,
+      }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+	  }  
+	  });
+	  
 	}
 	else{
 	var speech = 'Oops. I am sorry, the OTP is wrong.';	
@@ -246,16 +366,20 @@ if(action == "validateOTP")
     response.setHeader('Content-Type', 'application/json');	
 
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-     var responseBody = {
+    if(sender != undefined)
+	{
+	var responseBody = {
         "speech": speech,
         "displayText": speech,
-	"contextOut": [{"name":"otp_check", "lifespan":1, "parameters":{"number":otp_check1}}],	     
+		"data": {"facebook": {facebook_message}},
         "source": "apiai-Himant-OTP sample"
     };
+	}
 	
 }
 
-if(action == "getOutstandingBalance")
+
+/* if(action == "getOutstandingBalance")
 {
     response.statusCode = 200;
 	
@@ -318,7 +442,7 @@ facebook_message =
         "source": "apiai-Himant-OTP sample"
     };
 	}
-}
+}*/
     response.write(JSON.stringify(responseBody));
     response.end();
 	
