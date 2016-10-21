@@ -11,12 +11,6 @@ var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
 
-http.createServer(function(req, response) {
-  var headers = req.headers;
-  var method = req.method;
-  var url = req.url;
-  var body = [];
-
 var params=function(req){
   try{
   var q=req.url.split('?'),result={};
@@ -37,6 +31,12 @@ var params=function(req){
     }
   return result;
 }
+
+http.createServer(function(req, response) {
+  var headers = req.headers;
+  var method = req.method;
+  var url = req.url;
+  var body = [];
 
 //console.log(req);
 
@@ -128,7 +128,7 @@ facebook_message1 =
 	var responseBody = {
         "speech": text,
         "displayText": text,	 
-//		"data": {"facebook": {facebook_message1}},		
+	"data": {"facebook": {facebook_message1}},		
         "source": "apiai-Himant-OTP sample"
     };	  	  
 //}
