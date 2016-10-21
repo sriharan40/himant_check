@@ -179,10 +179,10 @@ facebook_message =
     if (error) {
       console.log('Error sending message: ', error);
 
-	  response.statusCode = 200;
-			
-      response.setHeader('Content-Type', 'application/json');	
-
+	      response.statusCode = 200;
+	
+		  response.setHeader('Content-Type', 'application/json');
+	
 // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
         "speech": error,
@@ -190,16 +190,13 @@ facebook_message =
         "source": "apiai-Himant-message sample"
     };
 
-    response.write(JSON.stringify(responseBody));
-    response.end();
-
     } else if (res.body.error) {
       console.log('Error: ', res.body.error);
 
-	  response.statusCode = 200;
-			
-      response.setHeader('Content-Type', 'application/json');	
-
+    response.statusCode = 200;
+	
+    response.setHeader('Content-Type', 'application/json');
+	
 // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
         "speech": res.body.error,
@@ -207,28 +204,25 @@ facebook_message =
         "source": "apiai-Himant-message sample"
     };
 
-    response.write(JSON.stringify(responseBody));
-    response.end();
 	  }
-    
-	  });
+	  else{
+		var speech = 'Welcome to the ePayment System.';	
 
-// PARSE THE BODY DATA AND THEN TAKE ACTIONS.
-
-var speech = 'Welcome to the ePayment System.';	
-
-response.statusCode = 200;
+		response.statusCode = 200;
 	
-response.setHeader('Content-Type', 'application/json');	
-
-// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+        response.setHeader('Content-Type', 'application/json');		
+	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
         "speech": speech,
         "displayText": speech,	 
 		"data": {"facebook": {facebook_message}},		
         "source": "apiai-Himant-OTP sample"
     };
-	  
+		
+	  }
+    
+	  });
+  
 }
  
 // TWILIO SMS
@@ -449,6 +443,7 @@ facebook_message =
     };
 	}
 }*/
+	
     response.write(JSON.stringify(responseBody));
     response.end();
 	
