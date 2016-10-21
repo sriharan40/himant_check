@@ -128,7 +128,7 @@ facebook_message1 =
 	var responseBody = {
         "speech": text,
         "displayText": text,	 
-		"data": {"facebook": {facebook_message1}},		
+//		"data": {"facebook": {facebook_message1}},		
         "source": "apiai-Himant-OTP sample"
     };	  	  
 //}
