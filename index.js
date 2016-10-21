@@ -182,14 +182,9 @@ facebook_message =
 	      response.statusCode = 200;
 	
 		  response.setHeader('Content-Type', 'application/json');
-	
-// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-     var responseBody = {
-        "speech": error,
-        "displayText": error,	     
-        "source": "apiai-Himant-message sample"
-    };
 
+		  var speech = error;
+		  
     } else if (res.body.error) {
       console.log('Error: ', res.body.error);
 
@@ -197,31 +192,27 @@ facebook_message =
 	
     response.setHeader('Content-Type', 'application/json');
 	
-// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-     var responseBody = {
-        "speech": res.body.error,
-        "displayText": res.body.error,	     
-        "source": "apiai-Himant-message sample"
-    };
-
+	var speech = res.body.error;
+	
 	  }
 	  else{
-		var speech = 'Welcome to the ePayment System.';	
-
 		response.statusCode = 200;
 	
         response.setHeader('Content-Type', 'application/json');		
+
+		var speech = 'Welcome to the ePayment System.';	
+		
+	  }
+    
+	  });
+	  
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
         "speech": speech,
         "displayText": speech,	 
 		"data": {"facebook": {facebook_message}},		
         "source": "apiai-Himant-OTP sample"
-    };
-		
-	  }
-    
-	  });
+    };	  
   
 }
  
