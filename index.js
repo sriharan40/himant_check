@@ -207,8 +207,13 @@ facebook_message =
       },
       {
         "content_type":"text",
-        "title":"My Bills",
+        "title":"My Plan details",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+      },
+       {
+        "content_type":"text",
+        "title":"Customized Plans",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
       }
     ]
    }
