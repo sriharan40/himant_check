@@ -159,7 +159,7 @@ messageData = {
         "source": "apiai-Himant-OTP sample"
     };
 		 }	 
-}	  
+  });	  
 	  	  
 }
 
