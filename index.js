@@ -165,8 +165,8 @@ messageData = {
 
 }
  
-else if(value == "" || value == undefined)
-{	
+//else if(value == "" || value == undefined)
+//{	
   req.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
@@ -488,6 +488,6 @@ facebook_message =
 	
   });
   
-}
+//}
   
 }).listen((process.env.PORT || 5000), () => console.log("Server listening"));
