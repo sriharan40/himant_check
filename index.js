@@ -60,10 +60,10 @@ var status = req.params.payment;
 console.log('Payment: '+status);
 }
 
-if(status)
-{
+//if(status)
+//{
 var text = "Congratulations your payment done successfully.";	
-}
+//}
 
 //if(receiver && text)
 //{	
@@ -72,6 +72,8 @@ var text = "Congratulations your payment done successfully.";
 
 //function sendTextMessage(receiver, text, response) {
 
+if(receiver)
+{
 facebook_message1 = 
 
   messageData = {
@@ -118,6 +120,7 @@ facebook_message1 =
 	  }  
 	  });
 
+}	  
 	      response.statusCode = 200;
 	
 		  response.setHeader('Content-Type', 'application/json');
