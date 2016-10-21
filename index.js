@@ -66,7 +66,7 @@ sendTextMessage(receiver, text, response);
 
 function sendTextMessage(receiver, text, response) {
 
-console.log('Payment: '+receiver);
+console.log('Receiver: '+receiver);
 
 //if(receiver)
 //{
@@ -144,7 +144,9 @@ messageData = {
     res.end();
 	  }
 	 else{
-	      response.statusCode = 200;
+		console.log('Result: '+receiver);
+
+   	      response.statusCode = 200;
 	
 		  response.setHeader('Content-Type', 'application/json');
 	  
