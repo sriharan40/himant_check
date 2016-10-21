@@ -11,12 +11,6 @@ var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
 
-http.createServer(function(req, response) {
-  var headers = req.headers;
-  var method = req.method;
-  var url = req.url;
-  var body = [];
-
 var params=function(req){
   try{
   var q=req.url.split('?'),result={};
@@ -39,6 +33,12 @@ var params=function(req){
 }
 
 console.log(req);
+
+http.createServer(function(req, response) {
+  var headers = req.headers;
+  var method = req.method;
+  var url = req.url;
+  var body = [];
 
 var value = params(req).payment;
 
