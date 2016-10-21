@@ -100,18 +100,17 @@ console.log('Receiver: '+receiver);
  messageData = {
     "text": text
    }
-   console.log('Result: '+receiver);   
+   //console.log('Result: '+receiver);   
   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
       method: 'POST',
       json: {
-        //recipient: {phone_number:sender},
-	recipient: {id:receiver},
+	    recipient: {id:receiver},
         message: messageData,
       }
   }, function(error, res, body) {
-		console.log('Result: '+receiver);
+  console.log('Result: '+receiver);
   if (error) {
       console.log('Error sending message: ', error);
 
