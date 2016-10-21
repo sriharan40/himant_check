@@ -98,21 +98,9 @@ console.log('Receiver: '+receiver);
   } */
 
  messageData = {
-    "text": text,
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"My Outstanding",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      },
-      {
-        "content_type":"text",
-        "title":"My Bills",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-      }
-    ]
+    "text": text
    }
-   
+   console.log('Result: '+receiver);   
   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
