@@ -148,6 +148,8 @@ if(action == "showOptionsToUser")
 
 	var sender = data.result.contexts[0].parameters.user_id;
 
+console.log("Sender:"+sender);
+	
 facebook_message = 
 	
   messageData = {
