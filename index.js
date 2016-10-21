@@ -178,34 +178,20 @@ facebook_message =
   }, function(error, res, body) {
     if (error) {
       console.log('Error sending message: ', error);
-
 		  var speech = error;
-		  
     } else if (res.body.error) {
       console.log('Error: ', res.body.error);
-          var speech = 'Welcome to the ePayment System. Say Hello!';	
-	      response.statusCode = 200;
-	
-		  response.setHeader('Content-Type', 'application/json');
-		  
-   	  var responseBody = {
-		"speech": speech,
-		"displayText": speech,	 
-		"source": "apiai-Himant-OTP sample"
-	 };	
-    response.write(JSON.stringify(responseBody));
-    response.end();	 
-	   }
+      var speech = res.body.error;
+	  }
 	  else{
-		var speech = 'Welcome to the ePayment System.';	
-		
+		var speech = 'Welcome to the ePayment System.';			
 	  }
     
 	  });
 
-	      //response.statusCode = 200;
+	      response.statusCode = 200;
 	
-		  //response.setHeader('Content-Type', 'application/json');
+		  response.setHeader('Content-Type', 'application/json');
 	  
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
 if(sender != undefined || sender != "")
