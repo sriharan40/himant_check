@@ -168,7 +168,9 @@ console.log('Receiver: '+receiver);
 }
 
 }
-  
+ 
+else
+{	
   req.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
@@ -186,7 +188,7 @@ try {
         //  return response.status(400).send('malformed request: ' + body);
     }
 	  
-    response.on('error', function(err) {
+      response.on('error', function(err) {
       console.error(err);
     });
 
@@ -487,4 +489,7 @@ facebook_message =
     response.end();
 	
   });
+  
+}
+  
 }).listen((process.env.PORT || 5000), () => console.log("Server listening"));
