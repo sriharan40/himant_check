@@ -26,8 +26,6 @@ var params=function(req){
   }
   catch(e) {
              result='';
-		 // console.log('malformed request', body);
-        //  return response.status(400).send('malformed request: ' + body);
     }
   return result;
 }
@@ -72,7 +70,7 @@ console.log('Receiver: '+receiver);
 //{
 //facebook_message = 
 
-messageData = {
+/* messageData = {
 "attachment":{
       "type":"template",
       "payload":{
@@ -97,7 +95,23 @@ messageData = {
         }
       }
     }
-  }
+  } */
+
+ messageData = {
+    "text": text,
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"My Outstanding",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+      },
+      {
+        "content_type":"text",
+        "title":"My Bills",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+      }
+    ]
+   }
    
   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -109,7 +123,8 @@ messageData = {
         message: messageData,
       }
   }, function(error, res, body) {
-    if (error) {
+		console.log('Result: '+receiver);
+  if (error) {
       console.log('Error sending message: ', error);
 
 	  response.statusCode = 200;
