@@ -11,162 +11,12 @@ var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
 
-var params=function(req){
-  try{
-  var q=req.url.split('?'),result={};
-  if(q.length>=2){
-      q[1].split('&').forEach((item)=>{
-           try {
-             result[item.split('=')[0]]=item.split('=')[1];
-           } catch (e) {
-             result[item.split('=')[0]]='';
-           }
-      })
-  }
-  }
-  catch(e) {
-             result='';
-    }
-  return result;
-}
-
-//console.log(req);
-
 http.createServer(function(req, response) {
   var headers = req.headers;
   var method = req.method;
   var url = req.url;
   var body = [];
 
-var value = params(req).payment;
-
-console.log('Value: '+value);
-
-if(value != "" || value != undefined)
-{
-req.params=params(req);
-
-var token = process.env.FB_PAGE_TOKEN;
-
-if(req.params != "" && req.params != undefined)
-{
-var receiver = req.params.payment;
-//var sender = data.result.contexts[0].parameters.user_id;
-
-}
-
-var text = "Congratulations your payment done successfully.";	
-
-if(receiver && text)
-{	
-sendTextMessage(receiver, text, response);
-}
-
-function sendTextMessage(receiver, text, response) {
-
-console.log('Receiver: '+receiver);
-
-//if(receiver)
-//{
-//facebook_message = 
-
-messageData = {
-"attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"receipt",
-        "recipient_name":"Sriharan",		
-        "order_number":"12345678902",
-        "currency":"USD",
-        "payment_method":"PayPal",        
-        "timestamp":"1428444852", 
-        "elements":[
-          {
-            "title":"Congratulations for the Payment",
-            "subtitle":"Payment Success",
-            "quantity":1,
-            "price":1,
-            "currency":"USD",
-          }
-		 ],
-        "summary":{
-          "subtotal":1.00,
-          "total_cost":1.00
-        }
-      }
-    }
-  }
-   
-  request({
-      url: 'https://graph.facebook.com/v2.6/me/messages',
-      qs: {access_token:token},
-      method: 'POST',
-      json: {
-	    recipient: {id:receiver},
-        message: messageData,
-      }
-  }, function(error, res, body) {
-  console.log('Result: '+receiver);
-  if (error) {
-      console.log('Error sending message: ', error);
-
-	  response.statusCode = 200;
-			
-      response.setHeader('Content-Type', 'application/json');	
-
-// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-     var responseBody = {
-        "speech": error,
-        "displayText": error,	     
-        "source": "apiai-Himant-message sample"
-    };
-
-    response.write(JSON.stringify(responseBody));
-    response.end();
-
-    } else if (res.body.error) {
-      console.log('Error: ', res.body.error);
-
-	  response.statusCode = 200;
-			
-      response.setHeader('Content-Type', 'application/json');	
-
-// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-     var responseBody = {
-        "speech": res.body.error,
-        "displayText": res.body.error,	     
-        "source": "apiai-Himant-message sample"
-    };
-
-    response.write(JSON.stringify(responseBody));
-    response.end();
-	  }
-	 else{
-		console.log('Result: '+receiver);
-
-   	      response.statusCode = 200;
-	
-		  response.setHeader('Content-Type', 'application/json');
-	  
-	var responseBody = {
-        "speech": text,
-        "displayText": text,	 
-//		"data": {"facebook": {facebook_message1}},		
-        "source": "apiai-Himant-OTP sample"
-    };
-	
-    response.write(JSON.stringify(responseBody));
-    response.end();
-	
-		 }	 
-  });	  
-	  	  
-}
-
-}
- 
-//else if(value == "" || value == undefined)
-//{	
   req.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
@@ -370,7 +220,7 @@ facebook_message =
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/himantmusic&notify_url=https://bot-chats.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=1&currency_code=USD",
+            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/himantmusic&notify_url=http://hitman507bot.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=1&currency_code=USD",
             "title":"Pay with PayPal"
           }
 	  ]
@@ -416,78 +266,10 @@ facebook_message =
 	}
 	
 }
-
-
-/* if(action == "getOutstandingBalance")
-{
-    response.statusCode = 200;
-	
-    response.setHeader('Content-Type', 'application/json');	
-
-	var speech = 'Your due amount to be paid is 1000 Php.';	
-
-	var token = process.env.FB_PAGE_TOKEN;
-
-	var sender = data.result.contexts[0].parameters.user_id;
-	//var checkSenderID = uuid.v1();
-	//console.log('Sender ID check' + checkSenderID);
-	//console.log(checkSenderID);
-	//
-	//sender =checkSenderID;
-	
-facebook_message = 
-
-  messageData = {
-	"attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"button",
-        "text":"Your due amount to be paid is 1000 Php.",
-        "buttons":[
-          {
-            "type":"web_url",
-            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/himantmusic&notify_url=https://bot-chats.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=1&currency_code=USD",
-            "title":"Pay with PayPal"
-          }
-	  ]
-
-	 }	
-   }	  
-}
-  request({
-      url: 'https://graph.facebook.com/v2.6/me/messages',
-      qs: {access_token:token},
-      method: 'POST',
-      json: {
-        //recipient: {phone_number:sender},
-	recipient: {id:sender},
-        message: messageData,
-      }
-  }, function(error, response, body) {
-    if (error) {
-      console.log('Error sending message: ', error);
-    } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
-	  }  
-	  });
-	  
-	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-    if(sender != undefined)
-	{
-	var responseBody = {
-        "speech": speech,
-        "displayText": speech,
-		"data": {"facebook": {facebook_message}},
-        "source": "apiai-Himant-OTP sample"
-    };
-	}
-}*/
 	
     response.write(JSON.stringify(responseBody));
     response.end();
 	
   });
-  
-//}
   
 }).listen((process.env.PORT || 5000), () => console.log("Server listening"));
