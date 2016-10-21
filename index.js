@@ -165,13 +165,14 @@ messageData = {
 
 }
  
-else
+else if(value == "" || value == undefined)
 {	
   req.on('error', function(err) {
     console.error(err);
   }).on('data', function(chunk) {
 	body += chunk;	  
-        
+	console.log("Body: "+body);
+
 	   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();
