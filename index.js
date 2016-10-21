@@ -179,32 +179,24 @@ facebook_message =
     if (error) {
       console.log('Error sending message: ', error);
 
-	      response.statusCode = 200;
-	
-		  response.setHeader('Content-Type', 'application/json');
-
 		  var speech = error;
 		  
     } else if (res.body.error) {
       console.log('Error: ', res.body.error);
-
-    response.statusCode = 200;
 	
-    response.setHeader('Content-Type', 'application/json');
-	
-	var speech = res.body.error;
+      var speech = res.body.error;
 	
 	  }
 	  else{
-		response.statusCode = 200;
-	
-        response.setHeader('Content-Type', 'application/json');		
-
 		var speech = 'Welcome to the ePayment System.';	
 		
 	  }
     
 	  });
+
+	      response.statusCode = 200;
+	
+		  response.setHeader('Content-Type', 'application/json');
 	  
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
      var responseBody = {
