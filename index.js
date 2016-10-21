@@ -12,7 +12,6 @@ var options = {
 }
 
 var params=function(req){
-  try{
   var q=req.url.split('?'),result={};
   if(q.length>=2){
       q[1].split('&').forEach((item)=>{
@@ -23,16 +22,8 @@ var params=function(req){
            }
       })
   }
-  }
-  catch(e) {
-             result='';
-		 // console.log('malformed request', body);
-        //  return response.status(400).send('malformed request: ' + body);
-    }
   return result;
 }
-
-//console.log(req);
 
 http.createServer(function(req, response) {
   var headers = req.headers;
@@ -148,17 +139,18 @@ messageData = {
     res.end();
 	  }
 	 else{
-	      response.statusCode = 200;
+	response.statusCode = 200;
 	
-		  response.setHeader('Content-Type', 'application/json');
+	response.setHeader('Content-Type', 'application/json');
 	  
 	var responseBody = {
         "speech": text,
         "displayText": text,	 
-//		"data": {"facebook": {facebook_message1}},		
         "source": "apiai-Himant-OTP sample"
     };
-		 }	 
+		 }
+    response.write(JSON.stringify(responseBody));
+    response.end();	  
   });	  
 	  	  
 }
