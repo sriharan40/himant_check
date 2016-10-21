@@ -187,7 +187,8 @@ try {
       response.on('error', function(err) {
       console.error(err);
     });
-
+	
+	console.log("Action: "+action);
 	
 if(action == "showOptionsToUser")
 {
