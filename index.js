@@ -52,7 +52,7 @@ var token = process.env.FB_PAGE_TOKEN;
 
 if(req.params != "" && req.params != undefined)
 {
-var sender = req.params.payment;
+var receiver = req.params.payment;
 //var sender = data.result.contexts[0].parameters.user_id;
 
 var status = req.params.payment;
@@ -65,12 +65,14 @@ if(status)
 var text = "Congratulations your payment done successfully.";	
 }
 
-if(sender && text)
-{	
-sendTextMessage(sender, text, response);
-}
+//if(receiver && text)
+//{	
+//sendTextMessage(receiver, text, response);
+//}
 
-function sendTextMessage(sender, text, response) {
+//function sendTextMessage(receiver, text, response) {
+
+facebook_message1 = 
 
   messageData = {
 "attachment":{
@@ -105,7 +107,7 @@ function sendTextMessage(sender, text, response) {
       method: 'POST',
       json: {
         //recipient: {phone_number:sender},
-	recipient: {id:sender},
+	recipient: {id:receiver},
         message: messageData,
       }
   }, function(error, res, body) {
@@ -116,7 +118,17 @@ function sendTextMessage(sender, text, response) {
 	  }  
 	  });
 
-}
+	      response.statusCode = 200;
+	
+		  response.setHeader('Content-Type', 'application/json');
+	  
+	var responseBody = {
+        "speech": text,
+        "displayText": text,	 
+		"data": {"facebook": {facebook_message1}},		
+        "source": "apiai-Himant-OTP sample"
+    };	  	  
+//}
 
 }
   
@@ -321,7 +333,7 @@ facebook_message =
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=https://m.me/himantmusic&notify_url=https://bot-chats.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=1&currency_code=USD",
+            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/himantmusic&notify_url=https://bot-chats.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=1&currency_code=USD",
             "title":"Pay with PayPal"
           }
 	  ]
