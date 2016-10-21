@@ -11,6 +11,12 @@ var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
 
+http.createServer(function(req, response) {
+  var headers = req.headers;
+  var method = req.method;
+  var url = req.url;
+  var body = [];
+
 var params=function(req){
   try{
   var q=req.url.split('?'),result={};
@@ -32,13 +38,7 @@ var params=function(req){
   return result;
 }
 
-http.createServer(function(req, response) {
-  var headers = req.headers;
-  var method = req.method;
-  var url = req.url;
-  var body = [];
-
-//console.log(req);
+console.log(req);
 
 var value = params(req).payment;
 
@@ -65,18 +65,18 @@ console.log('Payment: '+status);
 var text = "Congratulations your payment done successfully.";	
 //}
 
-//if(receiver && text)
-//{	
-//sendTextMessage(receiver, text, response);
-//}
+if(receiver && text)
+{	
+sendTextMessage(receiver, text, response);
+}
 
-//function sendTextMessage(receiver, text, response) {
+function sendTextMessage(receiver, text, response) {
 
-if(receiver)
-{
-facebook_message1 = 
+//if(receiver)
+//{
+//facebook_message = 
 
-  messageData = {
+messageData = {
 "attachment":{
       "type":"template",
       "payload":{
@@ -112,15 +112,42 @@ facebook_message1 =
 	recipient: {id:receiver},
         message: messageData,
       }
-  }, function(error, res, body) {
+  }, function(error, response, body) {
     if (error) {
       console.log('Error sending message: ', error);
-    } else if (res.body.error) {
-      console.log('Error: ', res.body.error);
-	  }  
-	  });
 
-}	  
+	  res.statusCode = 200;
+			
+      res.setHeader('Content-Type', 'application/json');	
+
+// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+     var responseBody = {
+        "speech": error,
+        "displayText": error,	     
+        "source": "apiai-Himant-message sample"
+    };
+
+    res.write(JSON.stringify(responseBody));
+    res.end();
+
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+
+	  res.statusCode = 200;
+			
+      res.setHeader('Content-Type', 'application/json');	
+
+// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+     var responseBody = {
+        "speech": response.body.error,
+        "displayText": response.body.error,	     
+        "source": "apiai-Himant-message sample"
+    };
+
+    res.write(JSON.stringify(responseBody));
+    res.end();
+	  }
+	 else{
 	      response.statusCode = 200;
 	
 		  response.setHeader('Content-Type', 'application/json');
@@ -128,10 +155,13 @@ facebook_message1 =
 	var responseBody = {
         "speech": text,
         "displayText": text,	 
-	"data": {"facebook": {facebook_message1}},		
+//		"data": {"facebook": {facebook_message1}},		
         "source": "apiai-Himant-OTP sample"
-    };	  	  
-//}
+    };
+		 }	 
+}	  
+	  	  
+}
 
 }
   
