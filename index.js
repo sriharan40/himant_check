@@ -42,7 +42,7 @@ var value = params(req).payment;
 
 console.log('Value: '+value);
 
-if(value != "" && value != undefined)
+if(value != "" || value != undefined)
 {
 req.params=params(req);
 
@@ -70,7 +70,7 @@ console.log('Receiver: '+receiver);
 //{
 //facebook_message = 
 
-/* messageData = {
+messageData = {
 "attachment":{
       "type":"template",
       "payload":{
@@ -95,12 +95,8 @@ console.log('Receiver: '+receiver);
         }
       }
     }
-  } */
-
- messageData = {
-    "text": text
-   }
-   //console.log('Result: '+receiver);   
+  }
+   
   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
