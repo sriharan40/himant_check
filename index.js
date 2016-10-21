@@ -32,7 +32,7 @@ var params=function(req){
   return result;
 }
 
-console.log(req);
+//console.log(req);
 
 http.createServer(function(req, response) {
   var headers = req.headers;
