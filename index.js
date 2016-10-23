@@ -226,9 +226,9 @@ if(action == "validateOTP")
 
 	connection.query('SELECT * from t_users', function(err, results) {
 
-	var mobile = request.params.mobile;
-
-	var user_id = request.params.user_id;
+	var user_id = data.result.contexts[0].parameters.user_id;
+	
+	var mobile = data.result.contexts[0].parameters.phone;
 
 	var id = results.length + 1;	
 
