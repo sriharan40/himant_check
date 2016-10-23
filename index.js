@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express();
+var mysql = require('mysql');
 var request = require("request");
 var util = require("util");
 var http = require('http');
@@ -7,6 +8,34 @@ var apiai = require("apiai");
 
 var app = apiai(process.env.APIAI_ACCESS_TOKEN);
 
+var db_config = {
+    host: 'us-cdbr-iron-east-04.cleardb.net',
+    user: 'b213965cc9ad75',
+    password: '9c81ac99',
+    database: 'heroku_a0067bd7c868fc0'
+};
+
+
+var connection;
+
+    console.log('1. connecting to db:');
+    connection = mysql.createConnection(db_config); // Recreate the connection, since
+													// the old one cannot be reused.
+
+    connection.connect(function(err) {              	// The server is either down
+        if (err) {                                     // or restarting (takes a while sometimes).
+            console.log('2. error when connecting to db:', err);
+        }                                     	// to avoid a hot loop, and to allow our node script to
+    });                                     	// process asynchronous requests in the meantime.
+    											// If you're also serving http, display a 503 error.
+    connection.on('error', function(err) {
+        console.log('3. db error', err);
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') { 	// Connection to the MySQL server is usually
+        } else {                                      	// connnection idle timeout (the wait_timeout
+            throw err;                                  // server variable configures this)
+        }
+    });
+	
 var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
@@ -194,6 +223,24 @@ if(action == "validateOTP")
 	if(otp1 == otp_check1)
 	{
 	//var speech = 'Thanks for confirmation.May I know your concerns now? Let us resolve one by one.)';
+
+	connection.query('SELECT * from t_users', function(err, results) {
+
+	var mobile = request.params.mobile;
+
+	var user_id = request.params.user_id;
+
+	var id = results.length + 1;	
+
+	var post  = {id: id , mobile: mobile , user_id: user_id};
+		
+	if(mobile && user_id)
+	{
+	connection.query('INSERT INTO t_users SET ?', post, function(err, rows, fields) {
+	});	
+	}
+
+	});
     response.statusCode = 200;
 	
     response.setHeader('Content-Type', 'application/json');	
