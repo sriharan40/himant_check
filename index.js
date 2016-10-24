@@ -290,11 +290,6 @@ facebook_message =
       console.log('Error: ', response.body.error);
 	  }  
 	  });
-	  
-	}
-	else{
-	var speech = 'Oops. I am sorry, the OTP is wrong.';	
-	}
 
     response.statusCode = 200;
 	
@@ -309,6 +304,26 @@ facebook_message =
 		"data": {"facebook": {facebook_message}},
         "source": "apiai-Himant-OTP sample"
     };
+	}
+	
+	}
+	else{
+	var speech = 'Oops. I am sorry, the OTP is wrong.';
+	
+    response.statusCode = 200;
+	
+    response.setHeader('Content-Type', 'application/json');	
+
+	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+    if(sender != undefined)
+	{
+	var responseBody = {
+        "speech": speech,
+        "displayText": speech,
+        "source": "apiai-Himant-OTP sample"
+    };
+	}
+	
 	}
 	
 }
