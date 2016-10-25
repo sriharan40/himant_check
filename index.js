@@ -57,12 +57,12 @@ facebook_message =
     "quick_replies":[
       {
         "content_type":"text",
-        "title":"Outstanding Balance",
+        "title":"Billed Amount",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
       },
       {
         "content_type":"text",
-        "title":"My Bills",
+        "title":"My Plan",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
       }
     ]
@@ -245,7 +245,7 @@ var connection;
 	
     response.setHeader('Content-Type', 'application/json');	
 
-	var speech = 'Your due amount to be paid is 1000 Php.';	
+	var speech = 'Your due amount to be paid is 100 Php.';	
 
 	var token = process.env.FB_PAGE_TOKEN;
 
@@ -262,11 +262,11 @@ facebook_message =
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"Your due amount to be paid is 1000 Php.",
+        "text":"Your due amount to be paid is 100 Php.",
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/himantmusic&notify_url=http://hitman507bot.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=1&currency_code=USD",
+            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/himantmusic&notify_url=http://hitman507bot.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=100&currency_code=PHP",
             "title":"Pay with PayPal"
           }
 	  ]
