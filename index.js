@@ -121,7 +121,7 @@ if(action == "sendOTP")
 	var otp = Math.floor(1000 + Math.random() * 9000);
 	console.log(otp);
 	var name = data.result.parameters.customerName;
-	var mobile = '+63'+data.result.parameters.phone;
+	var mobile = '+'+data.result.parameters.phone;
 	var speech = name + ', We will send you an OTP on your number ' + mobile +'. Please reply back here with that OTP.';
 
 	var value = name + mobile;
