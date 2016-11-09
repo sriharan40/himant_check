@@ -52,7 +52,7 @@ var sender = data.result.contexts[0].parameters.user_id;
 console.log("Sender:"+sender);
 	
 facebook_message = 
-	
+
   messageData = {
     "text":"Select an offer:",
     "quick_replies":[
@@ -117,7 +117,25 @@ else{
 //'@import offers.js';
 //var offers = require("offers.js");		
 }	
-	  
+
+if(action == "SelectedOffer")
+{
+var openurl = require("openurl");
+
+var offer1 = data.result.parameters.offername;
+
+if(offer1 == "Facebook 1 hr")
+{
+openurl.open("https://bit.ly/2f9GemL");	
+}	
+
+if(offer1 == "Youtube 1 day")
+{
+openurl.open("https://bit.ly/2dZcUN5");	
+}	
+	
+}	
+
 if(action == "showOptionsToUser")
 {
 	var token = process.env.FB_PAGE_TOKEN;
