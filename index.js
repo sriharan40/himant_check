@@ -66,10 +66,10 @@ messageData = {
                     "subtitle": "100% Cotton, 200% Comfortable",
                     "default_action": {
                         "type": "web_url",
-                        "url": "http://bit.ly/2f9GemL",
+                        "url": "https://bit.ly/2f9GemL",
                         "messenger_extensions": true,
                         "webview_height_ratio": "tall",
-                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                        "fallback_url": "https://bit.ly/2f9GemL"
                     },
                     "buttons": [
                         {
@@ -78,51 +78,51 @@ messageData = {
                             "url": "http://bit.ly/2f9GemL",
                             "messenger_extensions": true,
                             "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"                        
+                            "fallback_url": "https://bit.ly/2f9GemL"                        
                         }
                     ]                
                 },
                 {
-                    "title": "Classic Blue T-Shirt",
+                    "title": "Clash of Clans",
                     "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
                     "subtitle": "100% Cotton, 200% Comfortable",
                     "default_action": {
                         "type": "web_url",
-                        "url": "https://peterssendreceiveapp.ngrok.io/view?item=101",
+                        "url": "https://bit.ly/2dKNSCW",
                         "messenger_extensions": true,
                         "webview_height_ratio": "tall",
-                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                        "fallback_url": "https://bit.ly/2dKNSCW"
                     },
                     "buttons": [
                         {
-                            "title": "Buy",
+                            "title": "View",
                             "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=101",
+                            "url": "https://bit.ly/2dKNSCW",
                             "messenger_extensions": true,
                             "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"                        
+                            "fallback_url": "https://bit.ly/2dKNSCW"                        
                         }
                     ]                
                 },
                 {
-                    "title": "Classic Black T-Shirt",
+                    "title": "Youtube",
                     "image_url": "https://peterssendreceiveapp.ngrok.io/img/black-t-shirt.png",
                     "subtitle": "100% Cotton, 200% Comfortable",
                     "default_action": {
                         "type": "web_url",
-                        "url": "https://peterssendreceiveapp.ngrok.io/view?item=102",
+                        "url": "https://bit.ly/2dZcUN5",
                         "messenger_extensions": true,
                         "webview_height_ratio": "tall",
-                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                        "fallback_url": "https://bit.ly/2dZcUN5"
                     },
                     "buttons": [
                         {
-                            "title": "Buy",
+                            "title": "View",
                             "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=102",
+                            "url": "https://bit.ly/2dZcUN5",
                             "messenger_extensions": true,
                             "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"                        
+                            "fallback_url": "https://bit.ly/2dZcUN5"                        
                         }
                     ]                
                 }
