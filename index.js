@@ -67,7 +67,6 @@ messageData = {
                     "default_action": {
                         "type": "web_url",
                         "url": "https://bit.ly/2f9GemL",
-                        "messenger_extensions": false,
                         "webview_height_ratio": "tall",
                         "fallback_url": "https://bit.ly/2f9GemL"
                     },
@@ -76,7 +75,6 @@ messageData = {
                             "title": "View",
                             "type": "web_url",
                             "url": "http://bit.ly/2f9GemL",
-                            "messenger_extensions": false,
                             "webview_height_ratio": "tall",
                             "fallback_url": "https://bit.ly/2f9GemL"                        
                         }
@@ -89,7 +87,6 @@ messageData = {
                     "default_action": {
                         "type": "web_url",
                         "url": "https://bit.ly/2dKNSCW",
-                        "messenger_extensions": false,
                         "webview_height_ratio": "tall",
                         "fallback_url": "https://bit.ly/2dKNSCW"
                     },
@@ -98,7 +95,6 @@ messageData = {
                             "title": "View",
                             "type": "web_url",
                             "url": "https://bit.ly/2dKNSCW",
-                            "messenger_extensions": false,
                             "webview_height_ratio": "tall",
                             "fallback_url": "https://bit.ly/2dKNSCW"                        
                         }
@@ -111,7 +107,6 @@ messageData = {
                     "default_action": {
                         "type": "web_url",
                         "url": "https://bit.ly/2dZcUN5",
-                        "messenger_extensions": false,
                         "webview_height_ratio": "tall",
                         "fallback_url": "https://bit.ly/2dZcUN5"
                     },
@@ -120,7 +115,6 @@ messageData = {
                             "title": "View",
                             "type": "web_url",
                             "url": "https://bit.ly/2dZcUN5",
-                            "messenger_extensions": false,
                             "webview_height_ratio": "tall",
                             "fallback_url": "https://bit.ly/2dZcUN5"                        
                         }
