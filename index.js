@@ -119,7 +119,7 @@ else{
 
 if(action == "SelectedOffer")
 {
-var openurl = require("openurl");
+var open = require("open");
 
 var offer1 = data.result.parameters.offername;
 
@@ -127,12 +127,12 @@ console.log("Offer:"+offer1);
 
 if(offer1 == "Facebook 1 hr")
 {
-//openurl.open("https://bit.ly/2f9GemL");	
+open("https://bit.ly/2f9GemL");	
 }	
 
 if(offer1 == "Youtube 1 day")
 {
-//openurl.open("https://bit.ly/2dZcUN5");	
+open("https://bit.ly/2dZcUN5");	
 }	
 }	
 
