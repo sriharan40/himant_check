@@ -133,7 +133,16 @@ open("https://bit.ly/2f9GemL");
 if(offer1 == "Youtube 1 day")
 {
 open("https://bit.ly/2dZcUN5");	
-}	
+}
+
+	var speech = 'Thanks for the selection.';
+
+	var responseBody = {
+        "speech": speech,
+        "displayText": speech,	 
+        "source": "apiai-Himant-OTP sample"
+    };
+	
 }	
 
 if(action == "showOptionsToUser")
