@@ -127,11 +127,13 @@ console.log("Offer:"+offer1);
 
 if(offer1 == "Facebook 1 hr")
 {
+console.log("Opening facebook offer");
 open("https://bit.ly/2f9GemL");	
 }	
 
 if(offer1 == "Youtube 1 day")
 {
+console.log("Opening youtube offer");
 open("https://bit.ly/2dZcUN5");	
 }
 
