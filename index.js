@@ -53,77 +53,21 @@ console.log("Sender:"+sender);
 	
 facebook_message = 
 	
-messageData = {
- "attachment": {
-        "type": "template",
-        "payload": {
-            "template_type": "list",
-            "top_element_style": "compact",
-            "elements": [
-                {
-                    "title": "Facebook 1 hr",
-                    "image_url": "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
-                    "subtitle": "100% Cotton, 200% Comfortable",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://bit.ly/2f9GemL",
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://bit.ly/2f9GemL"
-                    },
-                    "buttons": [
-                        {
-                            "title": "View",
-                            "type": "web_url",
-                            "url": "http://bit.ly/2f9GemL",
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://bit.ly/2f9GemL"                        
-                        }
-                    ]                
-                },
-                {
-                    "title": "Clash of Clans",
-                    "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
-                    "subtitle": "100% Cotton, 200% Comfortable",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://bit.ly/2dKNSCW",
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://bit.ly/2dKNSCW"
-                    },
-                    "buttons": [
-                        {
-                            "title": "View",
-                            "type": "web_url",
-                            "url": "https://bit.ly/2dKNSCW",
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://bit.ly/2dKNSCW"                        
-                        }
-                    ]                
-                },
-                {
-                    "title": "Youtube",
-                    "image_url": "https://peterssendreceiveapp.ngrok.io/img/black-t-shirt.png",
-                    "subtitle": "100% Cotton, 200% Comfortable",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://bit.ly/2dZcUN5",
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://bit.ly/2dZcUN5"
-                    },
-                    "buttons": [
-                        {
-                            "title": "View",
-                            "type": "web_url",
-                            "url": "https://bit.ly/2dZcUN5",
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://bit.ly/2dZcUN5"                        
-                        }
-                    ]                
-                }
-            ]  
-        }
-}
-	}
+  messageData = {
+    "text":"Select an offer:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Facebook 1 hr",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+      },
+      {
+        "content_type":"text",
+        "title":"Youtube 1 day",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+      }
+    ]
+   }
    request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
