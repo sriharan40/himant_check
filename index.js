@@ -135,7 +135,7 @@ if(offer1 == "Youtube 1 day")
 openurl.open("https://bit.ly/2dZcUN5");	
 }	
 
-	var speech = 'Thanks for the selection';	
+	var speech = 'Thanks for the selection.';	
 
 	var responseBody = {
         "speech": speech,
