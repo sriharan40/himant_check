@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express();
-require('node-import');
+//require('node-import');
 var mysql = require('mysql');
 var request = require("request");
 var util = require("util");
@@ -61,21 +61,21 @@ messageData = {
             "top_element_style": "compact",
             "elements": [
                 {
-                    "title": "Classic White T-Shirt",
+                    "title": "Facebook 1 hr",
                     "image_url": "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
                     "subtitle": "100% Cotton, 200% Comfortable",
                     "default_action": {
                         "type": "web_url",
-                        "url": "https://peterssendreceiveapp.ngrok.io/view?item=100",
+                        "url": "http://bit.ly/2f9GemL",
                         "messenger_extensions": true,
                         "webview_height_ratio": "tall",
                         "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
                     },
                     "buttons": [
                         {
-                            "title": "Buy",
+                            "title": "View",
                             "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=100",
+                            "url": "http://bit.ly/2f9GemL",
                             "messenger_extensions": true,
                             "webview_height_ratio": "tall",
                             "fallback_url": "https://peterssendreceiveapp.ngrok.io/"                        
@@ -125,35 +125,6 @@ messageData = {
                             "fallback_url": "https://peterssendreceiveapp.ngrok.io/"                        
                         }
                     ]                
-                },
-                {
-                    "title": "Classic Gray T-Shirt",
-                    "image_url": "https://peterssendreceiveapp.ngrok.io/img/gray-t-shirt.png",
-                    "subtitle": "100% Cotton, 200% Comfortable",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
-                        "messenger_extensions": true,
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                    },
-                    "buttons": [
-                        {
-                            "title": "Buy",
-                            "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=103",
-                            "messenger_extensions": true,
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"                        
-                        }
-                    ]                
-                }
-            ],
-             "buttons": [
-                {
-                    "title": "View More",
-                    "type": "postback",
-                    "payload": "payload"                        
                 }
             ]  
         }
