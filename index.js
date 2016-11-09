@@ -44,7 +44,7 @@ try {
 
 if(action == "showOfferOptionsToUser")
 {
-require('offers.js');		
+var offers = require('offers.js');		
 }	
 	  
 if(action == "showOptionsToUser")
