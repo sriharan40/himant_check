@@ -52,17 +52,16 @@ var sender = data.result.contexts[0].parameters.user_id;
 console.log("Sender:"+sender);
 	
 facebook_message = 
-
   messageData = {
     "text":"Select an offer:",
-    "quick_replies":[
-      {
-        "content_type":"text",
+	"quick_replies":[
+		{
+			"content_type":"text",
         "title":"Facebook 1 hr",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
       },
-      {
-        "content_type":"text",
+		{
+			"content_type":"text",
         "title":"Youtube 1 day",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
       }
@@ -124,6 +123,8 @@ var openurl = require("openurl");
 
 var offer1 = data.result.parameters.offername;
 
+console.log("Offer:"+offer1);
+
 if(offer1 == "Facebook 1 hr")
 {
 openurl.open("https://bit.ly/2f9GemL");	
@@ -133,7 +134,15 @@ if(offer1 == "Youtube 1 day")
 {
 openurl.open("https://bit.ly/2dZcUN5");	
 }	
-	
+
+	var speech = 'Thanks for the selection';	
+
+	var responseBody = {
+        "speech": speech,
+        "displayText": speech,	 
+        "source": "apiai-Himant-OTP sample"
+    };		
+
 }	
 
 if(action == "showOptionsToUser")
