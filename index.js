@@ -53,7 +53,7 @@ console.log("Sender:"+sender);
 	
 facebook_message = 
   messageData = {
-    "text":"Select an offer:",
+/*    "text":"Select an offer:",
 	"quick_replies":[
 		{
 			"content_type":"text",
@@ -65,7 +65,26 @@ facebook_message =
         "title":"Youtube 1 day",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
       }
-    ]
+    ] */
+"attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Select an offer:",
+        "buttons":[
+          {
+            "type":"web_url",
+            "url":"https://bit.ly/2f9GemL",
+            "title":"Facebook 1 hr"
+          },
+          {
+           "type":"web_url",
+            "url":"https://bit.ly/2dZcUN5",
+            "title":"Youtube 1 day"
+          }
+        ]
+      }
+    }   
    }
    request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
