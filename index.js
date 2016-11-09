@@ -41,7 +41,12 @@ try {
     });
 	
 	console.log("Action: "+action);
-	
+
+if(action == "showOfferOptionsToUser")
+{
+require('offers.js');		
+}	
+	  
 if(action == "showOptionsToUser")
 {
 	var token = process.env.FB_PAGE_TOKEN;
