@@ -204,7 +204,6 @@ facebook_message =
         message: messageData,
       }
   }, function(error, res, body) {
-	   dashbot.logOutgoing(data, res.body);
     if (error) {
       console.log('Error sending message: ', error);
 		  var speech = error;
@@ -458,8 +457,8 @@ facebook_message =
 }
 	
     response.write(JSON.stringify(responseBody));
+    dashbot.logOutgoing(data, response.body);
     response.end();
-	
   });
   
 }).listen((process.env.PORT || 5000), () => console.log("Server listening"));
