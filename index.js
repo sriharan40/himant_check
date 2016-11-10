@@ -6,6 +6,7 @@ var request = require("request");
 var util = require("util");
 var http = require('http');
 var apiai = require("apiai");
+var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).facebook;
 
 var app = apiai(process.env.APIAI_ACCESS_TOKEN);
 	
@@ -31,6 +32,7 @@ http.createServer(function(req, response) {
 	
 try {
       var data = JSON.parse(body);	
+	dashbot.logIncoming(req.body);
 	  var action = data.result.action;
     } catch(e) {
         console.log('malformed request', body);
@@ -95,6 +97,7 @@ facebook_message =
         message: messageData,
       }
   }, function(error, res, body) {
+	   dashbot.logOutgoing(data, res.body);
     if (error) {
       console.log('Error sending message: ', error);
 		  var speech = error;
@@ -202,6 +205,7 @@ facebook_message =
         message: messageData,
       }
   }, function(error, res, body) {
+	   dashbot.logOutgoing(data, res.body);
     if (error) {
       console.log('Error sending message: ', error);
 		  var speech = error;
