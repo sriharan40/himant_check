@@ -25,15 +25,14 @@ http.createServer(function(req, response) {
   }).on('data', function(chunk) {
 	body += chunk;	  
 	console.log("Body: "+body);
-
+        dashbot.logIncoming(req.body);
 	   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();
 	
 try {
       var data = JSON.parse(body);	
-	dashbot.logIncoming(req.body);
-	  var action = data.result.action;
+      var action = data.result.action;
     } catch(e) {
         console.log('malformed request', body);
         //  return response.status(400).send('malformed request: ' + body);
