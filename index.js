@@ -26,14 +26,14 @@ http.createServer(function(req, response) {
   }).on('data', function(chunk) {
 	body += chunk;	  
 	console.log("Body: "+body);
-         //dashbot.logIncoming(req.body);
-	    //console.log(body.customerName);
-  }).on('end', function() {
-    //body = Buffer.concat(body).toString();
 	Botmetrics.track(req.body, {
     apiKey: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNDMsImV4cCI6MTc5NDQwOTUyM30.AiPFK__DEuL13erCaAzbSd7UTl1zeW4wCrWph98fVcc",
     botId: "ce81d97cf442"
   });	
+  //dashbot.logIncoming(req.body);
+ //console.log(body.customerName);
+  }).on('end', function() {
+    //body = Buffer.concat(body).toString();	
 try {
       var data = JSON.parse(body);	
       var action = data.result.action;
