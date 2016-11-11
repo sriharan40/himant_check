@@ -456,7 +456,7 @@ facebook_message =
 	
 }
 
-Botmetrics.track(data, {
+Botmetrics.track(body, {
     apiKey: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNDMsImV4cCI6MTc5NDQwOTUyM30.AiPFK__DEuL13erCaAzbSd7UTl1zeW4wCrWph98fVcc",
     botId: "ce81d97cf442"
   });	
