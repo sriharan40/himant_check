@@ -461,6 +461,10 @@ facebook_message =
 }
 	
     response.write(JSON.stringify(responseBody));
+	Botmetrics.track(response.body, {
+    apiKey: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNDMsImV4cCI6MTc5NDQwOTUyM30.AiPFK__DEuL13erCaAzbSd7UTl1zeW4wCrWph98fVcc",
+    botId: "ce81d97cf442"
+    });
     //dashbot.logOutgoing(data, response.body);
     response.end();
   });
