@@ -26,7 +26,7 @@ http.createServer(function(req, response) {
   }).on('data', function(chunk) {
 	body += chunk;	  
 	console.log("Body: "+body);	
-  //dashbot.logIncoming(JSON.parse(body));
+  dashbot.logIncoming(JSON.parse(body));
   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();	
@@ -87,7 +87,9 @@ facebook_message =
       }
     }   
    }
-   request({
+   
+   const requestData = {
+//   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
       method: 'POST',
@@ -95,8 +97,11 @@ facebook_message =
         recipient: {id:sender},
         message: messageData,
       }
-  }, function(error, res, body) {
-	   dashbot.logOutgoing(data, res.body);
+  };
+
+request(requestData, function(error, res, body) {  
+//  , function(error, res, body) {
+dashbot.logOutgoing(requestData, res.body);
     if (error) {
       console.log('Error sending message: ', error);
 		  var speech = error;
@@ -195,7 +200,8 @@ facebook_message =
       }
     ]
    }
-   request({
+//   request({
+const requestData = {
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
       method: 'POST',
@@ -203,19 +209,23 @@ facebook_message =
         recipient: {id:sender},
         message: messageData,
       }
-  }, function(error, res, body) {
-    if (error) {
-      console.log('Error sending message: ', error);
-		  var speech = error;
-    } else if (res.body.error) {
-      console.log('Error: ', res.body.error);
-      var speech = res.body.error;
-	  }
-	  else{
-		var speech = 'Welcome to the ePayment System.';			
-	  }
-    
-	  });
+};
+
+request(requestData, function(error, res, body) {  
+//  , function(error, res, body) {
+dashbot.logOutgoing(requestData, res.body);	  
+if (error) {
+  console.log('Error sending message: ', error);
+	  var speech = error;
+} else if (res.body.error) {
+  console.log('Error: ', res.body.error);
+  var speech = res.body.error;
+  }
+  else{
+	var speech = 'Welcome to the ePayment System.';			
+  }
+
+  });
 
 	      response.statusCode = 200;
 	
@@ -455,12 +465,7 @@ facebook_message =
 	}
 	
 }
-
-Botmetrics.track(body, {
-    apiKey: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNDMsImV4cCI6MTc5NDQwOTUyM30.AiPFK__DEuL13erCaAzbSd7UTl1zeW4wCrWph98fVcc",
-    botId: "ce81d97cf442"
-  });	
-	  
+	
     response.write(JSON.stringify(responseBody));
 	//Botmetrics.track(responseBody, {
     //apiKey: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNDMsImV4cCI6MTc5NDQwOTUyM30.AiPFK__DEuL13erCaAzbSd7UTl1zeW4wCrWph98fVcc",
