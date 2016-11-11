@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express();
-//require('node-import');
 var mysql = require('mysql');
 var request = require("request");
 var util = require("util");
@@ -26,7 +25,7 @@ http.createServer(function(req, response) {
   }).on('data', function(chunk) {
 	body += chunk;	  
 	console.log("Body: "+body);	
-  dashbot.logIncoming(JSON.parse(body));
+  dashbot.logIncoming(body);
   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();	
@@ -54,19 +53,6 @@ console.log("Sender:"+sender);
 	
 facebook_message = 
   messageData = {
-/*    "text":"Select an offer:",
-	"quick_replies":[
-		{
-			"content_type":"text",
-        "title":"Facebook 1 hr",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      },
-		{
-			"content_type":"text",
-        "title":"Youtube 1 day",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-      }
-    ] */
 "attachment":{
       "type":"template",
       "payload":{
@@ -89,7 +75,6 @@ facebook_message =
    }
    
    var requestData = {
-//   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
       method: 'POST',
@@ -99,8 +84,7 @@ facebook_message =
       }
   };
 
-request(requestData, function(error, res, body) {  
-//  , function(error, res, body) {
+request(requestData, function(error, res, body) {
 dashbot.logOutgoing(requestData, res.body);
     if (error) {
       console.log('Error sending message: ', error);
@@ -138,9 +122,7 @@ else{
         "displayText": speech,	 
         "source": "apiai-Himant-OTP sample"
     };		
-}
-//'@import offers.js';
-//var offers = require("offers.js");		
+}		
 }	
 
 if(action == "SelectedOffer")
@@ -200,7 +182,6 @@ facebook_message =
       }
     ]
    }
-//   request({
 var requestData = {
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
@@ -212,7 +193,6 @@ var requestData = {
 };
 
 request(requestData, function(error, res, body) {  
-//  , function(error, res, body) {
 dashbot.logOutgoing(requestData, res.body);	  
 if (error) {
   console.log('Error sending message: ', error);
@@ -466,11 +446,6 @@ facebook_message =
 }
 	
     response.write(JSON.stringify(responseBody));
-	//Botmetrics.track(responseBody, {
-    //apiKey: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNDMsImV4cCI6MTc5NDQwOTUyM30.AiPFK__DEuL13erCaAzbSd7UTl1zeW4wCrWph98fVcc",
-    //botId: "ce81d97cf442"
-    //});
-    //dashbot.logOutgoing(responseBody, response.body);
     response.end();
   });
   
