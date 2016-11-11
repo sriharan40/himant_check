@@ -88,7 +88,7 @@ facebook_message =
     }   
    }
    
-   const requestData = {
+   var requestData = {
 //   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
@@ -201,7 +201,7 @@ facebook_message =
     ]
    }
 //   request({
-const requestData = {
+var requestData = {
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
       method: 'POST',
@@ -283,13 +283,12 @@ if(action == "sendOTP")
 	
 	// Create a new REST API client to make authenticated requests against the
 	// twilio back end
-	//var client = new twilio.RestClient('ACe0b6cfbf60f11584099ee062db873252', '7468f40b17004327190847d04b4222ba');
 
 	// Pass in parameters to the REST API using an object literal notation. The
 	// REST client will handle authentication and response serialzation for you.
 	client.sms.messages.create({
 	    to: mobile,
-	    from: '+18312165009',
+	    from: process.env.Twilio_from_number,
 	    body: 'Your one time password for verficiation is :' + otp
 	}, function(error, message) {
 	    // The HTTP request to Twilio will run asynchronously. This callback
