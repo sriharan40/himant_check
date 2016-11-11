@@ -6,7 +6,7 @@ var request = require("request");
 var util = require("util");
 var http = require('http');
 var apiai = require("apiai");
-//var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).facebook;
+var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).facebook;
 var Botmetrics = require('botmetrics');
 
 var app = apiai(process.env.APIAI_ACCESS_TOKEN);
@@ -25,13 +25,13 @@ http.createServer(function(req, response) {
     console.error(err);
   }).on('data', function(chunk) {
 	body += chunk;	  
-	console.log("Body: "+req.body);
-	Botmetrics.track(req.body, {
+	console.log("Body: "+body);
+	Botmetrics.track(body, {
     apiKey: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNDMsImV4cCI6MTc5NDQwOTUyM30.AiPFK__DEuL13erCaAzbSd7UTl1zeW4wCrWph98fVcc",
     botId: "ce81d97cf442"
   });	
-  //dashbot.logIncoming(req.body);
- //console.log(body.customerName);
+  dashbot.logIncoming(body);
+  //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();	
 try {
@@ -461,11 +461,11 @@ facebook_message =
 }
 	
     response.write(JSON.stringify(responseBody));
-	Botmetrics.track(response.body, {
+	Botmetrics.track(responseBody, {
     apiKey: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNDMsImV4cCI6MTc5NDQwOTUyM30.AiPFK__DEuL13erCaAzbSd7UTl1zeW4wCrWph98fVcc",
     botId: "ce81d97cf442"
     });
-    //dashbot.logOutgoing(data, response.body);
+    dashbot.logOutgoing(data, responseBody);
     response.end();
   });
   
