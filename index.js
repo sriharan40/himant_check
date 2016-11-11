@@ -27,7 +27,6 @@ http.createServer(function(req, response) {
 	body += chunk;	  
 	console.log("Body: "+req.body);
 	Botmetrics.track(req.body, {
-EAAEcEkKVmnIBAENxuS26W3DKRTGylTwgfDqClN5I9ksA9OZAIVklmUoZBbwkxWhCUs6I7I8ZCfznbJiqOBbFCZAp3XYO5xIzvqqWcQhWAM7eKfNPAEyLrj9cfZBJ9cNlzBx4OF43oeycFPqzMIwwI2fdVK1vStsZA4rRrTXK6fZBQZDZD		
     apiKey: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNDMsImV4cCI6MTc5NDQwOTUyM30.AiPFK__DEuL13erCaAzbSd7UTl1zeW4wCrWph98fVcc",
     botId: "ce81d97cf442"
   });	
