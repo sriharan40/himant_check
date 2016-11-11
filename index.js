@@ -6,7 +6,8 @@ var request = require("request");
 var util = require("util");
 var http = require('http');
 var apiai = require("apiai");
-var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).facebook;
+const dashbot = require('./dashbot')(process.env.DASHBOT_API_KEY,
+  {debug:true, urlRoot: process.env.DASHBOT_URL_ROOT}).facebook;
 
 var app = apiai(process.env.APIAI_ACCESS_TOKEN);
 	
