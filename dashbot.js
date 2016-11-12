@@ -6,7 +6,7 @@ var _ = require('lodash');
 var util = require('util');
 var fs = require('fs');
 
-var VERSION = JSON.parse(fs.readFileSync(__dirname+'/../package.json')).version;
+var VERSION = JSON.parse(fs.readFileSync(__dirname+'/package.json')).version;
 
 function makeRequest(data, printErrors) {
   if (printErrors) {
