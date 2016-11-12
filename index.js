@@ -23,7 +23,8 @@ http.createServer(function(req, response) {
     console.error(err);
   }).on('data', function(chunk) {
 	body += chunk;	  
-	console.log("Body: "+body);	
+	console.log("Body: "+body);
+    dashbot.logIncoming(body);
   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();	
