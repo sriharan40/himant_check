@@ -5,9 +5,9 @@ var request = require("request");
 var util = require("util");
 var http = require('http');
 var apiai = require("apiai");
-var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).facebook;
-var Botmetrics = require('botmetrics');
-
+var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY,
+  {debug:true, urlRoot: process.env.DASHBOT_URL_ROOT}).facebook;
+//var Botmetrics = require('botmetrics');
 var app = apiai(process.env.APIAI_ACCESS_TOKEN);
 	
 var options = {
@@ -25,7 +25,7 @@ http.createServer(function(req, response) {
   }).on('data', function(chunk) {
 	body += chunk;	  
 	console.log("Body: "+body);	
-  dashbot.logIncoming(body);
+    dashbot.logIncoming(body);
   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();	
@@ -79,6 +79,7 @@ facebook_message =
       qs: {access_token:token},
       method: 'POST',
       json: {
+        dashbotTemplateId: 'right',		  
         recipient: {id:sender},
         message: messageData,
       }
@@ -187,6 +188,7 @@ var requestData = {
       qs: {access_token:token},
       method: 'POST',
       json: {
+        dashbotTemplateId: 'right',		  
         recipient: {id:sender},
         message: messageData,
       }
