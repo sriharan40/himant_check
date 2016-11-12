@@ -24,12 +24,12 @@ http.createServer(function(req, response) {
   }).on('data', function(chunk) {
 	body += chunk;	  
 	console.log("Body: "+body);
-    dashbot.logIncoming(body);
   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();	
 try {
       var data = JSON.parse(body);	
+	  dashbot.logIncoming(body);
       dashbot.logIncoming(data);
       var action = data.result.action;
     } catch(e) {
