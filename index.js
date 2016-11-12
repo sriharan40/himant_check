@@ -14,6 +14,7 @@ var options = {
 }
 
 http.createServer(function(req, response) {
+  dashbot.logIncoming(req.body);
   var headers = req.headers;
   var method = req.method;
   var url = req.url;
@@ -24,7 +25,6 @@ http.createServer(function(req, response) {
   }).on('data', function(chunk) {
 	body += chunk;	  
 	console.log("Body: "+body);	
-    dashbot.logIncoming(body);
   //console.log(body.customerName);
   }).on('end', function() {
     //body = Buffer.concat(body).toString();	
