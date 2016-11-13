@@ -19,9 +19,7 @@ app.use(bodyParser.json());
 app.post('/webhook', function(req, response) {
 var dashbotincoming =       
 { object: 'page',
-      entry: [{
-		req.body
-      }]
+      entry: [req.body]
 };
 dashbot.logIncoming(dashbotincoming);
 //http.createServer(function(req, response) {
