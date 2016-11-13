@@ -22,15 +22,15 @@ dashbot.logIncoming(req.body);
   var headers = req.headers;
   var method = req.method;
   var url = req.url;
-  var body = [];
-
-  req.on('error', function(err) {
-    console.error(err);
-  }).on('data', function(chunk) {
-	body += chunk;	  
+//  var body = [];
+var body = req.body;
+//  req.on('error', function(err) {
+//    console.error(err);
+//  }).on('data', function(chunk) {
+//	body += chunk;	  
 	console.log("Body: "+body);
   //console.log(body.customerName);
-  }).on('end', function() {
+//  }).on('end', function() {
     //body = Buffer.concat(body).toString();	
 try {
       var data = JSON.parse(body);	
@@ -455,7 +455,6 @@ dashbot.logOutgoing(requestData, response.body);
 	
     response.write(JSON.stringify(responseBody));
     response.end();
-  });
 
 });  
 router.listen(process.env.PORT || 5000);
