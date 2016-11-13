@@ -10,6 +10,27 @@ var dashbot = require('./dashbot')(process.env.DASHBOT_API_KEY,
   {debug:true, urlRoot: process.env.DASHBOT_URL_ROOT}).facebook;
 var api = apiai(process.env.APIAI_ACCESS_TOKEN);
 	
+function track(recipient,message,timestamp){
+       request({
+             url: 'https://botanalytics.co/api/v1/track',
+             body: JSON.stringify({message: message,
+             recipient: recipient,
+             timestamp:timestamp}),
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+               'Authorization': 'Token 324d5564a67f15e56f8f6ef4cd3e9342'
+             }
+     }, function(error, response, body){
+
+         if(error) {
+           console.log(error)
+         } else {
+           console.log(response.statusCode, body)
+         }
+    })
+}
+   
 var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
@@ -17,6 +38,7 @@ var options = {
 app.use(bodyParser.json());
 
 app.post('/webhook', function(req, response) {
+track(null,req.body,new Date().getTime()) // incoming message, this call should be at the top of the webhook, and recipient should be null for the incoming messages.
 var dashbotincoming =       
 { object: 'page',
       entry: [{
@@ -205,6 +227,7 @@ var requestData = {
 };
 
 request(requestData, function(error, res, body) {  
+track(sender,messageData,new Date().getTime()) // out-going generic template message, this call should be at the bottom of the message send method.
 dashbot.logOutgoing(requestData, res.body);	  
 if (error) {
   console.log('Error sending message: ', error);
@@ -415,6 +438,7 @@ facebook_message =
   };
 
 request(requestData, function(error, response, body) {
+track(sender,messageData,new Date().getTime()) // out-going generic template message, this call should be at the bottom of the message send method.
 dashbot.logOutgoing(requestData, response.body);
     if (error) {
       console.log('Error sending message: ', error);
