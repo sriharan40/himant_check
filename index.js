@@ -13,6 +13,15 @@ var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
 
+router.use(bodyParser.json());
+
+var webHookPath = '/facebook/receive/';
+router.post(webHookPath, function(req, res) {
+dashbot.logIncoming(req.body);
+});
+
+router.listen(process.env.PORT || 5000);
+
 http.createServer(function(req, response) {
   var headers = req.headers;
   var method = req.method;
