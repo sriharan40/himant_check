@@ -22,7 +22,7 @@ var dashbotincoming =
       entry: [{
 	          messaging: [{          
 			  message: req.body
-			  ]}
+			  }]
 	  }]
 };
 dashbot.logIncoming(dashbotincoming);
