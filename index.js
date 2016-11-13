@@ -459,6 +459,7 @@ dashbot.logOutgoing(requestData, response.body);
     response.write(JSON.stringify(responseBody));
     response.end();
   });
-  
+
+});  
 router.listen(process.env.PORT || 5000);  
 //}).listen((process.env.PORT || 5000), () => console.log("Server listening"));
