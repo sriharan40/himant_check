@@ -24,7 +24,7 @@ function track(recipient,message,timestamp){
      }, function(error, response, body){
 
          if(error) {
-           console.log(error)
+           console.log(body)
          } else {
            console.log(response.statusCode, body)
          }
