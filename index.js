@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var router = express();
 var mysql = require('mysql');
 var request = require("request");
