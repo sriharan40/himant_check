@@ -16,11 +16,8 @@ var options = {
 
 router.use(bodyParser.json());
 
-var webHookPath = '/facebook/receive/';
-router.post(webHookPath, function(req, response) {
+router.post('/webhook', function(req, response) {
 dashbot.logIncoming(req.body);
-//});
-
 //http.createServer(function(req, response) {
   var headers = req.headers;
   var method = req.method;
@@ -461,5 +458,4 @@ dashbot.logOutgoing(requestData, response.body);
   });
 
 });  
-router.listen(process.env.PORT || 5000);  
-//}).listen((process.env.PORT || 5000), () => console.log("Server listening"));
+router.listen(process.env.PORT || 5000);
