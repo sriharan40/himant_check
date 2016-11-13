@@ -20,9 +20,7 @@ app.post('/webhook', function(req, response) {
 var dashbotincoming =       
 { object: 'page',
       entry: [{
-	          messaging: [{          
-			  message: req.body
-			  }]
+	          messaging: [req.body]
 	  }]
 };
 dashbot.logIncoming(dashbotincoming);
