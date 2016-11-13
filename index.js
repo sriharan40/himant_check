@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var router = express();
+var app = express();
 var mysql = require('mysql');
 var request = require("request");
 var util = require("util");
@@ -8,15 +8,15 @@ var http = require('http');
 var apiai = require("apiai");
 var dashbot = require('./dashbot')(process.env.DASHBOT_API_KEY,
   {debug:true, urlRoot: process.env.DASHBOT_URL_ROOT}).facebook;
-var app = apiai(process.env.APIAI_ACCESS_TOKEN);
+var api = apiai(process.env.APIAI_ACCESS_TOKEN);
 	
 var options = {
     sessionId: Math.floor(1000000 + Math.random() * 9000000)
 }
 
-router.use(bodyParser.json());
+app.use(bodyParser.json());
 
-router.post('/webhook', function(req, response) {
+app.post('/webhook', function(req, response) {
 dashbot.logIncoming(req.body);
 //http.createServer(function(req, response) {
   var headers = req.headers;
@@ -28,7 +28,7 @@ var body = req.body;
 //    console.error(err);
 //  }).on('data', function(chunk) {
 //	body += chunk;	  
-	console.log("Body: "+body);
+//	console.log("Body: "+body);
   //console.log(body.customerName);
 //  }).on('end', function() {
     //body = Buffer.concat(body).toString();	
@@ -250,7 +250,7 @@ if(action == "sendOTP")
 
 	var value = name + mobile;
 
-	var req = app.textRequest(value, options);
+	var req = api.textRequest(value, options);
 	
 	// Load the twilio module
 
@@ -458,4 +458,4 @@ dashbot.logOutgoing(requestData, response.body);
     response.end();
 
 });  
-router.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 5000);
