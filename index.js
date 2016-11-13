@@ -21,8 +21,6 @@ router.post(webHookPath, function(req, res) {
 dashbot.logIncoming(req.body);
 });
 
-router.listen(process.env.PORT || 5000);
-
 http.createServer(function(req, response) {
   var headers = req.headers;
   var method = req.method;
