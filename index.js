@@ -33,7 +33,8 @@ var body = req.body;
 //  }).on('end', function() {
     //body = Buffer.concat(body).toString();	
 try {
-      var data = JSON.parse(body);	
+      //var data = JSON.parse(body);	
+	  var data = body;
       var action = data.result.action;
     } catch(e) {
         console.log('malformed request', body);
