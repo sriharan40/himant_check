@@ -37,7 +37,6 @@ http.createServer(function(req, response) {
     //body = Buffer.concat(body).toString();	
 try {
       var data = JSON.parse(body);	
-      dashbot.logIncoming(JSON.parse(body));
       var action = data.result.action;
     } catch(e) {
         console.log('malformed request', body);
