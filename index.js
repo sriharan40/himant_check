@@ -10,9 +10,9 @@ var dashbot = require('./dashbot')(process.env.DASHBOT_API_KEY,
   {debug:true, urlRoot: process.env.DASHBOT_URL_ROOT}).facebook;
 var api = apiai(process.env.APIAI_ACCESS_TOKEN);
 	
-function track(recipient,message,timestamp){
+function track(recipient,message,timestamp){	
        request({
-             url: 'https://botanalytics.co/api/v1/track',
+             url: 'https://botanalytics.co/api/v1/messages/facebook-messenger',
              body: JSON.stringify({message: message,
              recipient: recipient,
              timestamp:timestamp}),
