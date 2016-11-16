@@ -134,7 +134,7 @@ facebook_message =
       "payload":{
         "template_type":"button",
         "text":"Select an offer:",
-        "buttons": [JSON.stringify(arr)]
+        "buttons": [arr]
       }
     }   
    }
