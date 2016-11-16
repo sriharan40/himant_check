@@ -126,6 +126,8 @@ connection.query('select * from offers', function(err, rows, fields) {
           })
     }
 });
+
+console.log(arr);
 	
 facebook_message = 
   messageData = {
@@ -134,7 +136,7 @@ facebook_message =
       "payload":{
         "template_type":"button",
         "text":"Select an offer:",
-        "buttons": arr[0]
+        "buttons": arr
       }
     }   
    }
