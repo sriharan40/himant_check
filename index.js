@@ -116,14 +116,7 @@ var connection;
     });
 	
 var arr1 = [];
-	
-facebook_message = 
-  messageData = {
-"attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"button",
-        "text":"Select an offer:",
+
 connection.query('select * from offers', function(err, rows, fields) {
     if (err) throw err; 
     for (var i in rows) {
@@ -133,12 +126,21 @@ connection.query('select * from offers', function(err, rows, fields) {
             "title":rows[i].offer_name
           })
     }
+	
+facebook_message = 
+  messageData = {
+"attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Select an offer:",
         "buttons": arr1
-});		
       }
     }   
    }
-   
+
+});		
+  
    var requestData = {
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token:token},
