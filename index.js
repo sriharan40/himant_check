@@ -125,9 +125,11 @@ connection.query('select * from offers', function(err, rows, fields) {
             "title":rows[i].offer_name
           })
     }
+
+	console.log(arr1);
+
 });
 
-console.log(arr1);
 	
 facebook_message = 
   messageData = {
