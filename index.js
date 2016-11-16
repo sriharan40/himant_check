@@ -115,6 +115,18 @@ var connection;
         }
     });
 	
+var arr[];
+connection.query('select * from offers', function(err, rows, fields) {
+    if (err) throw err; 
+    for (var i in rows) {
+         var arr+ = {
+            "type":"web_url",
+            "url":rows[i].description,
+            "title":rows[i].offer_name
+          }
+    }
+});
+	
 facebook_message = 
   messageData = {
 "attachment":{
@@ -122,19 +134,7 @@ facebook_message =
       "payload":{
         "template_type":"button",
         "text":"Select an offer:",
-        "buttons":[
-connection.query('select * from offers', function(err, rows, fields) {
-    if (err) throw err; 
-    for (var i in rows) {
-          {
-            "type":"web_url",
-            "url":rows[i].description,
-            "title":rows[i].offer_name
-          },
-	//console.log('Post Titles: ', );
-    }
-});
-        ]
+        "buttons":[arr]
       }
     }   
    }
