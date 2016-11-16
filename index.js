@@ -98,12 +98,12 @@ facebook_message =
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://bit.ly/2f9GemL",
+            "url":"https://goo.gl/6eFDBP",
             "title":"Facebook 1 hr"
           },
           {
            "type":"web_url",
-            "url":"https://bit.ly/2dZcUN5",
+            "url":"https://goo.gl/sIZCze",
             "title":"Youtube 1 day"
           }
         ]
