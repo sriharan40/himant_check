@@ -1,4 +1,4 @@
-var express = require('express');
+\var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var mysql = require('mysql');
@@ -115,11 +115,11 @@ var connection;
         }
     });
 	
-var arr = [];
+var arr1 = [];
 connection.query('select * from offers', function(err, rows, fields) {
     if (err) throw err; 
     for (var i in rows) {
-         arr.push({
+         arr1.push({
             "type":"web_url",
             "url":rows[i].description,
             "title":rows[i].offer_name
@@ -127,7 +127,7 @@ connection.query('select * from offers', function(err, rows, fields) {
     }
 });
 
-console.log(arr);
+console.log( arr1 );
 	
 facebook_message = 
   messageData = {
@@ -136,7 +136,7 @@ facebook_message =
       "payload":{
         "template_type":"button",
         "text":"Select an offer:",
-        "buttons": arr
+        "buttons": arr1
       }
     }   
    }
