@@ -1,4 +1,4 @@
-\var express = require('express');
+var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var mysql = require('mysql');
@@ -127,7 +127,7 @@ connection.query('select * from offers', function(err, rows, fields) {
     }
 });
 
-console.log( arr1 );
+console.log(arr1);
 	
 facebook_message = 
   messageData = {
