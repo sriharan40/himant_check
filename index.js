@@ -119,11 +119,11 @@ var arr = [];
 connection.query('select * from offers', function(err, rows, fields) {
     if (err) throw err; 
     for (var i in rows) {
-         arr[] = {
+         arr.push({
             "type":"web_url",
             "url":rows[i].description,
             "title":rows[i].offer_name
-          }
+          })
     }
 });
 	
