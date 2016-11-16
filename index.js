@@ -137,9 +137,7 @@ facebook_message =
         "buttons": arr1
       }
     }   
-   }
-
-});		
+   }		
   
    var requestData = {
       url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -166,6 +164,8 @@ dashbot.logOutgoing(requestData, res.body);
 	  }
     
 	  });
+	  
+});	  
 
 response.statusCode = 200;
 
