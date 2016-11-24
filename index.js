@@ -192,7 +192,26 @@ else{
     };		
 }		
 }	
+// Add action for context passed from portal
+if(action == "FBCheckBoxStuckInAddNewOffer")
+{
+var token = process.env.FB_PAGE_TOKEN;
 
+var sender = data.result.contexts[0].parameters.user_id;
+
+console.log("Sender from portal is:"+sender);
+
+	var speech = 'Let us continue conversation here. You were not able to complete action on selfservice portal.';
+
+	var responseBody = {
+        "speech": speech,
+        "displayText": speech,	 
+        "source": "apiai-Himant-OTP sample"
+    };
+}// End if Action ==
+	
+	
+// Add action ends
 if(action == "SelectedOffer")
 {
 var open = require("open");
