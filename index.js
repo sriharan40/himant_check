@@ -38,6 +38,7 @@ var options = {
 app.use(bodyParser.json());
 
 app.post('/webhook', function(req, response) {
+console.log(req.body);
 var dashbotincoming =       
 { 
 object: 'page',
