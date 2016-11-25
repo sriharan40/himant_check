@@ -39,7 +39,7 @@ app.use(bodyParser.json());
 
 app.post('/webhook', function(req, response) {
 console.log(req.body);
-var dashbotincoming =       
+/* var dashbotincoming =       
 { 
 object: 'page',
 entry: [
@@ -51,7 +51,8 @@ messaging: [req.body.originalRequest.data]
 ]
 };
 track(null,dashbotincoming,new Date().getTime()) // incoming message, this call should be at the top of the webhook, and recipient should be null for the incoming messages.
-dashbot.logIncoming(dashbotincoming);
+dashbot.logIncoming(dashbotincoming); */
+
 //http.createServer(function(req, response) {
   var headers = req.headers;
   var method = req.method;
