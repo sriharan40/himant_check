@@ -38,9 +38,11 @@ var options = {
 app.use(bodyParser.json());
 
 app.post('/webhook', function(req, response) {
-console.log(req.body);
+	console.log("Request is:" + req.body);
+	console.log("Request body is:" + req.body);
 
-if(req.body.originalRequest.data != undefined || req.body.originalRequest.data != "") {
+// COMMENT DASH BOT AS OF NOW. TODO: Un Comment
+/*if(req.body.originalRequest.data != undefined || req.body.originalRequest.data != "") {
 	var dashbotincoming =       
 	{ 
 	object: 'page',
@@ -52,9 +54,11 @@ if(req.body.originalRequest.data != undefined || req.body.originalRequest.data !
 	}
 	]
 	};
-}
+}	
 track(null,dashbotincoming,new Date().getTime()) // incoming message, this call should be at the top of the webhook, and recipient should be null for the incoming messages.
 dashbot.logIncoming(dashbotincoming);
+*/
+// DASHBOT CODE INCOMING COMMENTED
 //http.createServer(function(req, response) {
   var headers = req.headers;
   var method = req.method;
