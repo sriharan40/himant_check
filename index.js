@@ -79,6 +79,7 @@ try {
 	  var data = body;
 
 	  if (data.entry) {
+			console.log("Entry: "+data.entry); 
             let entries = data.entry;
             entries.forEach((entry) => {
                 let messaging_events = entry.messaging;
