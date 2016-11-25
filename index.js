@@ -10,6 +10,13 @@ var dashbot = require('./dashbot')(process.env.DASHBOT_API_KEY,
   {debug:true, urlRoot: process.env.DASHBOT_URL_ROOT}).facebook;
 var api = apiai(process.env.APIAI_ACCESS_TOKEN);
 	
+var sender = "0";
+	
+function processEvent(event) {
+    sender = event.sender.id.toString();
+	console.log("Sender:"+sender);
+}
+
 function track(recipient,message,timestamp){	
        request({
              url: 'https://botanalytics.co/api/v1/messages/facebook-messenger',
@@ -70,6 +77,22 @@ var body = req.body;
 try {
       //var data = JSON.parse(body);	
 	  var data = body;
+
+	  if (data.entry) {
+            let entries = data.entry;
+            entries.forEach((entry) => {
+                let messaging_events = entry.messaging;
+                if (messaging_events) {
+                    messaging_events.forEach((event) => {
+                        if (event.message && !event.message.is_echo ||
+                            event.postback && event.postback.payload) {
+                            processEvent(event);
+                        }
+                    });
+                }
+            });
+        }
+		
       var action = data.result.action;
     } catch(e) {
         console.log('malformed request', body);
@@ -86,7 +109,7 @@ if(action == "showOfferOptionsToUser")
 {
 var token = process.env.FB_PAGE_TOKEN;
 
-var sender = data.result.contexts[0].parameters.user_id;
+//var sender = data.result.contexts[0].parameters.user_id;
 
 console.log("Sender:"+sender);
 	
