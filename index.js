@@ -38,9 +38,9 @@ var options = {
 app.use(bodyParser.json());
 
 app.post('/webhook', function(req, response) {
-	console.log("Request is:" + req);
-	console.dir("Dir req" + req);
-	console.log("Request body is:" + req.body);
+	//console.log("Request is:" + req);
+	//console.dir("Dir req" + req);
+	//console.log("Request body is:" + req.body);
 
 // COMMENT DASH BOT AS OF NOW. TODO: Un Comment
 /*if(req.body.originalRequest.data != undefined || req.body.originalRequest.data != "") {
@@ -77,7 +77,7 @@ var body = req.body;
 try {
       //var data = JSON.parse(body);	
 	  var data = body;
-      var action = data.entry.messaging.sender.id;
+      var action = data.entry[0].messaging.sender.id;
     } catch(e) {
         console.log('malformed request', body);
         //  return response.status(400).send('malformed request: ' + body);
