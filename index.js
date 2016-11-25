@@ -38,28 +38,20 @@ var options = {
 app.use(bodyParser.json());
 
 app.post('/webhook', function(req, response) {
-	//console.log("Request is:" + req);
-	//console.dir("Dir req" + req);
-	//console.log("Request body is:" + req.body);
-
-// COMMENT DASH BOT AS OF NOW. TODO: Un Comment
-/*if(req.body.originalRequest.data != undefined || req.body.originalRequest.data != "") {
-	var dashbotincoming =       
-	{ 
-	object: 'page',
-	entry: [
-	{
-	id: "165157840188738",	
-	time: new Date().getTime(),
-	messaging: [req.body.originalRequest.data]
-	}
-	]
-	};
-}	
+console.log(req.body);
+var dashbotincoming =       
+{ 
+object: 'page',
+entry: [
+{
+id: "165157840188738",	
+time: new Date().getTime(),
+messaging: [req.body.originalRequest.data]
+}
+]
+};
 track(null,dashbotincoming,new Date().getTime()) // incoming message, this call should be at the top of the webhook, and recipient should be null for the incoming messages.
 dashbot.logIncoming(dashbotincoming);
-*/
-// DASHBOT CODE INCOMING COMMENTED
 //http.createServer(function(req, response) {
   var headers = req.headers;
   var method = req.method;
@@ -77,12 +69,7 @@ var body = req.body;
 try {
       //var data = JSON.parse(body);	
 	  var data = body;
-      var action = data.entry[0].messaging;
-	  var action1 = JSON.stringify(action);
-	  if(action1 == undefined)
-	  {
-      var action1 = data.result.action;		  
-	  }
+      var action = data.result.action;
     } catch(e) {
         console.log('malformed request', body);
         //  return response.status(400).send('malformed request: ' + body);
@@ -92,7 +79,7 @@ try {
       console.error(err);
     });
 	
-	console.log("Action: "+action1);
+	console.log("Action: "+action);
 
 if(action == "showOfferOptionsToUser")
 {
