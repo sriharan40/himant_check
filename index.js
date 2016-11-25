@@ -38,8 +38,8 @@ var options = {
 app.use(bodyParser.json());
 
 app.post('/webhook', function(req, response) {
-	console.log("Request is:" + req.body);
-	console.log("Request body is:" + req.body);
+	console.log("Request is:" + JSON.parse(req));
+	console.log("Request body is:" + JSON.parse(req.body));
 
 // COMMENT DASH BOT AS OF NOW. TODO: Un Comment
 /*if(req.body.originalRequest.data != undefined || req.body.originalRequest.data != "") {
