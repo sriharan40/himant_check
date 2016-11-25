@@ -77,7 +77,7 @@ var body = req.body;
 try {
       //var data = JSON.parse(body);	
 	  var data = body;
-      var action = data.result.action;
+      var action = data.entry.messaging.sender.id;
     } catch(e) {
         console.log('malformed request', body);
         //  return response.status(400).send('malformed request: ' + body);
