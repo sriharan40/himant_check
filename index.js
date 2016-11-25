@@ -78,10 +78,10 @@ try {
       //var data = JSON.parse(body);	
 	  var data = body;
       var action = data.entry[0].messaging;
-	  action = json.parse(action);
-	  if(action == undefined)
+	  var action1 = JSON.stringify(action);
+	  if(action1 == undefined)
 	  {
-      var action = data.result.action;		  
+      var action1 = data.result.action;		  
 	  }
     } catch(e) {
         console.log('malformed request', body);
@@ -92,7 +92,7 @@ try {
       console.error(err);
     });
 	
-	console.log("Action: "+action);
+	console.log("Action: "+action1);
 
 if(action == "showOfferOptionsToUser")
 {
