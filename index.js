@@ -241,21 +241,15 @@ console.log("Sender from portal is:"+sender);
 	{
 	var speech = 'Let us continue conversation here. You were not able to complete action on selfservice portal.';
 	console.log("Inside speech test");
-	
-}
-	/*var responseBody = {
-        "speech": speech,
-        "displayText": speech,	 
-        "source": "apiai-Himant-OTP sample"
-    };*/
 	var responseBody = 
 	    {
-		"speech": "Barack Hussein Obama II is the 44th and current President of the United States.",
-		"displayText": "Barack Hussein Obama II is the 44th and current President of the United States, and the first African American to hold the office. Born in Honolulu, Hawaii, Obama is a graduate of Columbia University   and Harvard Law School, where ",
-		"source": "api-ai himant test"
-	     };
+		"speech": speech,
+		"displayText": speech,	 
+		"source": "apiai-Himant-OTP sample"
+    		};
+	
 	 console.log("Outside speech test");
-}
+	}
 	
 
 	// TEST ENDS
