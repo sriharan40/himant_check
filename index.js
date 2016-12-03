@@ -239,7 +239,7 @@ console.log("Sender from portal is:"+sender);
 // TEST THE SPEECH ACTION : HIMANT
 	if (action == "PortalAgentSpeechIntroduction")
 	{
-	var speech = 'Let us continue conversation here. You were not able to complete action on selfservice portal.';
+	var speech = 'Hey, I am good, I have been made to do a POC for voice check by Himant.How can I help you today?';
 	console.log("Inside speech test");
 	var responseBody = 
 	    {
