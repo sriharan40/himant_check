@@ -237,7 +237,7 @@ console.log("Sender from portal is:"+sender);
 }// End if Action ==
 	
 // TEST THE SPEECH ACTION : HIMANT
-	if (action ==PortalAgentSpeechIntroduction)
+	if (action == "PortalAgentSpeechIntroduction")
 	{
 		var speech = 'Let us continue conversation here. You were not able to complete action on selfservice portal.';
 	console.log("Inside speech test");
