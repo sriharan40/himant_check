@@ -291,7 +291,7 @@ if(action == "showOptionsToUser")
 {
 	var token = process.env.FB_PAGE_TOKEN;
 
-	var sender = data.result.contexts[0].parameters.user_id;
+	var sender = data.result.contexts[0].parameters.facebook_user_id;
 
 console.log("Sender:"+sender);
 	
