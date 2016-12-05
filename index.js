@@ -291,8 +291,10 @@ if(action == "showOptionsToUser")
 {
 	var token = process.env.FB_PAGE_TOKEN;
 
-	var sender = data.result.contexts[0].parameters.facebook_user_id;
+	var sender = JSON.stringify(data.result.contexts[0]).parameters.facebook_user_id;
 
+console.log("Contexts:"+JSON.stringify(data.result.contexts[0]));
+	
 console.log("Sender:"+sender);
 	
 facebook_message = 
