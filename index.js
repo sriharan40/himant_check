@@ -223,7 +223,7 @@ if(action == "FBCheckBoxStuckInAddNewOffer")
 {
 var token = process.env.FB_PAGE_TOKEN;
 
-var sender = data.result.contexts[0].parameters.user_id;
+var sender = data.result.contexts[1].parameters.facebook_user_id;
 
 console.log("Sender from portal is:"+sender);
 
@@ -292,8 +292,6 @@ if(action == "showOptionsToUser")
 	var token = process.env.FB_PAGE_TOKEN;
 
 	var sender = data.result.contexts[1].parameters.facebook_user_id;
-
-console.log("Contexts:"+JSON.stringify(data.result.contexts[1]));
 	
 console.log("Sender:"+sender);
 	
@@ -441,9 +439,9 @@ if(action == "validateOTP")
 {
 	var otp1 = data.result.parameters.inputOTP;
 
-	var otp_check1 = data.result.contexts[2].parameters.number;
+	var otp_check1 = data.result.contexts[3].parameters.number;
 
-	var sender = data.result.contexts[0].parameters.user_id;
+	var sender = data.result.contexts[1].parameters.facebook_user_id;
 
 	if(otp1 == otp_check1)
 	{
