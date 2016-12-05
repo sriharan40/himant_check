@@ -429,7 +429,7 @@ if(action == "sendOTP")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-	"contextOut": [{"name":"otp_check", "lifespan":3, "parameters":{"number":otp}}],
+		"contextOut": [{"name":"otp_check", "lifespan":3, "parameters":{"number":otp}}],
         "source": "apiai-Himant-OTP sample"
 	};
 
@@ -441,7 +441,7 @@ if(action == "validateOTP")
 
 	var otp_check1 = data.result.contexts[0].parameters.number;
 
-	console.log("Context:"+JSON.stringify(data.result.contexts[0]));
+	console.log("Context:"+JSON.stringify(data.result.contexts[1]));
 	
 	var sender = data.result.contexts[1].parameters.facebook_user_id;
 
