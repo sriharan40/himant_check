@@ -439,9 +439,7 @@ if(action == "validateOTP")
 {
 	var otp1 = data.result.parameters.inputOTP;
 
-	var otp_check1 = data.result.contexts[0].parameters.number;
-
-	console.log("Context:"+JSON.stringify(data.result.contexts[1]));
+	var otp_check1 = data.result.contexts[1].parameters.number;
 	
 	var sender = data.result.contexts[1].parameters.facebook_user_id;
 
@@ -557,6 +555,15 @@ dashbot.logOutgoing(requestData, response.body);
         "speech": speech,
         "displayText": speech,
 		"data": {"facebook": {facebook_message}},
+        "source": "apiai-Himant-OTP sample"
+    };
+	}
+
+    else
+	{
+	var responseBody = {
+        "speech": speech,
+        "displayText": speech,
         "source": "apiai-Himant-OTP sample"
     };
 	}
