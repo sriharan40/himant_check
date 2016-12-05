@@ -441,7 +441,7 @@ if(action == "validateOTP")
 
 	var otp_check1 = data.result.contexts[0].parameters.number;
 
-	console.log("Context:"+data.result.contexts[0]);
+	console.log("Context:"+JSON.stringify(data.result.contexts[0]));
 	
 	var sender = data.result.contexts[1].parameters.facebook_user_id;
 
@@ -477,7 +477,7 @@ var connection;
 	
 	connection.query('SELECT * from t_users', function(err, results) {
 
-	var user_id = data.result.contexts[0].parameters.user_id;
+	var user_id = data.result.contexts[1].parameters.facebook_user_id;
 	
 	var mobile = data.result.contexts[0].parameters.phone;
 
