@@ -477,7 +477,7 @@ var connection;
 
 	var user_id = data.result.contexts[1].parameters.facebook_user_id;
 	
-	var mobile = data.result.contexts[0].parameters.phone;
+	var mobile = data.result.contexts[1].parameters.phone;
 
 	var id = results.length + 1;	
 
@@ -534,7 +534,7 @@ facebook_message =
       }
   };
 
-request(requestData, function(error, response, body) {
+/* request(requestData, function(error, response, body) {
 track(sender,messageData,new Date().getTime()) // out-going generic template message, this call should be at the bottom of the message send method.
 dashbot.logOutgoing(requestData, response.body);
     if (error) {
@@ -546,10 +546,10 @@ dashbot.logOutgoing(requestData, response.body);
 
     response.statusCode = 200;
 	
-    response.setHeader('Content-Type', 'application/json');	
+    response.setHeader('Content-Type', 'application/json');	*/
 
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-    if(sender != undefined)
+    if(sender != undefined || sender != "")
 	{
 	var responseBody = {
         "speech": speech,
@@ -577,14 +577,14 @@ dashbot.logOutgoing(requestData, response.body);
     response.setHeader('Content-Type', 'application/json');	
 
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-    if(sender != undefined)
-	{
+   // if(sender != undefined)
+   // {
 	var responseBody = {
         "speech": speech,
         "displayText": speech,
         "source": "apiai-Himant-OTP sample"
     };
-	}
+	// }
 	
 	}
 	
