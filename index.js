@@ -106,6 +106,14 @@ try {
 	
 	console.log("Action: "+action);
 
+	console.log("Context1:"+JSON.stringify(data.result.contexts[0]));
+
+	console.log("Context2:"+JSON.stringify(data.result.contexts[1]));
+
+	console.log("Context3:"+JSON.stringify(data.result.contexts[2]));
+
+	console.log("Context4:"+JSON.stringify(data.result.contexts[3]));
+	
 if(action == "showOfferOptionsToUser")
 {
 var token = process.env.FB_PAGE_TOKEN;
