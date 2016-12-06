@@ -447,9 +447,9 @@ if(action == "validateOTP")
 {
 	var otp1 = data.result.parameters.inputOTP;
 
-	var otp_check1 = data.result.contexts[0].parameters.number;
+	var otp_check1 = data.result.contexts[1].parameters.number;
 	
-	var sender = data.result.contexts[1].parameters.facebook_user_id;
+	var sender = data.result.contexts[2].parameters.facebook_user_id;
 
 	if(otp1 == otp_check1)
 	{
