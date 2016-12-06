@@ -437,7 +437,7 @@ if(action == "sendOTP")
      var responseBody = {
         "speech": speech,
         "displayText": speech,
-		"contextOut": [{"name":"otp_check", "lifespan":3, "parameters":{"number":otp}}],
+		"contextOut": [{"name":"otp_check", "lifespan":1, "parameters":{"number":otp}}],
         "source": "apiai-Himant-OTP sample"
 	};
 
