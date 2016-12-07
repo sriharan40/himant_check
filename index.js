@@ -599,8 +599,8 @@ dashbot.logOutgoing(requestData, response.body);
 }
     
     response.setHeader('Content-Type', 'application/json');	
-    response.write(JSON.stringify(responseBody));
-    console.log ("Response is :" + JSON.stringify(responseBody));
+    //response.write(JSON.stringify(responseBody));
+    //console.log ("Response is :" + JSON.stringify(responseBody));
     response.end();
 
 });  
