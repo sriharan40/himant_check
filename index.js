@@ -562,7 +562,7 @@ dashbot.logOutgoing(requestData, response.body);
 	var responseBody = {
         "speech": speech,
         "displayText": speech,
-		"data": {"facebook": {facebook_message}},
+	"data": {"facebook": {facebook_message}},
         "source": "apiai-Himant-OTP sample"
     };
 	}
