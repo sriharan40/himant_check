@@ -9,6 +9,7 @@ var apiai = require("apiai");
 var dashbot = require('./dashbot')(process.env.DASHBOT_API_KEY,
   {debug:true, urlRoot: process.env.DASHBOT_URL_ROOT}).facebook;
 var api = apiai(process.env.APIAI_ACCESS_TOKEN);
+const REST_PORT = (process.env.PORT || 5090);
 	
 var sender = "0";
 	
@@ -585,4 +586,7 @@ dashbot.logOutgoing(requestData, response.body);
     response.end();
 
 });  
-app.listen(process.env.PORT || 5000);
+//app.listen(process.env.PORT || 5000);
+app.listen(REST_PORT, () => {
+    console.log('Rest service ready on port ' + REST_PORT);
+});
