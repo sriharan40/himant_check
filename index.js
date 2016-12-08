@@ -79,7 +79,7 @@ try {
 	  var data = body;
 
 	  if (data.entry) {
-			console.log("Entry: "+data.entry); 
+	    console.log("Entry: "+data.entry); 
             let entries = data.entry;
             entries.forEach((entry) => {
                 let messaging_events = entry.messaging;
@@ -162,7 +162,7 @@ connection.query('select * from offers', function(err, rows, fields) {
     }
 	
 facebook_message = 
-  messageData = {
+messageData = {
 "attachment":{
       "type":"template",
       "payload":{
@@ -211,7 +211,7 @@ if(sender != undefined || sender != "")
 	var responseBody = {
         "speech": speech,
         "displayText": speech,	 
-		"data": {"facebook": {facebook_message}},		
+	"data": {"facebook": {facebook_message}},		
         "source": "apiai-Himant-OTP sample"
     };	  
 } 
@@ -357,7 +357,7 @@ if(sender != undefined || sender != "")
 	var responseBody = {
         "speech": speech,
         "displayText": speech,	 
-		"data": {"facebook": {facebook_message}},		
+	"data": {"facebook": {facebook_message}},		
         "source": "apiai-Himant-OTP sample"
     };	  
 } 
