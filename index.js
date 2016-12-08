@@ -395,22 +395,22 @@ if(action == "sendOTP")
 
 	var client = require('twilio')(accountSid, authToken);
 
-	//client.sms.messages.create({
-	 //   to: mobile,
-	 //   from: process.env.Twilio_from_number,
-	 //   body: 'Your one time password for verficiation is :' + otp
-	//}, function(error, message) {
+	client.sms.messages.create({
+	   to: mobile,
+	   from: process.env.Twilio_from_number,
+	   body: 'Your one time password for verficiation is :' + otp
+	}, function(error, message) {
 	  
-	  //  if (!error) {
-	  //	console.log('Success! The SID for this SMS message is:');
-	//	console.log(message.sid);
+	  if (!error) {
+		console.log('Success! The SID for this SMS message is:');
+		console.log(message.sid);
 
-	//	console.log('Message sent on:');
-	//	console.log(message.dateCreated);
-	 //   } else {
-	//	console.log('Oops! There was an error.');
-	 //   }
-	// });
+		console.log('Message sent on:');
+		console.log(message.dateCreated);
+	   } else {
+		console.log('Oops! There was an error.');
+	   }
+	 });
    
     response.statusCode = 200;
 	
