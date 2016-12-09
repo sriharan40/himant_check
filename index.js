@@ -506,7 +506,7 @@ facebook_message =
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/himantmusic&notify_url=http://hitman507bot.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=100&currency_code=PHP",
+            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/digitaldemofortelcos&notify_url=http://demofordigitaltelco.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=100&currency_code=PHP",
             "title":"Pay with PayPal"
           }
 	  ]
