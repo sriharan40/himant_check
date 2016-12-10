@@ -424,7 +424,7 @@ var options = {
 };
 
 function callback(err1, resp, bod) {
-    if (!error) {
+    if (!err1) {
         console.log(resp.statusCode);
         console.log(bod);
 		//var info = JSON.parse(JSON.stringify(body));
