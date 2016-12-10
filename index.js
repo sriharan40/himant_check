@@ -416,7 +416,6 @@ if(action == "sendOTP")
 var credentials = {"Credentials":{"user":"Asmsa1","password":"Asmsa1"}}
 
 var options = {
-	//url: 'http://php-web.herokuapp.com/amdocs.php',
     url: 'http://ipllin07.amdocs.com/rest/nphproxy.pl/000000A/http/lrt930s150m377:51000/rp-webapp-9-common/Login',
     method: 'POST',
     json: credentials,
@@ -427,7 +426,7 @@ function callback(err1, resp, bod) {
     if (!err1) {
         console.log(resp.statusCode);
         console.log(bod);
-		//var info = JSON.parse(JSON.stringify(body));
+	//var info = JSON.parse(JSON.stringify(body));
         //console.log(info);
     }
     else {
@@ -437,7 +436,7 @@ function callback(err1, resp, bod) {
 }
 
 //send request
-request(options, callback);
+http.request(options, callback);
 	
 response.statusCode = 200;
 	
