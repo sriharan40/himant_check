@@ -414,18 +414,29 @@ if(action == "sendOTP")
 	
 var credentials = {"Credentials":{"user":"Asmsa1","password":"Asmsa1"}}
 
-var req = http.request({
-    host: 'http://ipllin07.amdocs.com',
-    path: '/rest/nphproxy.pl/000000A/http/lrt930s150m377:51000/rp-webapp-9-common/Login',
+var options = {
+	//url: 'http://php-web.herokuapp.com/amdocs.php',
+    url: 'http://ipllin07.amdocs.com/rest/nphproxy.pl/000000A/http/lrt930s150m377:51000/rp-webapp-9-common/Login',
     method: 'POST',
     json: credentials,
-    headers: {'Content-Type': 'application/json'}	
-}, function(res){
-    if (res.statusCode === 200) 
-		console.log(res);
-    else 
-		console.log(res.statusCode);
-});
+    headers: {'Content-Type': 'application/json'}
+};
+
+function callback(error, response, body) {
+    if (!error) {
+        console.log(response.statusCode);
+        console.log(body);
+		//var info = JSON.parse(JSON.stringify(body));
+        //console.log(info);
+    }
+    else {
+		console.log(error);
+        //console.log('Error happened: '+ error);
+    }
+}
+
+//send request
+request(options, callback);
 	
 response.statusCode = 200;
 	
