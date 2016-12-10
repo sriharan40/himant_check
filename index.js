@@ -412,7 +412,34 @@ if(action == "sendOTP")
 	   }
 	 });
    
-    response.statusCode = 200;
+	
+var credentials = {"Credentials":{"user":"Asmsa1","password":"Asmsa1"}}
+
+var options = {
+	//url: 'http://php-web.herokuapp.com/amdocs.php',
+    url: 'http://ipllin07.amdocs.com/rest/nphproxy.pl/000000A/http/lrt930s150m377:51000/rp-webapp-9-common/Login',
+    method: 'POST',
+    json: credentials,
+    headers: {'Content-Type': 'application/json'}
+};
+
+function callback(err1, resp, bod) {
+    if (!error) {
+        console.log(resp.statusCode);
+        console.log(bod);
+		//var info = JSON.parse(JSON.stringify(body));
+        //console.log(info);
+    }
+    else {
+		console.log(err1);
+        //console.log('Error happened: '+ error);
+    }
+}
+
+//send request
+request(options, callback);
+	
+response.statusCode = 200;
 	
     response.setHeader('Content-Type', 'application/json');	
 
