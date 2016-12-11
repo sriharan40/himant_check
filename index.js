@@ -420,7 +420,7 @@ response.setHeader('Content-Type', 'application/json');
 //facebook_message = body1;
 var parsedResponse = JSON.parse(body1);
 console.log ("Parsed JSON response is : " + JSON.stringify(parsedResponse));
-var customSpeech = JSON.stringify(parsedResponse);
+var customSpeech = parsedResponse.CustomerDetailsL.name;
 	
 var responseBody = {
 "speech": customSpeech,
