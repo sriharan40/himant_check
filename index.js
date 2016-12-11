@@ -374,6 +374,51 @@ else{
 }
 }
  
+// GET Customer Information
+if(action == "getCustomerByMSISDN")
+{
+var msisdn = data.result.parameters.customerNumber;
+
+var Curl = require( 'node-libcurl' ).Curl;
+
+var curl = new Curl();
+
+url = 'http://ipllin07.amdocs.com/rest/nphproxy.pl/000000A/http/lrt930s150m377:51000/rp-webapp-9-common/Login';
+
+var data = '{"Credentials":{"user":"Asmsa1","password":"Asmsa1"}}';                                                                  
+
+curl.setOpt(Curl.option.URL, url);
+curl.setOpt(Curl.option.POSTFIELDS, data);    
+curl.setOpt(Curl.option.HEADER, true);                                                              
+curl.setOpt(Curl.option.HTTPHEADER, ['Content-Type: application/json'] );                                                                                                                            
+
+curl.perform();
+
+curl.on('end', function( statusCode, body, headers ) {
+	
+var token = headers[0].uxfauthorization;
+
+var curl1 = new Curl();
+	
+url1 = 'http://ipllin07.amdocs.com/rest/nphproxy.pl/000000A/http/lrt930s150m377:51000/rp-webapp-9-common/customer/'+msisdn+'/msisdn';
+
+curl1.setOpt(Curl.option.URL, url1);
+curl1.setOpt(Curl.option.HTTPHEADER, [
+'Content-Type: application/json',
+'Authorization:'+ token
+]);                                                                                                                            
+
+curl1.perform();
+
+curl1.on('end', function( statusCode1, body1, headers1 ) {
+console.log(body1);
+curl1.close();
+});
+curl.close();
+});
+
+}
+ 
 // TWILIO SMS
 if(action == "sendOTP")
 {
@@ -410,34 +455,8 @@ if(action == "sendOTP")
 	   } else {
 		console.log('Oops! There was an error.');
 	   }
-	 });
-	
-var credentials = {"Credentials":{"user":"Asmsa1","password":"Asmsa1"}}
+	 });	
 
-var options = {
-	//url: 'http://php-web.herokuapp.com/amdocs.php',
-    url: 'http://ipllin07.amdocs.com/rest/nphproxy.pl/000000A/http/lrt930s150m377:51000/rp-webapp-9-common/Login',
-    method: 'POST',
-    json: credentials,
-    headers: {'Content-Type': 'application/json'}
-};
-
-function callback(error, response, body) {
-    if (!error) {
-        console.log(response.statusCode);
-        console.log(body);
-		//var info = JSON.parse(JSON.stringify(body));
-        //console.log(info);
-    }
-    else {
-		console.log(error);
-        //console.log('Error happened: '+ error);
-    }
-}
-
-//send request
-request(options, callback);
-	
 response.statusCode = 200;
 	
 response.setHeader('Content-Type', 'application/json');	
@@ -610,8 +629,8 @@ dashbot.logOutgoing(requestData, response.body);
     response.write(JSON.stringify(responseBody));
     console.log ("Response is :" + JSON.stringify(responseBody));
     response.end();
+});
 
-});  
 //app.listen(process.env.PORT || 5000);
 app.listen(REST_PORT, () => {
     console.log('Rest service ready on port ' + REST_PORT);
