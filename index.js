@@ -418,14 +418,14 @@ response.setHeader('Content-Type', 'application/json');
 
 // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
 //facebook_message = body1;
-//var parsedResponse = JSON.parse(body1);
+var parsedResponse = JSON.parse(body1);
 //console.log ("Parsed JSON response is : " + JSON.stringify(parsedResponse));
-//var customSpeech = "Your name is : "+parsedResponse.CustomerDetailsL.name+" and you are a "+parsedResponse.CustomerDetailsL.paymentCategory+" subscriber.";
+var customSpeech = "Your name is : "+parsedResponse.CustomerDetailsL.name+" and you are a "+parsedResponse.CustomerDetailsL.paymentCategory+" subscriber.";
 //var customSpeech = body1;
 	
 var responseBody = {
-"speech": body1,
-"displayText": body1,
+"speech": customSpeech,
+"displayText": customSpeech,
 "source": "apiai-Himant-OTP sample"
 //"data": {"facebook": {facebook_message}}
 };
