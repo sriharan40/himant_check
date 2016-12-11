@@ -417,13 +417,13 @@ response.statusCode = 200;
 response.setHeader('Content-Type', 'application/json');	
 
 // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-facebook_message = body1;
+//facebook_message = body1;
 	
 var responseBody = {
-"speech": body1,
+"speech": body1.CustomerDetails.name,
 "displayText": body1,
-"source": "apiai-Himant-OTP sample",
-"data": {"facebook": {facebook_message}}
+"source": "apiai-Himant-OTP sample"
+//"data": {"facebook": {facebook_message}}
 };
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
