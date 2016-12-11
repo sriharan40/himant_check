@@ -422,7 +422,7 @@ facebook_message = body1;
 var responseBody = {
 "speech": body1,
 "displayText": body1,
-"source": "apiai-Himant-OTP sample"
+"source": "apiai-Himant-OTP sample",
 "data": {"facebook": {facebook_message}}
 };
 response.write(JSON.stringify(responseBody));
