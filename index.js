@@ -420,7 +420,7 @@ response.setHeader('Content-Type', 'application/json');
 //facebook_message = body1;
 	
 var responseBody = {
-"speech": body1.CustomerDetails.name,
+"speech": body1.CustomerDetailsL.name,
 "displayText": body1,
 "source": "apiai-Himant-OTP sample"
 //"data": {"facebook": {facebook_message}}
