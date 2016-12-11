@@ -383,9 +383,9 @@ var Curl = require( 'node-libcurl' ).Curl;
 
 var curl = new Curl();
 
-url = 'http://ipllin07.amdocs.com/rest/nphproxy.pl/000000A/http/lrt930s150m377:51000/rp-webapp-9-common/Login';
+url = process.env.BSS_TOKEN_URL;
 
-var data = '{"Credentials":{"user":"Asmsa1","password":"Asmsa1"}}';                                                                  
+var data = process.env.BSS_CREDENTIALS;                                                                  
 
 curl.setOpt(Curl.option.URL, url);
 curl.setOpt(Curl.option.POSTFIELDS, data);    
@@ -400,7 +400,7 @@ var token = headers[0].uxfauthorization;
 
 var curl1 = new Curl();
 	
-url1 = 'http://ipllin07.amdocs.com/rest/nphproxy.pl/000000A/http/lrt930s150m377:51000/rp-webapp-9-common/customer/'+msisdn+'/msisdn';
+url1 = process.env.BSS_GETCUST_BASIC_INFO_REST_URL +msisdn+'/msisdn';
 
 curl1.setOpt(Curl.option.URL, url1);
 curl1.setOpt(Curl.option.HTTPHEADER, [
