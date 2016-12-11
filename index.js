@@ -493,7 +493,7 @@ if(action == "validateOTP")
 {
 	var otp1 = data.result.parameters.inputOTP;
 
-	var otp_check1 = data.result.contexts[2].parameters.number;
+	var otp_check1 = data.result.contexts[1].parameters.number;
 	
 	var sender = data.result.contexts[0].parameters.facebook_user_id;
 
