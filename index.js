@@ -411,7 +411,21 @@ curl1.setOpt(Curl.option.HTTPHEADER, [
 curl1.perform();
 
 curl1.on('end', function( statusCode1, body1, headers1 ) {
-console.log(body1);
+	
+response.statusCode = 200;
+	
+response.setHeader('Content-Type', 'application/json');	
+
+// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+var responseBody = {
+"speech": body1,
+"displayText": body1,
+"source": "apiai-Himant-OTP sample"
+};
+response.write(JSON.stringify(responseBody));
+console.log ("Response is :" + JSON.stringify(responseBody));
+response.end();
+	
 curl1.close();
 });
 curl.close();
@@ -469,6 +483,10 @@ response.setHeader('Content-Type', 'application/json');
         "source": "apiai-Himant-OTP sample"
 	};
 
+response.write(JSON.stringify(responseBody));
+console.log ("Response is :" + JSON.stringify(responseBody));
+response.end();
+	
 }
 
 if(action == "validateOTP")
@@ -624,11 +642,12 @@ dashbot.logOutgoing(requestData, response.body);
 	
 	}
 	
+response.write(JSON.stringify(responseBody));
+console.log ("Response is :" + JSON.stringify(responseBody));
+response.end();	
+
 }
     
-    response.write(JSON.stringify(responseBody));
-    console.log ("Response is :" + JSON.stringify(responseBody));
-    response.end();
 });
 
 //app.listen(process.env.PORT || 5000);
