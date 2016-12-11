@@ -419,7 +419,8 @@ response.setHeader('Content-Type', 'application/json');
 // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
 //facebook_message = body1;
 var parsedResponse = JSON.parse(body1);
-var customSpeech = "Your name is :" + parsedResponse.CustomerDetailsL.name + ", and you are a " + CustomerDetailsL.paymentCategory + "subscriber in our system" ;
+console.log ("Parsed JSON response is : " + parsedResponse);
+var customSpeech = "Your name is :" + parsedResponse.name + ", and you are a " + parsedResponse.paymentCategory + "subscriber in our system" ;
 	
 var responseBody = {
 "speech": customSpeech,
