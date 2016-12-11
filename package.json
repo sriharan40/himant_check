@@ -26,6 +26,7 @@
     "json-bigint": "^0.2.0",
     "node-uuid": "^1.4.7",
     "request": "^2.73.0",
+    "node-libcurl": "^1.0.0",    
     "request-promise": "^4.1.1",    
     "dashbot": "^0.7.4",
     "util": "^0.10.3"    
