@@ -421,6 +421,7 @@ var responseBody = {
 "speech": body1,
 "displayText": body1,
 "source": "apiai-Himant-OTP sample"
+"data": {"facebook": {body1}}
 };
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
