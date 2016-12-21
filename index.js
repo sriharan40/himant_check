@@ -642,6 +642,9 @@ dashbot.logOutgoing(requestData, response.body);
         "source": "apiai-Himant-OTP sample"
     };
 	}
+response.write(JSON.stringify(responseBody));
+console.log ("Response is :" + JSON.stringify(responseBody));
+response.end();	
 	
 	}
 	else{
@@ -660,18 +663,19 @@ dashbot.logOutgoing(requestData, response.body);
         "source": "apiai-Himant-OTP sample"
     };
 	// }
-	
-	}
-	
+
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
 response.end();	
+		
+	}
+	
 
 }
     
 });
 
 //app.listen(process.env.PORT || 5000);
-app.listen(REST_PORT, () => {
-    console.log('Rest service ready on port ' + REST_PORT);
-});
+//app.listen(REST_PORT, () => {
+//    console.log('Rest service ready on port ' + REST_PORT);
+//});
