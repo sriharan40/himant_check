@@ -676,6 +676,6 @@ response.end();
 });
 
 //app.listen(process.env.PORT || 5000);
-//app.listen(REST_PORT, () => {
-//    console.log('Rest service ready on port ' + REST_PORT);
-//});
+app.listen(REST_PORT, () => {
+    console.log('Rest service ready on port ' + REST_PORT);
+});
