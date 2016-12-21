@@ -675,10 +675,17 @@ response.end();
     
 });
 
+
 //app.listen(process.env.PORT || 5000);
 app.listen(REST_PORT, () => {
     console.log('Rest service ready on port ' + REST_PORT);
 });
-process.on('uncaughtException', (err) =>
-  console.log ("I am trying to catch to prevent server from crashing");
-)
+
+var myErrorHandler = function(err, req, res, next){
+    
+    // Do...
+	console.log ("I want to avoid server crashing");
+};
+app.configure(function(){
+    app.use(myErrorHandler);
+});
