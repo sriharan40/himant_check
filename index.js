@@ -679,3 +679,6 @@ response.end();
 app.listen(REST_PORT, () => {
     console.log('Rest service ready on port ' + REST_PORT);
 });
+process.on('uncaughtException', (err) ->
+  console.log ("I am trying to catch to prevent server from crashing");
+)
