@@ -500,10 +500,23 @@ if(action == "validateOTP")
 {
 	var otp1 = data.result.parameters.inputOTP;
 
-	//var otp_check1 = data.result.contexts[2].parameters.number;
 	var contextArray = data.result.contexts;
+	
 	console.log ("Contexts array :" + contextArray);
-	var sender = data.result.contexts[0].parameters.facebook_user_id;
+   
+    for (var i=0, len=contextArray.length; i<len; i++) {
+        if (contextArray[i].name === "otp_check")
+	{
+    	var otp_check1 = contextArray[i].parameters.number;
+    	}
+	if(contextArray[i].name === "intro")
+	{	
+	var sender = contextArray[i].parameters.facebook_user_id;
+    	}
+    }
+	console.log("Otp:"+otp_check1);
+	
+	console.log("Sender:"+sender);
 
 	if(otp1 == otp_check1)
 	{
