@@ -668,11 +668,13 @@ response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
 response.end();	
 		
-	}
+}
 	
 
 }
-    
+
+req.end();
+
 });
 
 
