@@ -460,8 +460,6 @@ var responseBody = {
 
 response.write(JSON.stringify(responseBody));
 
-req.end();
-
 response.end();
 
 console.log ("Response is :" + JSON.stringify(responseBody));
