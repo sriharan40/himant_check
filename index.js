@@ -64,7 +64,7 @@ dashbot.logIncoming(dashbotincoming); */
 //http.createServer(function(req, response) {
   var headers = req.headers;
   var method = req.method;
-  var url = req.url;
+ // var url = req.url;
 //  var body = [];
 var body = req.body;
 //  req.on('error', function(err) {
@@ -383,7 +383,7 @@ var Curl = require( 'node-libcurl' ).Curl;
 
 var curl = new Curl();
 
-url = process.env.BSS_TOKEN_URL;
+var url = process.env.BSS_TOKEN_URL;
 
 var data = process.env.BSS_CREDENTIALS;                                                                  
 
@@ -412,9 +412,6 @@ curl1.perform();
 
 curl1.on('end', function( statusCode1, body1, headers1 ) {
 	
-response.statusCode = 200;
-	
-response.setHeader('Content-Type', 'application/json');	
 
 // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
 //facebook_message = body1;
@@ -422,7 +419,16 @@ var parsedResponse = JSON.parse(body1);
 //console.log ("Parsed JSON response is : " + JSON.stringify(parsedResponse));
 var customSpeech = "Your name is : "+parsedResponse.CustomerDetailsL.name+" and you are a "+parsedResponse.CustomerDetailsL.paymentCategory+" subscriber.";
 //var customSpeech = body1;
+		
+curl1.close();
+});
+curl.close();
+});
+
+response.statusCode = 200;
 	
+response.setHeader('Content-Type', 'application/json');	
+
 var responseBody = {
 "speech": customSpeech,
 "displayText": customSpeech,
@@ -432,11 +438,6 @@ var responseBody = {
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
 response.end();
-	
-curl1.close();
-});
-curl.close();
-});
 
 }
  
@@ -682,5 +683,3 @@ req.end();
 app.listen(REST_PORT, () => {
     console.log('Rest service ready on port ' + REST_PORT);
 });
-
-
