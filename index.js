@@ -12,6 +12,8 @@ var api = apiai(process.env.APIAI_ACCESS_TOKEN);
 const REST_PORT = (process.env.PORT || 5111);
 	
 var sender = "0";
+
+var responseBody = "";
 	
 function processEvent(event) {
     sender = event.sender.id.toString();
@@ -432,16 +434,17 @@ var responseBody = {
 "source": "apiai-Himant-OTP sample"
 //"data": {"facebook": {facebook_message}}
 };
-response.write(JSON.stringify(responseBody));
-
-console.log ("Response is :" + JSON.stringify(responseBody));
 		
 curl1.close();
 });
 curl.close();
 });
 
+response.write(JSON.stringify(responseBody));
+
 response.end();
+
+console.log ("Response is :" + JSON.stringify(responseBody));
 
 }
  
