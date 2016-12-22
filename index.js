@@ -458,18 +458,20 @@ var responseBody = {
 //"data": {"facebook": {facebook_message}}
 };
 
+response.write(JSON.stringify(responseBody));
+
+req.end();
+
+response.end();
+
+console.log ("Response is :" + JSON.stringify(responseBody));
+
 curl2.close();
 });		
 curl1.close();
 });
 curl.close();
 });
-
-response.write(JSON.stringify(responseBody));
-
-response.end();
-
-console.log ("Response is :" + JSON.stringify(responseBody));
 
 }
  
@@ -525,6 +527,7 @@ response.setHeader('Content-Type', 'application/json');
 
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
+req.end();
 response.end();
 	
 }
@@ -677,6 +680,7 @@ dashbot.logOutgoing(requestData, response.body);
 	}
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
+req.end();
 response.end();	
 	
 	}
@@ -699,14 +703,13 @@ response.end();
 
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
+req.end();
 response.end();	
 		
 }
 	
 
 }
-
-req.end();
 
 });
 
