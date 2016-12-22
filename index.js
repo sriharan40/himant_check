@@ -389,6 +389,10 @@ var data = process.env.BSS_CREDENTIALS;
 
 var customSpeech = "";
 
+response.statusCode = 200;
+	
+response.setHeader('Content-Type', 'application/json');	
+
 curl.setOpt(Curl.option.URL, url);
 curl.setOpt(Curl.option.POSTFIELDS, data);    
 curl.setOpt(Curl.option.HEADER, true);                                                              
@@ -421,15 +425,6 @@ var parsedResponse = JSON.parse(body1);
 //console.log ("Parsed JSON response is : " + JSON.stringify(parsedResponse));
 var customSpeech = "Your name is : "+parsedResponse.CustomerDetailsL.name+" and you are a "+parsedResponse.CustomerDetailsL.paymentCategory+" subscriber.";
 //var customSpeech = body1;
-		
-curl1.close();
-});
-curl.close();
-});
-
-response.statusCode = 200;
-	
-response.setHeader('Content-Type', 'application/json');	
 
 var responseBody = {
 "speech": customSpeech,
@@ -440,6 +435,11 @@ var responseBody = {
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
 response.end();
+		
+curl1.close();
+});
+curl.close();
+});
 
 }
  
