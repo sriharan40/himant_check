@@ -428,7 +428,7 @@ var url2 = process.env.BSS_GETCUST_BASIC_INFO_REST_URL +userBalance+'/userBalanc
 
 console.log("Url is :" + url2);
 
-curl2.setOpt(Curl.option.URL, url1);
+curl2.setOpt(Curl.option.URL, url2);
 curl2.setOpt(Curl.option.HTTPHEADER, [
 'Content-Type: application/json',
 'Authorization:'+ token
@@ -443,7 +443,9 @@ curl2.on('end', function( statusCode2, body2, headers2 ) {
 var parsedResponse1 = JSON.parse(body1);
 
 var parsedResponse2 = JSON.parse(body2);
+
 console.log ("Parsed status is : " + JSON.stringify(statusCode2));
+
 console.log ("Parsed JSON response is : " + JSON.stringify(parsedResponse2));
 
 var customSpeech = "Hi "+parsedResponse1.CustomerDetailsL.name+", Your outstanding balance is : "+parsedResponse2.UserBalanceResponse.balanceX9+" and you are a "+parsedResponse1.CustomerDetailsL.paymentCategory+" subscriber.";
