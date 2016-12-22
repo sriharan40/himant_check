@@ -408,7 +408,7 @@ var token = headers[0].uxfauthorization;
 
 var curl1 = new Curl();
 	
-url1 = process.env.BSS_GETCUST_BASIC_INFO_REST_URL +msisdn+'/msisdn';
+var url1 = process.env.BSS_GETCUST_BASIC_INFO_REST_URL +msisdn+'/msisdn';
 
 curl1.setOpt(Curl.option.URL, url1);
 curl1.setOpt(Curl.option.HTTPHEADER, [
@@ -419,13 +419,31 @@ curl1.setOpt(Curl.option.HTTPHEADER, [
 curl1.perform();
 
 curl1.on('end', function( statusCode1, body1, headers1 ) {
-	
 
+var curl2 = new Curl();
+
+var userBalance = JSON.parse(body1).CustomerDetailsL.customerID;
+	
+var url2 = process.env.BSS_GETCUST_BASIC_INFO_REST_URL +userBalance+'/userBalance';
+
+curl2.setOpt(Curl.option.URL, url1);
+curl2.setOpt(Curl.option.HTTPHEADER, [
+'Content-Type: application/json',
+'Authorization:'+ token
+]);                                                                                                                            
+
+curl2.perform();
+
+curl2.on('end', function( statusCode2, body2, headers2 ) {
+	
 // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
 //facebook_message = body1;
-var parsedResponse = JSON.parse(body1);
+var parsedResponse1 = JSON.parse(body1);
+
+var parsedResponse2 = JSON.parse(body2);
 //console.log ("Parsed JSON response is : " + JSON.stringify(parsedResponse));
-var customSpeech = "Your name is : "+parsedResponse.CustomerDetailsL.name+" and you are a "+parsedResponse.CustomerDetailsL.paymentCategory+" subscriber.";
+
+var customSpeech = "Hi "+parsedResponse1.CustomerDetailsL.name+", Your outstanding balance is : "+parsedResponse2.UserBalanceResponse.balanceX9+" and you are a "+parsedResponse1.CustomerDetailsL.paymentCategory+" subscriber.";
 //var customSpeech = body1;
 
 var responseBody = {
@@ -435,16 +453,18 @@ var responseBody = {
 //"data": {"facebook": {facebook_message}}
 };
 
-response.write(JSON.stringify(responseBody));
-req.end();
-response.end();
-
-console.log ("Response is :" + JSON.stringify(responseBody));
-
+curl2.close();
+});		
 curl1.close();
 });
 curl.close();
 });
+
+response.write(JSON.stringify(responseBody));
+
+response.end();
+
+console.log ("Response is :" + JSON.stringify(responseBody));
 
 }
  
@@ -500,7 +520,6 @@ response.setHeader('Content-Type', 'application/json');
 
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
-req.end();
 response.end();
 	
 }
@@ -578,7 +597,7 @@ var connection;
 	
     response.setHeader('Content-Type', 'application/json');	
 
-	var speech = 'Your due amount to be paid is 100 Php. After you pay, you can continue chatting with me to handle your other requests!';	
+	var speech = 'Your due amount to be paid is 100 Php.';	
 
 	var token = process.env.FB_PAGE_TOKEN;
 
@@ -599,7 +618,7 @@ facebook_message =
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/digitaldemofortelcos?ref=myparam&notify_url=http://hitman507bot.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=100&currency_code=PHP",
+            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/digitaldemofortelcos&notify_url=http://demofordigitaltelco.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=100&currency_code=PHP",
             "title":"Pay with PayPal"
           }
 	  ]
@@ -653,7 +672,6 @@ dashbot.logOutgoing(requestData, response.body);
 	}
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
-req.end();
 response.end();	
 	
 	}
@@ -676,13 +694,14 @@ response.end();
 
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
-req.end();
 response.end();	
 		
 }
 	
 
 }
+
+req.end();
 
 });
 
