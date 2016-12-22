@@ -448,7 +448,7 @@ console.log ("Parsed status is : " + JSON.stringify(statusCode2));
 
 console.log ("Parsed JSON response is : " + JSON.stringify(parsedResponse2));
 
-var customSpeech = "Hi "+parsedResponse1.CustomerDetailsL.name+", Your outstanding balance is : "+parsedResponse2.UserBalanceResponse.balanceX9+" and you are a "+parsedResponse1.CustomerDetailsL.paymentCategory+" subscriber.";
+var customSpeech = "Hi "+parsedResponse1.CustomerDetailsL.name+", Your outstanding balance is "+parsedResponse2.UserBalanceResponse.balanceX9+" and you are a "+parsedResponse1.CustomerDetailsL.paymentCategory+" subscriber.";
 //var customSpeech = body1;
 
 var responseBody = {
@@ -459,6 +459,8 @@ var responseBody = {
 };
 
 response.write(JSON.stringify(responseBody));
+
+req.end();
 
 response.end();
 
