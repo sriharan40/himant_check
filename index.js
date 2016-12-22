@@ -433,13 +433,15 @@ var responseBody = {
 //"data": {"facebook": {facebook_message}}
 };
 response.write(JSON.stringify(responseBody));
+
 console.log ("Response is :" + JSON.stringify(responseBody));
-response.end();
 		
 curl1.close();
 });
 curl.close();
 });
+
+response.end();
 
 }
  
