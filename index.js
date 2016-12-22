@@ -449,9 +449,9 @@ if(action == "sendOTP")
 	var mobile = '+'+data.result.parameters.phone;
 	var speech = name + ', We will send you an OTP on your number ' + mobile +'. Please reply back here with that OTP.';
 
-	var value = name + mobile;
+	//var value = name + mobile;
 
-	var req = api.textRequest(value, options);
+	//var req = api.textRequest(value, options);
 	
 	// Load the twilio module
 
