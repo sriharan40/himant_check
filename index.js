@@ -387,6 +387,8 @@ var url = process.env.BSS_TOKEN_URL;
 
 var data = process.env.BSS_CREDENTIALS;                                                                  
 
+var customSpeech = "";
+
 curl.setOpt(Curl.option.URL, url);
 curl.setOpt(Curl.option.POSTFIELDS, data);    
 curl.setOpt(Curl.option.HEADER, true);                                                              
