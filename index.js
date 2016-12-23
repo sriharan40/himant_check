@@ -605,7 +605,7 @@ var connection;
 	
     response.setHeader('Content-Type', 'application/json');	
 
-	var speech = 'Your due amount to be paid is 100 Php.';	
+	var speech = 'Your due amount to be paid is 70 INR.';	
 
 	var token = process.env.FB_PAGE_TOKEN;
 
