@@ -545,7 +545,7 @@ if(action == "validateOTP")
 	{
     	var otp_check1 = contextArray[i].parameters.number;
     	}
-	if(contextArray[i].name === "intro")
+	if(contextArray[i].name === "generic")
 	{	
 	var sender = contextArray[i].parameters.facebook_user_id;
     	}
@@ -586,9 +586,13 @@ var connection;
 	
 	connection.query('SELECT * from t_users', function(err, results) {
 
-	var user_id = data.result.contexts[1].parameters.facebook_user_id;
-	
-	var mobile = data.result.contexts[1].parameters.phone;
+    for (var i=0, len=contextArray.length; i<len; i++) {
+	if(contextArray[i].name === "generic")
+	{	
+	var user_id = contextArray[i].parameters.facebook_user_id;
+	var mobile = contextArray[i].parameters.phone;	
+    	}
+    }
 
 	var id = results.length + 1;	
 
