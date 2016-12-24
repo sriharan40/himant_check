@@ -188,7 +188,7 @@ messageData = {
   };
 
 request(requestData, function(error, res, body) {
-dashbot.logOutgoing(requestData, res.body);
+//dashbot.logOutgoing(requestData, res.body);
     if (error) {
       console.log('Error sending message: ', error);
 		  var speech = error;
@@ -335,8 +335,8 @@ var requestData = {
 };
 
 request(requestData, function(error, res, body) {  
-track(sender,messageData,new Date().getTime()) // out-going generic template message, this call should be at the bottom of the message send method.
-dashbot.logOutgoing(requestData, res.body);	  
+//track(sender,messageData,new Date().getTime()) // out-going generic template message, this call should be at the bottom of the message send method.
+//dashbot.logOutgoing(requestData, res.body);	  
 if (error) {
   console.log('Error sending message: ', error);
 	  var speech = error;
@@ -626,11 +626,11 @@ facebook_message =
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"Your due amount to be paid is 100 Php.",
+        "text":"Your due amount to be paid is 70 INR.",
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/digitaldemofortelcos&notify_url=http://demofordigitaltelco.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=100&currency_code=PHP",
+            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/digitaldemofortelcos&notify_url=http://demofordigitaltelco.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=70&currency_code=INR",
             "title":"Pay with PayPal"
           }
 	  ]
@@ -650,8 +650,8 @@ facebook_message =
   };
 
 request(requestData, function(error, response, body) {
-track(sender,messageData,new Date().getTime()) // out-going generic template message, this call should be at the bottom of the message send method.
-dashbot.logOutgoing(requestData, response.body);
+//track(sender,messageData,new Date().getTime()) // out-going generic template message, this call should be at the bottom of the message send method.
+//dashbot.logOutgoing(requestData, response.body);
     if (error) {
       console.log('Error sending message: ', error);
     } else if (response.body.error) {
