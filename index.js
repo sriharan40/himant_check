@@ -230,6 +230,7 @@ else{
 }		
 }	
 
+// ----------------------------------------------RECHARGE ACTION STARTS ------------------------------
 // ADD action for recharge amount - Himant - its for voice portal agent
 if ( action  == "rechargeAction")
 {
@@ -246,30 +247,33 @@ if ( action  == "rechargeAction")
 		if (contextArray[i].name === "userwantstorechargecontext")
 		{
 			availableAmt = parseInt(contextArray[i].parameters.initialBalance, 10);
-			console.log ("availabl amt:" + availableAmt);
+			//console.log ("availabl amt:" + availableAmt);
 			rechargeAmount = parseInt(contextArray[i].parameters.amountRequested, 10);
-			console.log ("recharge amt:" + rechargeAmount);
+			//console.log ("recharge amt:" + rechargeAmount);
 		}
 	
     	}
 	
 	
-	if ( rechargeAmount > availableAmt){
+	if ( rechargeAmount > availableAmt)
+	{
 		speech = "Your available amount is " + availableAmt + ". You cannot recharge more than this amount";
-		console.log("Its not ok:" + speech);
+		//console.log("Its not ok:" + speech);
 	}
-	else {
+	else 
+	{
 		var displayRemAmt = availableAmt - rechargeAmount;
 		speech = "Recharge successful. Your remaining amount is : " + displayRemAmt;
-		console.log("Its allowed:" + speech);
+		//console.log("Its allowed:" + speech);
 	}
 	
-	console.log ("speech for recharge action is:" + speech);
-	var responseBody = {
+	//console.log ("speech for recharge action is:" + speech);
+	var responseBody = 
+	{
         "speech": speech,
         "displayText": speech,	 
         "source": "apiai-Himant-OTP sample"
-    };
+   	 };
 	
 }
 //End for recharge action
