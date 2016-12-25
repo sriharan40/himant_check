@@ -236,7 +236,7 @@ if ( action  == "rechargeAction")
 	// Get by context name the variables.
 	var availableAmt = 0 ;
 	var rechargeAmount  = 0;
-	var speech = "No response";
+	var speech = 'No response';
 	var contextArray = data.result.contexts;
 	
 	//console.log ("Contexts array :" + contextArray);
@@ -254,16 +254,20 @@ if ( action  == "rechargeAction")
     	}
 	
 	
-	if ( rechargeAmount > availableAmt)
+	if ( rechargeAmount > availableAmt){
 		speech = "Your available amount is" + availableAmt + ". You cannot recharge more than this amount";
-	else 
+		console.log(speech);
+	}
+	else {
 		speech = "Recharge successful.Your remaining amount is : " + availableAmt - rechargeAmount;
+		console.log(speech);
+	}
 	
 	console.log ("speech for recharge action is:" + speech);
 	var responseBody = {
         "speech": speech,
         "displayText": speech,	 
-        "source": "webhook"
+        "source": "apiai-Himant-OTP sample"
     };
 	
 }
