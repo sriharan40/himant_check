@@ -245,9 +245,9 @@ if ( action  == "rechargeAction")
 	{
 		if (contextArray[i].name === "userwantstorechargecontext")
 		{
-			availableAmt = contextArray[i].parameters.initialBalance;
+			availableAmt = parseInt(contextArray[i].parameters.initialBalance, 10);
 			console.log ("availabl amt:" + availableAmt);
-			rechargeAmount = contextArray[i].parameters.amountRequested;
+			rechargeAmount = parseInt(contextArray[i].parameters.amountRequested, 10);
 			console.log ("recharge amt:" + rechargeAmount);
 		}
 	
