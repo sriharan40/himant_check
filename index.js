@@ -275,6 +275,11 @@ if ( action  == "rechargeAction")
         "source": "apiai-Himant-OTP sample"
    	 };
 	
+	response.statusCode = 200;
+	response.setHeader('Content-Type', 'application/json');	
+	response.write(JSON.stringify(responseBody));
+	response.end();
+
 }
 //End for recharge action
 //-------------------------------------------------------------------------------------------------------------------------
