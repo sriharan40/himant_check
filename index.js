@@ -229,6 +229,42 @@ else{
     };		
 }		
 }	
+
+// ADD action for recharge amount - Himant - its for voice portal agent
+if ( action  == "rechargeAction")
+{
+	// Get by context name the variables.
+	var availableAmt = 0 ;
+	var rechargeAmount  = 0;
+	var speech = "No response";
+	var contextArray = data.result.contexts;
+	
+	//console.log ("Contexts array :" + contextArray);
+   
+    	for (var i=0, len=contextArray.length; i<len; i++) 
+	{
+		if (contextArray[i].name === "userwantstorechargecontext")
+		{
+			availableAmt = contextArray[i].parameters.initialBalance;
+			rechargeAmount = contextArray[i].parameters.amountRequested;
+		}
+	
+    	}
+	
+	if ( rechargeAmount > availableAmt)
+		speech = "Your available amount is" + availableAmt + ". You cannot recharge more than this amount";
+	else 
+		speech = "Recharge successful.Your remaining amount is : " + availableAmt - rechargeAmount;
+	
+	var responseBody = {
+        "speech": speech,
+        "displayText": speech,	 
+        "source": "webhook"
+    };
+	
+}
+//End for recharge action
+//-------------------------------------------------------------------------------------------------------------------------
 // Add action for context passed from portal
 if(action == "FBCheckBoxStuckInAddNewOffer")
 {
