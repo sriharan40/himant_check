@@ -256,11 +256,11 @@ if ( action  == "rechargeAction")
 	
 	if ( rechargeAmount > availableAmt){
 		speech = "Your available amount is" + availableAmt + ". You cannot recharge more than this amount";
-		console.log(speech);
+		console.log("Its ok:" + speech);
 	}
 	else {
 		speech = "Recharge successful.Your remaining amount is : " + availableAmt - rechargeAmount;
-		console.log(speech);
+		console.log("Its not allowed:" + speech);
 	}
 	
 	console.log ("speech for recharge action is:" + speech);
