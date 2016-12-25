@@ -246,7 +246,9 @@ if ( action  == "rechargeAction")
 		if (contextArray[i].name === "userwantstorechargecontext")
 		{
 			availableAmt = contextArray[i].parameters.initialBalance;
+			console.log ("availabl amt:" + availableAmt);
 			rechargeAmount = contextArray[i].parameters.amountRequested;
+			console.log ("recharge amt:" + rechargeAmount);
 		}
 	
     	}
