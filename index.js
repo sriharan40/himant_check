@@ -263,7 +263,7 @@ if ( action  == "rechargeAction")
 	else 
 	{
 		var displayRemAmt = availableAmt - rechargeAmount;
-		speech = "Recharge successful. Your remaining jio amount is : " + displayRemAmt + ". Your prepaid balance is now:" + rechargeAmount;
+		speech = "Recharge successful. Your remaining jio amount is " + displayRemAmt + ". Your prepaid balance is now" + rechargeAmount;
 		//console.log("Its allowed:" + speech);
 	}
 	
