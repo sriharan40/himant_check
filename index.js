@@ -257,13 +257,13 @@ if ( action  == "rechargeAction")
 	
 	if ( rechargeAmount > availableAmt)
 	{
-		speech = "Your available amount is " + availableAmt + ". You cannot recharge more than this amount";
+		speech = "Your available Jio balance is " + availableAmt + ". Please use an amount less than your available amount.";
 		//console.log("Its not ok:" + speech);
 	}
 	else 
 	{
 		var displayRemAmt = availableAmt - rechargeAmount;
-		speech = "Recharge successful. Your remaining amount is : " + displayRemAmt;
+		speech = "Recharge successful. Your remaining jio amount is : " + displayRemAmt + ". Your prepaid balance is now:" + rechargeAmount;
 		//console.log("Its allowed:" + speech);
 	}
 	
