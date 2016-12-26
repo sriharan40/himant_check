@@ -663,7 +663,7 @@ var connection;
 	
     response.setHeader('Content-Type', 'application/json');	
 
-	var speech = 'Your due amount to be paid is 70 INR.';	
+	var speech = 'Your due amount to be paid is 2 USD.';	
 
 	var token = process.env.FB_PAGE_TOKEN;
 
@@ -680,11 +680,11 @@ facebook_message =
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"Your due amount to be paid is 70 INR.",
+        "text":"Your due amount to be paid is 2 USD.",
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/digitaldemofortelcos&notify_url=http://demofordigitaltelco.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=70&currency_code=INR",
+            "url":"https://www.sandbox.paypal.com/cgi-bin/webscr?return_url=Http://m.me/digitaldemofortelcos&notify_url=http://demofordigitaltelco.herokuapp.com/?payment="+sender+"&cmd=_xclick&business=himantgupta-facilitator@gmail.com&item_name=bot_chats&quantity=1&amount=2&currency_code=USD",
             "title":"Pay with PayPal"
           }
 	  ]
