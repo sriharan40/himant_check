@@ -289,7 +289,7 @@ if (action == "openlink")
 {
 var opener = require('opener');
 opener('http://google.com');
-req.end();
+response.end();
 }
 	
 	
