@@ -283,6 +283,18 @@ if ( action  == "rechargeAction")
 }
 //End for recharge action
 //-------------------------------------------------------------------------------------------------------------------------
+
+// START ACTION TO LAUNCH BROWSER
+if (action == "openlink")
+{
+var opener = require('opener');
+opener('http://google.com');
+req.end();
+}
+	
+	
+// END ACTION TO LAUNCH BROWSER
+	
 // Add action for context passed from portal
 if(action == "FBCheckBoxStuckInAddNewOffer")
 {
