@@ -492,7 +492,7 @@ console.log("Body:"+JSON.stringify(body1));
 
 if(JSON.parse(body1).CustomerDetailsL == undefined || JSON.parse(body1).CustomerDetailsL == "")
 {
-var userBalance = "";
+var userBalance = "userBalance";
 }
 
 else
