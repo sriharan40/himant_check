@@ -526,7 +526,7 @@ console.log ("Parsed JSON response is : " + JSON.stringify(parsedResponse2));
 
 if(JSON.parse(body1).CustomerDetailsL == undefined || JSON.parse(body1).CustomerDetailsL == "")
 {
-var customSpeech = "Please check the number entered";
+var customSpeech = "Please check the number you have entered.";
 }
 
 else
