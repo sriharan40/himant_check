@@ -488,7 +488,7 @@ curl1.on('end', function( statusCode1, body1, headers1 ) {
 
 var curl2 = new Curl();
 
-console.log("Body:"+JSON.parse(body1));
+console.log("Body:"+JSON.stringify(body1));
 
 var userBalance = JSON.parse(body1).CustomerDetailsL.customerID;
 	
