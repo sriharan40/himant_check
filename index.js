@@ -490,7 +490,15 @@ var curl2 = new Curl();
 
 console.log("Body:"+JSON.stringify(body1));
 
+if(JSON.parse(body1).CustomerDetailsL == undefined || JSON.parse(body1).CustomerDetailsL == "")
+{
+var userBalance = "";
+}
+
+else
+{
 var userBalance = JSON.parse(body1).CustomerDetailsL.customerID;
+}
 	
 var url2 = process.env.BSS_GETCUST_BASIC_INFO_REST_URL +userBalance+'/userBalance';
 
@@ -516,7 +524,16 @@ console.log ("Parsed status is : " + JSON.stringify(statusCode2));
 
 console.log ("Parsed JSON response is : " + JSON.stringify(parsedResponse2));
 
+if(JSON.parse(body1).CustomerDetailsL == undefined || JSON.parse(body1).CustomerDetailsL == "")
+{
+var customSpeech = "Please check the number entered";
+}
+
+else
+{
 var customSpeech = "Hi "+parsedResponse1.CustomerDetailsL.name+", Your outstanding balance is "+parsedResponse2.UserBalanceResponse.balanceX9+" and you are a "+parsedResponse1.CustomerDetailsL.paymentCategory+" subscriber.";
+}
+
 //var customSpeech = body1;
 
 var responseBody = {
