@@ -488,6 +488,8 @@ curl1.on('end', function( statusCode1, body1, headers1 ) {
 
 var curl2 = new Curl();
 
+console.log("Body:"+JSON.parse(body1));
+
 var userBalance = JSON.parse(body1).CustomerDetailsL.customerID;
 	
 var url2 = process.env.BSS_GETCUST_BASIC_INFO_REST_URL +userBalance+'/userBalance';
