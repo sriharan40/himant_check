@@ -246,8 +246,8 @@ if ( action  == "unabletohandle")
 	{
 		if (contextArray[i].name === "intro")
 		{
-			console.log("Found intro context");
-			sender  = facebook_user_id;
+			console.log("Found intro context and sender is" + contexts[i].parameters.facebook_user_id);
+			sender  = contexts[i].parameters.facebook_user_id;
 		}
 	
     	}
