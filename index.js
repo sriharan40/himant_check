@@ -281,7 +281,7 @@ var req = http.request(options, function (res) {
   });
 });
 console.log ('passing the name of sender now');
-req.write(JSON.stringify({ sender: { name: sender, handle: sender },
+req.write(JSON.stringify({ sender: { name: sender.toString(), handle: sender.toString() },
   subject: 'Bot not able to handlemy requests',
   body: 'Bot was not able to handle my requests?',
   metadata: {} }));
@@ -303,7 +303,7 @@ req.end();
 	response.end();
 
 }
-//End for recharge action
+//End for CUSTOMER SUPPORT TRANSFER
 //-------------------------------------------------------------------------------------------------------------------------
 	
 
