@@ -240,7 +240,7 @@ if ( action  == "unabletohandle")
 	var speech = 'I will transfer you to another agent, as I do not have enough knowledge to handle further.';
 	var contextArray = data.result.contexts;
 	var sender = 123;
-	//console.log ("Contexts array :" + contextArray);
+	console.log ("Contexts array :" + contextArray);
    
     	for (var i=0, len=contextArray.length; i<len; i++) 
 	{
@@ -250,7 +250,7 @@ if ( action  == "unabletohandle")
 		}
 	
     	}
-	
+	console.log ("Fb sender id :" + sender );
 	// SEND TO FRONT DESK
 	var http = require("https");
 
