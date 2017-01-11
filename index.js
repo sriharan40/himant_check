@@ -282,7 +282,7 @@ var req = http.request(options, function (res) {
   });
 });
 console.log ('passing the name of sender now');
-req.write(JSON.stringify({ sender: { contact_id: '10158396388360112', handle: '10158396388360112' },
+req.write(JSON.stringify({ sender: { contact_id: sender.toString(), handle: '10158396388360112' },
   subject: 'Bot not able to handlemy requests',
   body: 'Bot was not able to handle my requests?',
   metadata: {} }));
