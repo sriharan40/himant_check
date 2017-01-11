@@ -230,6 +230,83 @@ else{
 }		
 }	
 
+// ---------------------------------------------TRANSFER TO CUSTOMER SUPPORT STARTS------------------------------
+// ADD action for transfer to customer support - Himant - for FB agent
+if ( action  == "rechargeAction")
+{
+	// Get by context name the variables.
+	var availableAmt = 0 ;
+	var rechargeAmount  = 0;
+	var speech = 'I will transfer you to another agent, as I do not have enough knowledge to handle further.';
+	var contextArray = data.result.contexts;
+	var sender = 123;
+	//console.log ("Contexts array :" + contextArray);
+   
+    	for (var i=0, len=contextArray.length; i<len; i++) 
+	{
+		if (contextArray[i].name === "intro")
+		{
+			sender  = parseInt(contextArray[i].parameters.facebook_user_id, 10);
+		}
+	
+    	}
+	
+	// SEND TO FRONT DESK
+	var http = require("https");
+
+var options = {
+  "method": "POST",
+  "hostname": "api2.frontapp.com",
+  "port": null,
+  "path": "/channels/cha_1b8t/incoming_messages",
+  "headers": {
+    "content-type": "application/json",
+    "accept": "application/json",
+    "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZXMiOlsiKiJdLCJpc3MiOiJmcm9udCIsInN1YiI6InBlX2lkZWFzX3JlcG9zaXRvcnkifQ.kYSMJ6mbLBWvdlfOxyIdRZ3gi4zGsRQXHLGOuicWA6s",
+    "cache-control": "no-cache",
+    
+  }
+};
+
+var req = http.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function () {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+});
+console.log ('passing the name of sender now');
+req.write(JSON.stringify({ sender: { name: sender, handle: sender },
+  subject: 'Bot not able to handlemy requests',
+  body: 'Bot was not able to handle my requests?',
+  metadata: {} }));
+req.end();
+	
+	// SEND TO FRONT DESK ENDS
+	
+	//console.log ("speech for recharge action is:" + speech);
+	var responseBody = 
+	{
+        "speech": speech,
+        "displayText": speech,	 
+        "source": "apiai-Himant-OTP sample"
+   	 };
+	
+	response.statusCode = 200;
+	response.setHeader('Content-Type', 'application/json');	
+	response.write(JSON.stringify(responseBody));
+	response.end();
+
+}
+//End for recharge action
+//-------------------------------------------------------------------------------------------------------------------------
+	
+
 // ----------------------------------------------RECHARGE ACTION STARTS ------------------------------
 // ADD action for recharge amount - Himant - its for voice portal agent
 if ( action  == "rechargeAction")
