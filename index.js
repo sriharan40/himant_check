@@ -232,7 +232,7 @@ else{
 
 // ---------------------------------------------TRANSFER TO CUSTOMER SUPPORT STARTS------------------------------
 // ADD action for transfer to customer support - Himant - for FB agent
-if ( action  == "rechargeAction")
+if ( action  == "unabletohandle")
 {
 	// Get by context name the variables.
 	var availableAmt = 0 ;
@@ -258,7 +258,7 @@ var options = {
   "method": "POST",
   "hostname": "api2.frontapp.com",
   "port": null,
-  "path": "/channels/cha_1b8t/incoming_messages",
+  "path": "/channels/cha_1bav/incoming_messages",
   "headers": {
     "content-type": "application/json",
     "accept": "application/json",
