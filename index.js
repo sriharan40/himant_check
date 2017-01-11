@@ -244,7 +244,7 @@ if ( action  == "unabletohandle")
    
     	for (var i=0, len=contextArray.length; i<len; i++) 
 	{
-		if (contextArray[i].name === "intro")
+		if (contextArray[i].name === "generic")
 		{
 			console.log("Found intro context and sender is" + contextArray[i].parameters.facebook_user_id);
 			sender  = contextArray[i].parameters.facebook_user_id;
