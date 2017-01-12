@@ -239,15 +239,15 @@ if ( action  == "unabletohandle")
 	var rechargeAmount  = 0;
 	var speech = 'I will transfer you to another agent, as I do not have enough knowledge to handle further.';
 	var contextArray = data.result.contexts;
-	var sender = 123;
+	var sender = 'Not Available';
 	console.log ("Contexts array :" + contextArray);
    
     	for (var i=0, len=contextArray.length; i<len; i++) 
 	{
 		if (contextArray[i].name === "generic")
 		{
-			console.log("Found intro context and sender is" + contextArray[i].parameters.facebook_user_id);
-			sender  = contextArray[i].parameters.facebook_user_id;
+			console.log("Found intro context and sender is" + contextArray[i].parameters.name);
+			sender  = contextArray[i].parameters.name;
 		}
 	
     	}
@@ -281,8 +281,9 @@ var req = http.request(options, function (res) {
     console.log(body.toString());
   });
 });
+ var messageSub = 'BotAlarm - Handle the conv with ' + sender;
 console.log ('passing the name of sender now');
-req.write(JSON.stringify({ sender: { contact_id: sender.toString(), handle: '10158396388360112' },
+req.write(JSON.stringify({ sender: { name: 'BotNotification', subject : messageSub},
   subject: 'Bot not able to handlemy requests',
   body: 'Bot was not able to handle my requests?',
   metadata: {} }));
