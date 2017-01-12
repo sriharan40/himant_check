@@ -283,9 +283,9 @@ var req = http.request(options, function (res) {
 });
  var messageSub = 'BotAlarm - Handle the conv with ' + sender;
 console.log ('passing the name of sender now');
-req.write(JSON.stringify({ sender: { name: 'BotNotification', subject : messageSub},
-  subject: 'Bot not able to handlemy requests',
-  body: 'Bot was not able to handle my requests?',
+req.write(JSON.stringify({ sender: { name: 'BotNotification', handle: sender},
+  subject: messageSub,
+  body: messageSub,
   metadata: {} }));
 req.end();
 	
