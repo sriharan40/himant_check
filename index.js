@@ -295,7 +295,8 @@ req.end();
 	var responseBody = 
 	{
         "speech": speech,
-        "displayText": speech,	 
+        "displayText": speech,
+	"contextOut": [{"name":"csr_transfer", "lifespan":2, "parameters":{"isTransferred":"Yes"}}]
         "source": "apiai-Himant-OTP sample"
    	 };
 	
