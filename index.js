@@ -249,6 +249,11 @@ if ( action  == "unabletohandle")
 			console.log("Found intro context and sender is" + contextArray[i].parameters.facebook_user);
 			sender  = contextArray[i].parameters.facebook_user;
 		}
+		if (contextArray[i].name === "csrtransfer")
+		{
+			console.log("Conversation was passed to CSR");
+			speech ="";
+		}
 	
     	}
 	console.log ("Fb sender id :" + sender );
@@ -296,7 +301,7 @@ req.end();
 	{
         "speech": speech,
         "displayText": speech,
-	"contextOut": [{"name":"csrTransfer", "lifespan":2, "parameters":{"csrtransffered":'Y'}}],
+	"contextOut": [{"name":"csrtransfer", "lifespan":2, "parameters":{"csrtransffered":'Y'}}],
         "source": "apiai-Himant-OTP sample"
    	 };
 	
