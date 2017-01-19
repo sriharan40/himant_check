@@ -448,7 +448,35 @@ opener("https://bit.ly/2dZcUN5");
     };
 	
 }	
-
+// -------------------------- Action is to send location.
+if (action == "sendlocation")
+{
+	var speech = "Please share your location";
+	var responseBody = 
+	{
+        "speech": speech,
+        "displayText": speech,	
+	"data":{	"facebook": 
+			{
+   			 "text":"Please share your location:",
+    				"quick_replies":[
+      					{
+        				"content_type":"location",
+      					}
+    				]
+  			}
+	     }
+        "source": "apiai-Himant-OTP sample"
+   	 };
+	
+	response.statusCode = 200;
+	response.setHeader('Content-Type', 'application/json');	
+	response.write(JSON.stringify(responseBody));
+	response.end();
+	
+}
+	
+// ---------------------------Action to send location ends
 if(action == "showOptionsToUser")
 {
 	var token = process.env.FB_PAGE_TOKEN;
