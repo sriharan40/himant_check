@@ -465,7 +465,7 @@ if (action == "sendlocation")
       					}
     				]
   			}
-	     }
+	     },
         "source": "apiai-Himant-OTP sample"
    	 };
 	
