@@ -725,7 +725,7 @@ response.setHeader('Content-Type', 'application/json');
 
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
-req.end();
+//req.end();
 response.end();
 	
 }
