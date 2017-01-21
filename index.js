@@ -882,7 +882,7 @@ request(requestData, function(error, response, body) {
 	}
 response.write(JSON.stringify(responseBody));
 console.log ("Response is :" + JSON.stringify(responseBody));
-req.end();
+//req.end();
 response.end();	
 	
 	}
