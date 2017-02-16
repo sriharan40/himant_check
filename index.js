@@ -987,13 +987,22 @@ var responseBody = {
 "source": "apiai-Himant-OTP sample"
 };
 
+response.statusCode = 200;
+	
+response.setHeader('Content-Type', 'application/json');	
+
+response.write(JSON.stringify(responseBody));
+
+console.log ("Response is :" + JSON.stringify(responseBody));
+//req.end();
+response.end();	
+
 });
 
 }
 
 else
 {
-
 for (var i=0, len=contextArray.length; i<len; i++) {
 if(contextArray[i].name === "backendexpressionscontinuedcontext")
 {
@@ -1029,26 +1038,17 @@ request(options, function (error, res, body) {
   console.log(body);
 });
 
-}
+response.statusCode = 200;
 	
-/* return requestPromise(options).then(
-  function (response) {
-    console.log('Got success: '+JSON.stringify(response.body));
-  },
-  function (response) {
-    console.log('Got error', response.body, response.headers, response.statusCode, response.statusMessage);
-  }
-); */	
+response.setHeader('Content-Type', 'application/json');	
 
-	response.statusCode = 200;
-		
-	response.setHeader('Content-Type', 'application/json');	
+response.write(JSON.stringify(responseBody));
 
-	response.write(JSON.stringify(responseBody));
+console.log ("Response is :" + JSON.stringify(responseBody));
+//req.end();
+response.end();	
 
-	console.log ("Response is :" + JSON.stringify(responseBody));
-	//req.end();
-	response.end();	
+}
 	
 }
 
