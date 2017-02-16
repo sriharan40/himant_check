@@ -987,7 +987,7 @@ request(options, function (error, response, body) {
 		 var responseBody = {
 			"speech": speech,
 			"displayText": speech,
-			"contextOut": [{"name":"backendExpressionsContinuedContext", "lifespan":1}],
+			"contextOut": [{"name":"backendExpressionsContinuedContext", "lifespan":2}],
 			"source": "apiai-Himant-OTP sample"
 		};
 
