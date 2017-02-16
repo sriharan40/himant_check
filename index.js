@@ -925,40 +925,40 @@ if(action == "createIntentAction")
 var intent_name = data.result.parameters.intentName;
 
 var intent_data = {
-   "name": intent_name,
-   "auto": true,
-   "userSays": [
+   name: intent_name,
+   auto: true,
+   userSays: [
       {
-         "data": [],
-        "isTemplate": false,
-         "count": 0    
+         data: [],
+        isTemplate: false,
+        count: 0    
       }],
- "responses": [
+ responses: [
       {
-         "resetContexts": false,
-         "action": "",
-         "affectedContexts": [],
-         "parameters": [],
-         "speech": ""
+         resetContexts: false,
+         action: '',
+         affectedContexts: [],
+         parameters: [],
+         speech: ''
       }
    ],
-   "priority": 500000
+   priority: 500000
 };
 
 var options = {
-  method: "POST",
-  host: "api.api.ai",
+  method: 'POST',
+  host: 'api.api.ai',
   port: null,
-  path: "/v1/intents?v=20150910",
+  path: '/v1/intents?v=20150910',
   headers: {
-    "authorization": "Bearer "+process.env.apiai_developer_access_token,
-    "Content-Type": "application/json; charset=utf-8",
-    "cache-control": "no-cache"
+    'authorization': 'Bearer '+process.env.apiai_developer_access_token,
+    'Content-Type': 'application/json; charset=utf-8',
+    'cache-control': 'no-cache'
   },
   body: intent_data
 };
 
-console.log("Options: "+JSON.stringify(options));
+console.log("Options:"+options);
 
 return requestPromise(options).then(
   function (response) {
