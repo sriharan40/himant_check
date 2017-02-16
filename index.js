@@ -928,10 +928,10 @@ var user_expressions = data.result.parameters.textUserExpressions;
 
 var intent_data = {
    name: intent_name,
-   auto: true,
+   auto: false,
    userSays: [
       {
-         data: [{"text": user_expressions}],
+        data: [{"text": user_expressions}],
         isTemplate: false,
         count: 0    
       }],
