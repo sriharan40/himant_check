@@ -961,7 +961,7 @@ var options = {
 
 console.log("Options:"+JSON.stringify(options));
 
-request(options, function (error, response, body) {
+request(options, function (error, res, body) {
   if (error) throw new Error(error);
 
   console.log(body);
@@ -987,13 +987,13 @@ request(options, function (error, response, body) {
 		 var responseBody = {
 			"speech": speech,
 			"displayText": speech,
-			"contextOut": [{"name":"backendExpressionsContinuedContext", "lifespan":2}],
+			"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":2}],
 			"source": "apiai-Himant-OTP sample"
 		};
 
 	response.write(JSON.stringify(responseBody));
 	console.log ("Response is :" + JSON.stringify(responseBody));
-	req.end();
+	//req.end();
 	response.end();	
 	
 }
