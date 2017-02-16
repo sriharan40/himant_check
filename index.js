@@ -958,6 +958,8 @@ var options = {
   body: intent_data
 };
 
+console.log("Options:"+options);
+
 return requestPromise(options).then(
   function (response) {
     console.log('Got success: '+JSON.stringify(response.body));
