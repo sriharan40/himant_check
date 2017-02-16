@@ -924,12 +924,14 @@ if(action == "createIntentAction")
 {
 var intent_name = data.result.parameters.intentName;
 
+var user_expressions = data.result.parameters.textUserExpressions;
+
 var intent_data = {
    name: intent_name,
    auto: true,
    userSays: [
       {
-         data: [],
+         data: [{"text": user_expressions}],
         isTemplate: false,
         count: 0    
       }],
@@ -969,7 +971,7 @@ return requestPromise(options).then(
   }
 );
 	
-	var speech = "Tell me various ways a user can ask about this skill e.g.  What is switch etc. Once done, you can type 'DONE'";	
+	var speech = "Ok, great, how else the user can ask this question?";	
 
 	response.statusCode = 200;
 		
@@ -979,7 +981,7 @@ return requestPromise(options).then(
 		 var responseBody = {
 			"speech": speech,
 			"displayText": speech,
-			"contextOut": [{"name":"texttrainingstarted", "lifespan":1}],
+			"contextOut": [{"name":"texttrainingstarted", "lifespan":1},{"name":"backendExpressionsContinuedContext", "lifespan":1}],
 			"source": "apiai-Himant-OTP sample"
 		};
 
@@ -990,11 +992,11 @@ return requestPromise(options).then(
 	
 }
 
-if(action == "createIntentAndUserexpressionsText")
+if(action == "updateIntent")
 {
-	var intent_name = data.result.parameters.intent;
+	var intent_name = data.result.parameters.intentName;
 
-	var user_expressions = data.result.parameters.textUserExpressionsons;
+	var user_expressions = data.result.parameters.textUserExpressions;
 
 	var intent_data = JSON.stringify({
    "name": intent_name,
