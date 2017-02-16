@@ -958,7 +958,7 @@ var options = {
   body: intent_data
 };
 
-console.log("Options:"+options);
+console.log("Options:"+JSON.stringify(options));
 
 return requestPromise(options).then(
   function (response) {
