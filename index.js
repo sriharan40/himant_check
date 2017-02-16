@@ -956,9 +956,9 @@ var options = {
   port: null,
   path: "/v1/intents?v=20150910",
   headers: {
-    authorization: "Bearer "+process.env.apiai_developer_access_token,
-    content-type: "application/json; charset=utf-8",
-    cache-control: "no-cache"
+    "authorization": "Bearer "+process.env.apiai_developer_access_token,
+    "Content-Type": "application/json; charset=utf-8",
+    "cache-control": "no-cache"
   },
   body: intent_data
 };
