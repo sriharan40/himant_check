@@ -987,13 +987,13 @@ request(options, function (error, response, body) {
 		 var responseBody = {
 			"speech": speech,
 			"displayText": speech,
-			"contextOut": [{"name":"texttrainingstarted", "lifespan":1},{"name":"backendExpressionsContinuedContext", "lifespan":1}],
+			"contextOut": [{"name":"backendExpressionsContinuedContext", "lifespan":1}],
 			"source": "apiai-Himant-OTP sample"
 		};
 
 	response.write(JSON.stringify(responseBody));
 	console.log ("Response is :" + JSON.stringify(responseBody));
-	//req.end();
+	req.end();
 	response.end();	
 	
 }
@@ -1066,7 +1066,7 @@ return requestPromise(options).then(
 
 	response.write(JSON.stringify(responseBody));
 	console.log ("Response is :" + JSON.stringify(responseBody));
-	//req.end();
+	req.end();
 	response.end();	
 	
 }
