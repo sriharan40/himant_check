@@ -950,7 +950,7 @@ var intent_data = {
 
 var contextArray = data.result.contexts;
 
-if (contextArray[0].name != "backendexpressionscontinuedcontext" && contextArray[1].name != "backendexpressionscontinuedcontext")
+if (contextArray[0].name != "backendexpressionscontinuedcontext")
 {
 var options = {
   method: 'POST',
