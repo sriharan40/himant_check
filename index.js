@@ -952,6 +952,10 @@ var contextArray = data.result.contexts;
 
 var len = contextArray.length;
 
+var responseBody = "";
+
+var speech = "";
+
 if (contextArray[len-1].name != "backendexpressionscontinuedcontext")
 {
 var options = {
@@ -966,22 +970,40 @@ var options = {
   json: intent_data
 };
 
+console.log("Options:"+JSON.stringify(options));
+
+request(options, function (error, res, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+
 var speech = "Ok, great, how else the user can ask this question?";	
 
 // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
 var responseBody = {
 "speech": speech,
 "displayText": speech,
-"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1}],
+"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":body.id}}],
 "source": "apiai-Himant-OTP sample"
 };
+
+});
+
 }
 
 else
-{	
+{
+
+for (var i=0, len=contextArray.length; i<len; i++) {
+if(contextArray[i].name === "backendexpressionscontinuedcontext")
+{
+var intent_id = contextArray[i].parameters.intent_id;	
+}
+}
+
 var options = {
   method: 'PUT',
-  url: 'https://api.api.ai/v1/intents/76fc8b99-1f0c-4fd9-8448-66ff2a402326',
+  url: 'https://api.api.ai/v1/intents/'+intent_id,
   qs: { v: '20150910' },  
   headers: {
     'authorization': 'Bearer '+process.env.apiai_developer_access_token,
@@ -997,19 +1019,17 @@ var speech = "Teach me other ways , the user can ask this question. Once done, p
  var responseBody = {
 	"speech": speech,
 	"displayText": speech,
-	"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1}],
+	"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":intent_id}}],
 	"source": "apiai-Himant-OTP sample"
 };
-
-}
-
-console.log("Options:"+JSON.stringify(options));
 
 request(options, function (error, res, body) {
   if (error) throw new Error(error);
 
   console.log(body);
 });
+
+}
 	
 /* return requestPromise(options).then(
   function (response) {
@@ -1025,6 +1045,7 @@ request(options, function (error, res, body) {
 	response.setHeader('Content-Type', 'application/json');	
 
 	response.write(JSON.stringify(responseBody));
+
 	console.log ("Response is :" + JSON.stringify(responseBody));
 	//req.end();
 	response.end();	
