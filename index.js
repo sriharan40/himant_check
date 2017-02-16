@@ -924,7 +924,7 @@ if(action == "createIntentAction")
 {
 var intent_name = data.result.parameters.intentName;
 
-	var intent_data = JSON.stringify({
+var intent_data = {
    "name": intent_name,
    "auto": true,
    "userSays": [
@@ -943,7 +943,7 @@ var intent_name = data.result.parameters.intentName;
       }
    ],
    "priority": 500000
-});
+};
 
 var options = {
   method: "POST",
