@@ -980,7 +980,7 @@ var responseBody = {
 else
 {	
 var options = {
-  method: 'POST',
+  method: 'PUT',
   url: 'https://api.api.ai/v1/intents/76fc8b99-1f0c-4fd9-8448-66ff2a402326',
   qs: { v: '20150910' },  
   headers: {
@@ -1059,7 +1059,7 @@ var intent_data = {
 };
 
 var options = {
-  method: 'POST',
+  method: 'PUT',
   url: 'https://api.api.ai/v1/intents/76fc8b99-1f0c-4fd9-8448-66ff2a402326',
   qs: { v: '20150910' },  
   headers: {
