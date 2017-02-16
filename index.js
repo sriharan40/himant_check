@@ -947,9 +947,118 @@ var intent_data = {
    priority: 500000
 };
 
+
+var contextArray = data.result.contexts;
+
+if (contextArray[0].name != "backendexpressionscontinuedcontext" && contextArray[1].name != "backendexpressionscontinuedcontext")
+{
 var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/intents',
+  qs: { v: '20150910' },  
+  headers: {
+    'authorization': 'Bearer '+process.env.apiai_developer_access_token,
+    'Content-Type': 'application/json; charset=utf-8',
+    'cache-control': 'no-cache'
+  },
+  json: intent_data
+};
+
+var speech = "Ok, great, how else the user can ask this question?";	
+
+// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+var responseBody = {
+"speech": speech,
+"displayText": speech,
+"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1}],
+"source": "apiai-Himant-OTP sample"
+};
+}
+
+else
+{	
+var options = {
+  method: 'POST',
+  url: 'https://api.api.ai/v1/intents/76fc8b99-1f0c-4fd9-8448-66ff2a402326',
+  qs: { v: '20150910' },  
+  headers: {
+    'authorization': 'Bearer '+process.env.apiai_developer_access_token,
+    'Content-Type': 'application/json; charset=utf-8',
+    'cache-control': 'no-cache'
+  },
+  json: intent_data
+};
+
+var speech = "Teach me other ways , the user can ask this question. Once done, please write @done";	
+
+   // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+ var responseBody = {
+	"speech": speech,
+	"displayText": speech,
+	"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1}],
+	"source": "apiai-Himant-OTP sample"
+};
+
+}
+
+console.log("Options:"+JSON.stringify(options));
+
+request(options, function (error, res, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+	
+/* return requestPromise(options).then(
+  function (response) {
+    console.log('Got success: '+JSON.stringify(response.body));
+  },
+  function (response) {
+    console.log('Got error', response.body, response.headers, response.statusCode, response.statusMessage);
+  }
+); */	
+
+	response.statusCode = 200;
+		
+	response.setHeader('Content-Type', 'application/json');	
+
+	response.write(JSON.stringify(responseBody));
+	console.log ("Response is :" + JSON.stringify(responseBody));
+	//req.end();
+	response.end();	
+	
+}
+
+if(action == "updateIntent")
+{
+	var intent_name = data.result.parameters.intentName;
+
+	var user_expressions = data.result.parameters.textUserExpressions;
+
+var intent_data = {
+   name: intent_name,
+   auto: true,
+   userSays: [
+      {
+         data: [{"text": user_expressions}],
+        isTemplate: false,
+        count: 0    
+      }],
+ responses: [
+      {
+         resetContexts: false,
+         action: '',
+         affectedContexts: [],
+         parameters: [],
+         speech: ''
+      }
+   ],
+   priority: 500000
+};
+
+var options = {
+  method: 'POST',
+  url: 'https://api.api.ai/v1/intents/76fc8b99-1f0c-4fd9-8448-66ff2a402326',
   qs: { v: '20150910' },  
   headers: {
     'authorization': 'Bearer '+process.env.apiai_developer_access_token,
@@ -967,68 +1076,7 @@ request(options, function (error, res, body) {
   console.log(body);
 });
 
-	
-/* return requestPromise(options).then(
-  function (response) {
-    console.log('Got success: '+JSON.stringify(response.body));
-  },
-  function (response) {
-    console.log('Got error', response.body, response.headers, response.statusCode, response.statusMessage);
-  }
-); */
-	
-	var speech = "Ok, great, how else the user can ask this question?";	
-
-	response.statusCode = 200;
-		
-	response.setHeader('Content-Type', 'application/json');	
-
-		   // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-		 var responseBody = {
-			"speech": speech,
-			"displayText": speech,
-			"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":2}],
-			"source": "apiai-Himant-OTP sample"
-		};
-
-	response.write(JSON.stringify(responseBody));
-	console.log ("Response is :" + JSON.stringify(responseBody));
-	//req.end();
-	response.end();	
-	
-}
-
-if(action == "updateIntent")
-{
-	var intent_name = data.result.parameters.intentName;
-
-	var user_expressions = data.result.parameters.textUserExpressions;
-
-	var intent_data = JSON.stringify({
-   "name": intent_name,
-   "auto": true,
-   "userSays": [
-      {
-         "data": [
-            {
-               "text": user_expressions
-            }],
-        "isTemplate": false,
-         "count": 0    
-      }],
- "responses": [
-      {
-         "resetContexts": false,
-         "action": "",
-         "affectedContexts": [],
-         "parameters": [],
-         "speech": ""
-      }
-   ],
-   "priority": 500000
-});
-
-var options = {
+/* var options = {
   method: "POST",
   host: "api.api.ai",
   port: null,
@@ -1048,7 +1096,7 @@ return requestPromise(options).then(
   function (response) {
     console.log('Got error', response.body, response.headers, response.statusCode, response.statusMessage);
   }
-);
+); */
 	
 	var speech = "Teach me other ways , the user can ask this question. Once done, please write @done";	
 
@@ -1060,13 +1108,13 @@ return requestPromise(options).then(
 		 var responseBody = {
 			"speech": speech,
 			"displayText": speech,
-			"contextOut": [{"name":"texttrainingstarted", "lifespan":1}],
+			"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":2}],
 			"source": "apiai-Himant-OTP sample"
 		};
 
 	response.write(JSON.stringify(responseBody));
 	console.log ("Response is :" + JSON.stringify(responseBody));
-	req.end();
+	//req.end();
 	response.end();	
 	
 }
