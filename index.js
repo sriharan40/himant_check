@@ -920,6 +920,74 @@ response.end();
 
 // Bot Training Section
 
+if(action == "createIntentAction")
+{
+var intent_name = data.result.parameters.intentName;
+
+	var intent_data = JSON.stringify({
+   "name": intent_name,
+   "auto": true,
+   "userSays": [
+      {
+         "data": [],
+        "isTemplate": false,
+         "count": 0    
+      }],
+ "responses": [
+      {
+         "resetContexts": false,
+         "action": "",
+         "affectedContexts": [],
+         "parameters": [],
+         "speech": ""
+      }
+   ],
+   "priority": 500000
+});
+
+var options = {
+  method: "POST",
+  host: "api.api.ai",
+  port: null,
+  path: "/v1/intents?v=20150910",
+  headers: {
+    "authorization": "Bearer "+process.env.apiai_developer_access_token,
+    "Content-Type": "application/json; charset=utf-8",
+    "cache-control": "no-cache"
+  },
+  body: intent_data
+};
+
+return requestPromise(options).then(
+  function (response) {
+    console.log('Got success: '+JSON.stringify(response.body));
+  },
+  function (response) {
+    console.log('Got error', response.body, response.headers, response.statusCode, response.statusMessage);
+  }
+);
+	
+	var speech = "Tell me various ways a user can ask about this skill e.g.  What is switch etc. Once done, you can type 'DONE'";	
+
+	response.statusCode = 200;
+		
+	response.setHeader('Content-Type', 'application/json');	
+
+		   // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+		 var responseBody = {
+			"speech": speech,
+			"displayText": speech,
+			"contextOut": [{"name":"texttrainingstarted", "lifespan":1}],
+			"source": "apiai-Himant-OTP sample"
+		};
+
+	response.write(JSON.stringify(responseBody));
+	console.log ("Response is :" + JSON.stringify(responseBody));
+	//req.end();
+	response.end();	
+	
+}
+
 if(action == "createIntentAndUserexpressionsText")
 {
 	var intent_name = data.result.parameters.intent;
