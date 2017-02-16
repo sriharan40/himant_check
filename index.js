@@ -956,7 +956,7 @@ var options = {
     'Content-Type': 'application/json; charset=utf-8',
     'cache-control': 'no-cache'
   },
-  body: intent_data
+  json: intent_data
 };
 
 console.log("Options:"+JSON.stringify(options));
