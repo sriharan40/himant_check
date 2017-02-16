@@ -949,9 +949,7 @@ var intent_data = {
 
 var options = {
   method: 'POST',
-  host: 'api.api.ai',
-  port: null,
-  path: '/v1/intents?v=20150910',
+  url: 'https://api.api.ai/v1/intents?v=20150910',
   headers: {
     'authorization': 'Bearer '+process.env.apiai_developer_access_token,
     'Content-Type': 'application/json; charset=utf-8',
