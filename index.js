@@ -971,21 +971,21 @@ console.log("Options:"+JSON.stringify(options));
      authorization: 'Bearer 8d6f4812284249b68ddf36a9db6d1c05' },
   body: '{"name":"whatisswitch","auto":true,"userSays":[{"data":[{"text":"switch is"}],"isTemplate":false,"count":0}],"responses":[{"resetContexts":false,"action":"","affectedContexts":[],"parameters":[],"speech":""}],"priority":500000}' }; */
 
-request(options, function (error, response, body) {
+/* request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
   console.log(body);
-});
+}); */
 
 	
-/* return requestPromise(options).then(
+return requestPromise(options).then(
   function (response) {
     console.log('Got success: '+JSON.stringify(response.body));
   },
   function (response) {
     console.log('Got error', response.body, response.headers, response.statusCode, response.statusMessage);
   }
-); */
+);
 	
 	var speech = "Ok, great, how else the user can ask this question?";	
 
