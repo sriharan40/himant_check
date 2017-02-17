@@ -1031,14 +1031,16 @@ var speech = "Teach me other ways , the user can ask this question. Once done, p
 request(options1, function (error, res, body) {
   if (error) throw new Error(error);
 
-console.log("Body: "+body);
+var getresponsebody = body.toString();
 
-console.log("Usersays: "+body.userSays);
+console.log("Body: "+getresponsebody);
+
+console.log("Usersays: "+getresponsebody.userSays);
 
 var user_says_data = [];
 
-for (var i=0, len=body.userSays.length; i<len; i++) {
-user_says_data.push(body.userSays[i]);
+for (var i=0, len=getresponsebody.userSays.length; i<len; i++) {
+user_says_data.push(getresponsebody.userSays[i]);
 }
 
 user_says_data.push({"text": user_expressions});
