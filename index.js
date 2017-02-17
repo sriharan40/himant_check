@@ -1039,8 +1039,8 @@ console.log("Id: "+get_responsebody.id);
 
 var user_says_data = [];
 
-for (var i=0, len=getresponsebody.userSays.length; i<len; i++) {
-user_says_data.push(getresponsebody.userSays[i]);
+for (var i=0, len=get_responsebody.userSays.length; i<len; i++) {
+user_says_data.push(get_responsebody.userSays[i]);
 }
 
 user_says_data.push({"text": user_expressions});
