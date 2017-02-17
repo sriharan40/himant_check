@@ -928,7 +928,7 @@ var user_expressions = data.result.parameters.textUserExpressions;
 
 var intent_data = {
    name: intent_name,
-   auto: false,
+   auto: true,
    userSays: [
       {
         data: [{"text": user_expressions}],
@@ -1047,12 +1047,15 @@ for (var i=0, len=get_response_parse.userSays.length; i<len; i++) {
 user_says_data.push(get_response_parse.userSays[i]);
 }
 
-user_says_data.push({"text": user_expressions});
+user_says_data.push({"data": [{"text": user_expressions}]});
 
 var intent_data = {
    name: intent_name,
    auto: false,
-   userSays: user_says_data,
+   userSays: [
+      {
+         "data": user_says_data
+	  }]	 
 responses: [
       {
          resetContexts: false,
