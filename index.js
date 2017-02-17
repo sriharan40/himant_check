@@ -1033,7 +1033,11 @@ request(options1, function (error, res, body) {
 
 console.log(body);
 
-var user_says_data[] = body.userSays;
+var user_says_data = [];
+
+for (var i=0, len=body.userSays.length; i<len; i++) {
+user_says_data.push(body.userSays[i]);
+}
 
 user_says_data.push({"text": user_expressions});
 
