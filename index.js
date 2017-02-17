@@ -947,16 +947,20 @@ var intent_data = {
    priority: 500000
 };
 
-
 var contextArray = data.result.contexts;
-
-var len = contextArray.length;
 
 var responseBody = "";
 
 var speech = "";
 
-if (contextArray[len-1].name != "backendexpressionscontinuedcontext")
+for (var i=0, len=contextArray.length; i<len; i++) {
+if(contextArray[i].name === "backendexpressionscontinuedcontext")
+{
+var intent_id = contextArray[i].parameters.intent_id;	
+}
+}
+
+if (intent_id == "" || intent_id == undefined)
 {
 var options = {
   method: 'POST',
@@ -1003,23 +1007,15 @@ response.end();
 
 else
 {
-for (var i=0, len=contextArray.length; i<len; i++) {
-if(contextArray[i].name === "backendexpressionscontinuedcontext")
-{
-var intent_id = contextArray[i].parameters.intent_id;	
-}
-}
-
-var options = {
-  method: 'PUT',
+var options1 = {
+  method: 'GET',
   url: 'https://api.api.ai/v1/intents/'+intent_id,
   qs: { v: '20150910' },  
   headers: {
     'authorization': 'Bearer '+process.env.apiai_developer_access_token,
     'Content-Type': 'application/json; charset=utf-8',
     'cache-control': 'no-cache'
-  },
-  json: intent_data
+  }
 };
 
 var speech = "Teach me other ways , the user can ask this question. Once done, please write @done";	
@@ -1032,10 +1028,51 @@ var speech = "Teach me other ways , the user can ask this question. Once done, p
 	"source": "apiai-Himant-OTP sample"
 };
 
-request(options, function (error, res, body) {
+request(options1, function (error, res, body) {
   if (error) throw new Error(error);
 
-  console.log(body);
+console.log(body);
+
+var user_says_data[] = body.userSays;
+
+user_says_data.push({"text": user_expressions});
+
+var intent_data = {
+   name: intent_name,
+   auto: false,
+   userSays: user_says_data,
+responses: [
+      {
+         resetContexts: false,
+         action: '',
+         affectedContexts: [],
+         parameters: [],
+         speech: ''
+      }
+   ],
+   priority: 500000
+};
+  
+var options = {
+  method: 'PUT',
+  url: 'https://api.api.ai/v1/intents/'+intent_id,
+  qs: { v: '20150910' },  
+  headers: {
+    'authorization': 'Bearer '+process.env.apiai_developer_access_token,
+    'Content-Type': 'application/json; charset=utf-8',
+    'cache-control': 'no-cache'
+  },
+  json: intent_data
+};
+
+console.log("Options:"+JSON.stringify(options));
+  
+request(options, function (error1, res1, body1) {
+  if (error) throw new Error(error);
+
+  console.log(body1);
+});  
+
 });
 
 response.statusCode = 200;
