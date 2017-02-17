@@ -1018,6 +1018,8 @@ var options1 = {
   }
 };
 
+console.log("Options_getintent:"+JSON.stringify(options1));
+
 var speech = "Teach me other ways , the user can ask this question. Once done, please write @done";	
 
    // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
@@ -1031,7 +1033,7 @@ var speech = "Teach me other ways , the user can ask this question. Once done, p
 request(options1, function (error, res, body) {
   if (error) throw new Error(error);
 
-var get_responsebody = res.body;
+var get_responsebody = body.toString();
 
 console.log("Body: "+get_responsebody);
 
