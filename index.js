@@ -1051,11 +1051,8 @@ user_says_data.push({"data": [{"text": user_expressions}]});
 
 var intent_data = {
    name: intent_name,
-   auto: false,
-   userSays: [
-      {
-         "data": user_says_data
-	  }]	 
+   auto: true,
+   userSays: user_says_data,	 
 responses: [
       {
          resetContexts: false,
