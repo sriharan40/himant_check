@@ -1035,7 +1035,7 @@ var getresponsebody = body.toString();
 
 console.log("Body: "+getresponsebody);
 
-console.log("Usersays: "+getresponsebody.userSays);
+console.log("Usersays: "+getresponsebody.templates);
 
 var user_says_data = [];
 
