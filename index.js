@@ -1031,7 +1031,7 @@ var speech = "Teach me other ways , the user can ask this question. Once done, p
 request(options1, function (error, res, body) {
   if (error) throw new Error(error);
 
-var getresponsebody = body.toString();
+var getresponsebody = res.body.toString();
 
 console.log("Body: "+getresponsebody);
 
