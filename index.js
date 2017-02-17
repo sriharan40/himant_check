@@ -1043,8 +1043,8 @@ console.log("Id: "+get_response_parse.id);
 
 var user_says_data = [];
 
-for (var i=0, len=get_responsebody.userSays.length; i<len; i++) {
-user_says_data.push(get_responsebody.userSays[i]);
+for (var i=0, len=get_response_parse.userSays.length; i<len; i++) {
+user_says_data.push(get_response_parse.userSays[i]);
 }
 
 user_says_data.push({"text": user_expressions});
