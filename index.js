@@ -1031,11 +1031,11 @@ var speech = "Teach me other ways , the user can ask this question. Once done, p
 request(options1, function (error, res, body) {
   if (error) throw new Error(error);
 
-var getresponsebody = res.body.toString();
+var get_responsebody = res.body;
 
-console.log("Body: "+getresponsebody);
+console.log("Body: "+get_responsebody);
 
-console.log("Usersays: "+getresponsebody.templates);
+console.log("Id: "+get_responsebody.id);
 
 var user_says_data = [];
 
