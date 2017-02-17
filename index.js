@@ -1039,8 +1039,6 @@ console.log("Body: "+get_responsebody);
 
 var get_response_parse = JSON.parse(get_responsebody);
 
-console.log("Id: "+get_response_parse.id);
-
 var user_says_data = [];
 
 for (var i=0, len=get_response_parse.userSays.length; i<len; i++) {
