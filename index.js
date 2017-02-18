@@ -979,19 +979,36 @@ var options = {
 console.log("Options:"+JSON.stringify(options));
 
 request(options, function (error, res, body) {
-  if (error) throw new Error(error);
+  if (error) 
+  {  
+  throw new Error(error);
+    
+	var speech = "Intent name already exists. Please use different one.";
 
+	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+	var responseBody = {
+	"speech": speech,
+	"displayText": speech,
+	"source": "apiai-Himant-OTP sample"
+	};	
+  }
+  else
+  {
   console.log(body);
 
-var speech = "Ok, great, how else the user can ask this question?";	
+    var speech = "Ok, great, how else the user can ask this question?";	
 
-// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-var responseBody = {
-"speech": speech,
-"displayText": speech,
-"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":body.id,"intentName":intent_name}}],
-"source": "apiai-Himant-OTP sample"
-};
+	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+	var responseBody = {
+	"speech": speech,
+	"displayText": speech,
+	"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":body.id,"intentName":intent_name}}],
+	"source": "apiai-Himant-OTP sample"
+	};
+
+  }
+
+
 
 response.statusCode = 200;
 	
@@ -1216,23 +1233,23 @@ return requestPromise(options).then(
   }
 ); */
 	
-	var speech = "Great. the training for this skill is complete. You can test it now";	
+var speech = "Great. the training for this skill is complete. You can test it now";	
 
-	response.statusCode = 200;
-		
-	response.setHeader('Content-Type', 'application/json');	
+response.statusCode = 200;
+	
+response.setHeader('Content-Type', 'application/json');	
 
-		   // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-		 var responseBody = {
-			"speech": speech,
-			"displayText": speech,
-			"source": "apiai-Himant-OTP sample"
-		};
+// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+var responseBody = {
+	"speech": speech,
+	"displayText": speech,
+	"source": "apiai-Himant-OTP sample"
+};
 
-	response.write(JSON.stringify(responseBody));
-	console.log ("Response is :" + JSON.stringify(responseBody));
-	//req.end();
-	response.end();	
+response.write(JSON.stringify(responseBody));
+console.log ("Response is :" + JSON.stringify(responseBody));
+//req.end();
+response.end();	
 	
 }
 
