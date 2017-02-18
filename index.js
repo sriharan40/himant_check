@@ -922,12 +922,12 @@ response.end();
 
 if(action == "createIntentAction")
 {
-var intent_name = data.result.parameters.intentName;
+var new_intent_name = data.result.parameters.intentName;
 
 var user_expressions = data.result.parameters.textUserExpressions;
 
 var intent_data = {
-   name: intent_name,
+   name: new_intent_name,
    auto: true,
    userSays: [
       {
@@ -946,6 +946,8 @@ var intent_data = {
    ],
    priority: 500000
 };
+
+console.log("IntentData:"+intent_data);
 
 var contextArray = data.result.contexts;
 
