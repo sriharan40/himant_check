@@ -1101,7 +1101,19 @@ response.end();
 
 if(action == "textTrainingComplete")
 {
-	var intent_response = data.result.parameters.IntentResponse;
+
+var contextArray = data.result.contexts;
+
+for (var i=0, len=contextArray.length; i<len; i++) {
+if(contextArray[i].name === "backendexpressionscontinuedcontext")
+{
+var intent_id = contextArray[i].parameters.intent_id;	
+}
+}
+
+var intent_name = data.result.parameters.intentName;
+
+var intent_response = data.result.parameters.IntentResponse;
 
 var intent_data = {
    name: intent_name,
@@ -1126,7 +1138,7 @@ var intent_data = {
 
 var options = {
   method: 'PUT',
-  url: 'https://api.api.ai/v1/intents/76fc8b99-1f0c-4fd9-8448-66ff2a402326',
+  url: 'https://api.api.ai/v1/intents/'+intent_id,
   qs: { v: '20150910' },  
   headers: {
     'authorization': 'Bearer '+process.env.apiai_developer_access_token,
