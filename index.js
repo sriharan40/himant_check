@@ -987,7 +987,7 @@ var speech = "Ok, great, how else the user can ask this question?";
 var responseBody = {
 "speech": speech,
 "displayText": speech,
-"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":body.id, "intent_name":intent_name}}],
+"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":body.id,"intent_name":intent_name}}],
 "source": "apiai-Himant-OTP sample"
 };
 
@@ -1034,7 +1034,7 @@ var speech = "Teach me other ways , the user can ask this question. Once done, p
 var responseBody = {
 "speech": speech,
 "displayText": speech,
-"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":intent_id, "intent_name":intent_name}}],
+"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":intent_id,"intent_name":intent_name}}],
 "source": "apiai-Himant-OTP sample"
 };
 
