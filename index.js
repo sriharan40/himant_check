@@ -1036,7 +1036,7 @@ var speech = "Teach me other ways , the user can ask this question. Once done, p
 var responseBody = {
 "speech": speech,
 "displayText": speech,
-"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":intent_id,"intentName":intent_name}}],
+"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":2, "parameters":{"intent_id":intent_id,"intentName":intent_name}}],
 "source": "apiai-Himant-OTP sample"
 };
 
