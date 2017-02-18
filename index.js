@@ -981,21 +981,16 @@ console.log("Options:"+JSON.stringify(options));
 request(options, function (error, res, body) {
   if (error) 
   {  
-  throw new Error(error);
-    
-	var speech = "Intent name already exists. Please use different one.";
-
-	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
-	var responseBody = {
-	"speech": speech,
-	"displayText": speech,
-	"source": "apiai-Himant-OTP sample"
-	};	
+  throw new Error(error);	
   }
   else
   {
-  console.log(body);
+    console.log(body);
 
+    var errorType = body.status.errorType;
+    
+	if(errorType == "success")
+	{
     var speech = "Ok, great, how else the user can ask this question?";	
 
 	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
@@ -1005,6 +1000,19 @@ request(options, function (error, res, body) {
 	"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":body.id,"intentName":intent_name}}],
 	"source": "apiai-Himant-OTP sample"
 	};
+	}
+	
+	if(errorType == "conflict")
+	{
+	var speech = "Intent name already exists. Please use different one.";
+
+	// GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
+	var responseBody = {
+	"speech": speech,
+	"displayText": speech,
+	"source": "apiai-Himant-OTP sample"
+	};		
+	}
 
   }
 
