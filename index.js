@@ -987,7 +987,7 @@ var speech = "Ok, great, how else the user can ask this question?";
 var responseBody = {
 "speech": speech,
 "displayText": speech,
-"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":body.id}}],
+"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":body.id, "intent_name":intent_name}}],
 "source": "apiai-Himant-OTP sample"
 };
 
@@ -1007,6 +1007,14 @@ response.end();
 
 else
 {
+for (var i=0, len=contextArray.length; i<len; i++) {
+if(contextArray[i].name === "backendexpressionscontinuedcontext")
+{
+var intent_id = contextArray[i].parameters.intent_id;	
+var intent_name = contextArray[i].parameters.intent_name;
+}
+}
+
 var options1 = {
   method: 'GET',
   url: 'https://api.api.ai/v1/intents/'+intent_id,
@@ -1023,11 +1031,11 @@ console.log("Options_getintent:"+JSON.stringify(options1));
 var speech = "Teach me other ways , the user can ask this question. Once done, please write @done";	
 
    // GENERATE THE RESPONSE BODY - HIMANT - And SEND BACK THE RESPONSE TO CLIENT SPEECH Object
- var responseBody = {
-	"speech": speech,
-	"displayText": speech,
-	"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":intent_id}}],
-	"source": "apiai-Himant-OTP sample"
+var responseBody = {
+"speech": speech,
+"displayText": speech,
+"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":intent_id, "intent_name":intent_name}}],
+"source": "apiai-Himant-OTP sample"
 };
 
 request(options1, function (error, res, body) {
@@ -1108,10 +1116,9 @@ for (var i=0, len=contextArray.length; i<len; i++) {
 if(contextArray[i].name === "backendexpressionscontinuedcontext")
 {
 var intent_id = contextArray[i].parameters.intent_id;	
+var intent_name = contextArray[i].parameters.intent_name;	
 }
 }
-
-var intent_name = data.result.parameters.intentName;
 
 var intent_response = data.result.parameters.IntentResponse;
 
@@ -1188,7 +1195,6 @@ return requestPromise(options).then(
 		 var responseBody = {
 			"speech": speech,
 			"displayText": speech,
-			"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":2}],
 			"source": "apiai-Himant-OTP sample"
 		};
 
