@@ -1124,17 +1124,40 @@ var intent_name = contextArray[i].parameters.intentName;
 }
 }
 
+var options1 = {
+  method: 'GET',
+  url: 'https://api.api.ai/v1/intents/'+intent_id,
+  qs: { v: '20150910' },  
+  headers: {
+    'authorization': 'Bearer '+process.env.apiai_developer_access_token,
+    'Content-Type': 'application/json; charset=utf-8',
+    'cache-control': 'no-cache'
+  }
+};
+
+console.log("Options_getintent:"+JSON.stringify(options1));
+
 var intent_response = data.result.parameters.IntentResponse;
+
+request(options1, function (error, res, body) {
+  if (error) throw new Error(error);
+
+var get_responsebody = body.toString();
+
+console.log("Body: "+get_responsebody);
+
+var get_response_parse = JSON.parse(get_responsebody);
+
+var user_says_data = [];
+
+for (var i=0, len=get_response_parse.userSays.length; i<len; i++) {
+user_says_data.push(get_response_parse.userSays[i]);
+}
 
 var intent_data = {
    name: intent_name,
    auto: true,
-   userSays: [
-      {
-         data: [],
-        isTemplate: false,
-        count: 0    
-      }],
+   userSays: user_says_data,
  responses: [
       {
          resetContexts: false,
@@ -1167,6 +1190,8 @@ request(options, function (error, res, body) {
   if (error) throw new Error(error);
 
   console.log(body);
+});
+
 });
 
 /* var options = {
