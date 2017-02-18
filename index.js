@@ -1099,18 +1099,16 @@ response.end();
 	
 }
 
-if(action == "updateIntent")
+if(action == "textTrainingComplete")
 {
-	var intent_name = data.result.parameters.intentName;
-
-	var user_expressions = data.result.parameters.textUserExpressions;
+	var intent_response = data.result.parameters.IntentResponse;
 
 var intent_data = {
    name: intent_name,
    auto: true,
    userSays: [
       {
-         data: [{"text": user_expressions}],
+         data: [],
         isTemplate: false,
         count: 0    
       }],
@@ -1120,7 +1118,7 @@ var intent_data = {
          action: '',
          affectedContexts: [],
          parameters: [],
-         speech: ''
+         speech: intent_response
       }
    ],
    priority: 500000
@@ -1168,7 +1166,7 @@ return requestPromise(options).then(
   }
 ); */
 	
-	var speech = "Teach me other ways , the user can ask this question. Once done, please write @done";	
+	var speech = "Great. the training for this skill is complete. You can test it now";	
 
 	response.statusCode = 200;
 		
