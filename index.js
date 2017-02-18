@@ -922,12 +922,12 @@ response.end();
 
 if(action == "createIntentAction")
 {
-var new_intent_name = data.result.parameters.intentName;
+var intent_name = data.result.parameters.intentName;
 
 var user_expressions = data.result.parameters.textUserExpressions;
 
 var intent_data = {
-   name: new_intent_name,
+   name: intent_name,
    auto: true,
    userSays: [
       {
@@ -947,7 +947,7 @@ var intent_data = {
    priority: 500000
 };
 
-console.log("IntentData:"+intent_data);
+console.log("IntentData: "+JSON.stringify(intent_data));
 
 var contextArray = data.result.contexts;
 
@@ -989,7 +989,7 @@ var speech = "Ok, great, how else the user can ask this question?";
 var responseBody = {
 "speech": speech,
 "displayText": speech,
-"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":body.id,"intent_name":intent_name}}],
+"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":body.id,"intentName":intent_name}}],
 "source": "apiai-Himant-OTP sample"
 };
 
@@ -1013,7 +1013,7 @@ for (var i=0, len=contextArray.length; i<len; i++) {
 if(contextArray[i].name === "backendexpressionscontinuedcontext")
 {
 var intent_id = contextArray[i].parameters.intent_id;	
-var intent_name = contextArray[i].parameters.intent_name;
+var intent_name = contextArray[i].parameters.intentName;
 }
 }
 
@@ -1036,7 +1036,7 @@ var speech = "Teach me other ways , the user can ask this question. Once done, p
 var responseBody = {
 "speech": speech,
 "displayText": speech,
-"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":intent_id,"intent_name":intent_name}}],
+"contextOut": [{"name":"backendexpressionscontinuedcontext", "lifespan":1, "parameters":{"intent_id":intent_id,"intentName":intent_name}}],
 "source": "apiai-Himant-OTP sample"
 };
 
@@ -1072,6 +1072,8 @@ responses: [
    ],
    priority: 500000
 };
+
+console.log("IntentData: "+JSON.stringify(intent_data));
   
 var options = {
   method: 'PUT',
@@ -1118,7 +1120,7 @@ for (var i=0, len=contextArray.length; i<len; i++) {
 if(contextArray[i].name === "backendexpressionscontinuedcontext")
 {
 var intent_id = contextArray[i].parameters.intent_id;	
-var intent_name = contextArray[i].parameters.intent_name;	
+var intent_name = contextArray[i].parameters.intentName;	
 }
 }
 
@@ -1144,6 +1146,8 @@ var intent_data = {
    ],
    priority: 500000
 };
+
+console.log("IntentData: "+JSON.stringify(intent_data));
 
 var options = {
   method: 'PUT',
