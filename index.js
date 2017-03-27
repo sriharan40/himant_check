@@ -5,6 +5,7 @@ var mysql = require('mysql');
 var request = require("request");
 var util = require("util");
 var http = require('http');
+var AWS = require('aws-sdk');
 var apiai = require("apiai");
 var requestPromise = require('minimal-request-promise');
 var dashbot = require('./dashbot')(process.env.DASHBOT_API_KEY,
@@ -759,6 +760,46 @@ if(action == "validateOTP")
 	if(otp1 == otp_check1)
 	{
 	//var speech = 'Thanks for confirmation.May I know your concerns now? Let us resolve one by one.)';
+
+	//AWS database code
+
+	AWS.config.update({
+	  region: "us-west-2",
+	  endpoint: "https://dynamodb.us-west-2.amazonaws.com"
+	});
+
+	var docClient = new AWS.DynamoDB.DocumentClient();
+
+	var table = "t_users";	
+
+    for (var i=0, len=contextArray.length; i<len; i++) {
+	if(contextArray[i].name === "generic")
+	{	
+	var user_id = contextArray[i].parameters.facebook_user_id;
+	var mobile = contextArray[i].parameters.phone;	
+    	}
+    }
+	
+	var params = {
+		TableName:table,
+		Item:{
+			"fb_user_id": user_id,
+			"id": Math.floor(1000 + Math.random() * 9999),
+			"mobile": mobile
+		}
+	};
+	
+	console.log("Params:"+JSON.stringify(params));
+	
+	docClient.put(params, function(err, data_output) {
+		if (err) {
+			console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+		} else {
+			console.log("Added item:", JSON.stringify(data_output, null, 2));
+		}
+	});
+	
+
 	var db_config = {
 		host: 'us-cdbr-iron-east-04.cleardb.net',
 		user: 'b213965cc9ad75',
