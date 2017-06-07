@@ -7,6 +7,7 @@ var util = require("util");
 var http = require('http');
 var AWS = require('aws-sdk');
 var apiai = require("apiai");
+var plivo = require('plivo');
 var requestPromise = require('minimal-request-promise');
 var dashbot = require('./dashbot')(process.env.DASHBOT_API_KEY,
   {debug:true, urlRoot: process.env.DASHBOT_URL_ROOT}).facebook;
@@ -690,31 +691,59 @@ if(action == "sendOTP")
 	//var value = name + mobile;
 
 	//var req = api.textRequest(value, options);
-	
-	// Load the twilio module
+
+// Plivo Credentials 
+
+var accountSid = process.env.accountSid;
+var authToken = process.env.authToken;
+
+var p = plivo.RestAPI({
+  authId: accountSid,
+  authToken: authToken
+});		
+
+var params = {
+    'src': '9999999999',
+    'dst' : mobile,
+    'text' : 'Your one time password for verficiation is :' + otp
+};
+
+var promise = new Promise(function (resolve, reject) {
+
+p.send_message(params, function (status, response) {    
+    if (!response) reject(response);
+	else
+	resolve(response)	
+	console.log('Status: ', status);
+    console.log('API Response:\n', response);
+});
+
+});
+
+// Load the twilio module
 
 	// Twilio Credentials 
-	var accountSid = process.env.accountSid;
-	var authToken = process.env.authToken;
+//	var accountSid = process.env.accountSid;
+//	var authToken = process.env.authToken;
 
-	var client = require('twilio')(accountSid, authToken);
+//	var client = require('twilio')(accountSid, authToken);
 
-	client.sms.messages.create({
-	   to: mobile,
-	   from: process.env.Twilio_from_number,
-	   body: 'Your one time password for verficiation is :' + otp
-	}, function(error, message) {
+//	client.sms.messages.create({
+//	   to: mobile,
+//	   from: process.env.Twilio_from_number,
+//	   body: 'Your one time password for verficiation is :' + otp
+//	}, function(error, message) {
 	  
-	  if (!error) {
+//	  if (!error) {
 		//console.log('Success! The SID for this SMS message is:');
 		//console.log(message.sid);
 
 		//console.log('Message sent on:');
 		//console.log(message.dateCreated);
-	   } else {
-		console.log('Oops! There was an error.');
-	   }
-	 });	
+//	   } else {
+//		console.log('Oops! There was an error.');
+//	   }
+//	 });	
 
 response.statusCode = 200;
 	
